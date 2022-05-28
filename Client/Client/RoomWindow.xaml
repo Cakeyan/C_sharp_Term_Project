@@ -1,0 +1,206 @@
+﻿<Window x:Class="Client.RoomWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Client"
+        mc:Ignorable="d"
+        Title="RoomWindow" Height="460" Width="810" >
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="132*"/>
+            <ColumnDefinition Width="661*"/>
+        </Grid.ColumnDefinitions>
+        <Frame x:Name="frame1" Margin="0,71,0.333,-1.333" BorderThickness="2" BorderBrush="#FFEDF1F6" NavigationUIVisibility="Hidden" Grid.ColumnSpan="2" >
+            <Frame.Background>
+                <ImageBrush AlignmentX="Right" ImageSource="image\timg.jpg" Opacity="0.7" AlignmentY="Bottom"/>
+            </Frame.Background>
+        </Frame>
+        <DockPanel HorizontalAlignment="Left" Height="422" LastChildFill="False" VerticalAlignment="Top" Width="800" Grid.ColumnSpan="2" Margin="0,0,-1.667,-1.333">
+            <Grid Height="73" VerticalAlignment="Top" DockPanel.Dock="Top" Margin="0,0,-0.333,0">
+                <Grid.Background>
+                    <SolidColorBrush Color="#FF5AB0D7" Opacity="0.7"/>
+                </Grid.Background>
+                <Button HorizontalAlignment="Right" Height="70" VerticalAlignment="Top" Width="70" BorderBrush="{x:Null}" Click="Button_Click">
+                    <Image x:Name="photo" Stretch="Fill" />
+                </Button>
+                <TextBox x:Name="username" Text="欢迎来到你画我猜！预祝您玩的愉快！" BorderThickness="0,0,0,0" Margin="0,0,70,0" HorizontalAlignment="Center" Foreground="Red" VerticalAlignment="Center" Width="571" Height="33" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                    <TextBox.Background>
+                        <SolidColorBrush Color="#FF82CCEE" Opacity="0.5"/>
+                    </TextBox.Background>
+
+                </TextBox>
+            </Grid>
+            <Grid Height="344" VerticalAlignment="Top" DockPanel.Dock="Bottom" Margin="0,0,0.667,0">
+                <Grid HorizontalAlignment="Left" Height="128" VerticalAlignment="Bottom" Width="128" Margin="2,0,0,202">
+                    <Image HorizontalAlignment="Left" Height="64" Margin="34,31,0,0" VerticalAlignment="Top" Width="64" Source="image/table.png"/>
+                    <Button x:Name="room1user1Btn" HorizontalAlignment="Center" Margin="48,0" VerticalAlignment="Top" Width="32" Height="32" Background="#FFF9F7A6" BorderBrush="White" Foreground="White" Click="room_Click">
+                        <Image x:Name="room1user1Im" Height="32" Width="32"  />
+                    </Button>
+                    <Image HorizontalAlignment="Left" Height="48" Margin="42,39,0,0" VerticalAlignment="Top" Width="48" Source="image/game.png"/>
+                    <Button x:Name="room1user4Btn" HorizontalAlignment="Center" Margin="48,96,48,0" Width="32" Background="#FFF9F7A6" BorderBrush="White" Foreground="White" Click="room_Click">
+                        <Image x:Name="room1user4Im" Height="32" Width="32"/>
+                    </Button>
+                    <Button x:Name="room1user2Btn" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Center" Width="32" Height="32" Background="#FFF9F7A6" BorderBrush="White" Foreground="White" Click="room_Click">
+                        <Image x:Name="room1user2Im" Height="32" Width="32"/>
+                    </Button>
+                    <Button x:Name="room1user3Btn" HorizontalAlignment="Right" Margin="0,48" VerticalAlignment="Center" Width="32" Height="32" Background="#FFF9F7A6" BorderBrush="White" Foreground="White" Click="room_Click">
+                        <Image x:Name="room1user3Im" Height="32" Width="32"/>
+                    </Button>
+                </Grid>
+                <Grid HorizontalAlignment="Left" Height="128" VerticalAlignment="Bottom" Width="128" Margin="135,0,0,202">
+                    <Image HorizontalAlignment="Left" Height="64" Margin="34,31,0,0" VerticalAlignment="Top" Width="64" Source="image/table.png"/>
+                    <Button x:Name="room2user1Btn" Click="room_Click" HorizontalAlignment="Center" Margin="48,0" VerticalAlignment="Top" Width="32" Height="32" Background="#FFF9F7A6" BorderBrush="White" Foreground="White">
+                        <Image Height="32" Width="32"/>
+                    </Button>
+                    <Image HorizontalAlignment="Left" Height="48" Margin="42,39,0,0" VerticalAlignment="Top" Width="48" Source="image/game.png"/>
+                    <Button x:Name="room2user2Btn" Click="room_Click" HorizontalAlignment="Center" Margin="48,0" VerticalAlignment="Bottom" Width="32" Height="32" Background="#FFF9F7A6" BorderBrush="White" Foreground="White">
+                        <Image Height="32" Width="32"/>
+                    </Button>
+                    <Button x:Name="room2user3Btn" Click="room_Click" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Center" Width="32" Height="32" Background="#FFF9F7A6" BorderBrush="White" Foreground="White">
+                        <Image Height="32" Width="32"/>
+                    </Button>
+                    <Button x:Name="room2user4Btn" Click="room_Click" HorizontalAlignment="Right" Margin="0,48" VerticalAlignment="Center" Width="32" Height="32" Background="#FFF9F7A6" BorderBrush="White" Foreground="White">
+                        <Image Height="32" Width="32"/>
+                    </Button>
+                </Grid>
+                <Grid HorizontalAlignment="Left" Height="128" VerticalAlignment="Bottom" Width="128" Margin="268,0,0,202">
+                    <Image HorizontalAlignment="Left" Height="64" Margin="34,31,0,0" VerticalAlignment="Top" Width="64" Source="image/table.png"/>
+                    <Button x:Name="room3user1Btn" Click="room_Click" HorizontalAlignment="Center" Margin="48,0" VerticalAlignment="Top" Width="32" Height="32" Background="#FFF9F7A6" BorderBrush="White" Foreground="White">
+                        <Image Height="32" Width="32"/>
+                    </Button>
+                    <Image HorizontalAlignment="Left" Height="48" Margin="42,39,0,0" VerticalAlignment="Top" Width="48" Source="image/game.png"/>
+                    <Button x:Name="room3user2Btn" Click="room_Click" HorizontalAlignment="Center" Margin="48,0" VerticalAlignment="Bottom" Width="32" Height="32" Background="#FFF9F7A6" BorderBrush="White" Foreground="White">
+                        <Image Height="32" Width="32"/>
+                    </Button>
+                    <Button x:Name="room3user3Btn" Click="room_Click" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Center" Width="32" Height="32" Background="#FFF9F7A6" BorderBrush="White" Foreground="White">
+                        <Image Height="32" Width="32"/>
+                    </Button>
+                    <Button x:Name="room3user4Btn" Click="room_Click" HorizontalAlignment="Right" Margin="0,48" VerticalAlignment="Center" Width="32" Height="32" Background="#FFF9F7A6" BorderBrush="White" Foreground="White">
+                        <Image Height="32" Width="32"/>
+                    </Button>
+                </Grid>
+                <Grid HorizontalAlignment="Left" Height="128" VerticalAlignment="Bottom" Width="128" Margin="401,0,0,202">
+                    <Image HorizontalAlignment="Left" Height="64" Margin="34,31,0,0" VerticalAlignment="Top" Width="64" Source="image/table.png"/>
+                    <Button x:Name="room4user1Btn" Click="room_Click" HorizontalAlignment="Center" Margin="48,0" VerticalAlignment="Top" Width="32" Height="32" Background="#FFF9F7A6" BorderBrush="White" Foreground="White">
+                        <Image Height="32" Width="32"/>
+                    </Button>
+                    <Image HorizontalAlignment="Left" Height="48" Margin="42,39,0,0" VerticalAlignment="Top" Width="48" Source="image/game.png"/>
+                    <Button x:Name="room4user2Btn" Click="room_Click" HorizontalAlignment="Center" Margin="48,0" VerticalAlignment="Bottom" Width="32" Height="32" Background="#FFF9F7A6" BorderBrush="White" Foreground="White">
+                        <Image Height="32" Width="32"/>
+                    </Button>
+                    <Button x:Name="room4user3Btn" Click="room_Click" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Center" Width="32" Height="32" Background="#FFF9F7A6" BorderBrush="White" Foreground="White">
+                        <Image Height="32" Width="32"/>
+                    </Button>
+                    <Button x:Name="room4user4Btn" Click="room_Click" HorizontalAlignment="Right" Margin="0,48" VerticalAlignment="Center" Width="32" Height="32" Background="#FFF9F7A6" BorderBrush="White" Foreground="White">
+                        <Image Height="32" Width="32"/>
+                    </Button>
+                </Grid>
+
+
+                <Grid HorizontalAlignment="Left" Height="128" VerticalAlignment="Bottom" Width="128" Margin="2,0,0,41">
+                    <Image HorizontalAlignment="Left" Height="64" Margin="34,31,0,0" VerticalAlignment="Top" Width="64" Source="image/table.png"/>
+                    <Button x:Name="room5user1Btn" Click="room_Click" HorizontalAlignment="Center" Margin="48,0" VerticalAlignment="Top" Width="32" Height="32" Background="#FFF9F7A6" BorderBrush="White" Foreground="White">
+                        <Image Height="32" Width="32"/>
+                    </Button>
+                    <Image HorizontalAlignment="Left" Height="48" Margin="42,39,0,0" VerticalAlignment="Top" Width="48" Source="image/game.png"/>
+                    <Button x:Name="room5user2Btn" Click="room_Click" HorizontalAlignment="Center" Margin="48,0" VerticalAlignment="Bottom" Width="32" Height="32" Background="#FFF9F7A6" BorderBrush="White" Foreground="White">
+                        <Image Height="32" Width="32"/>
+                    </Button>
+                    <Button x:Name="room5user3Btn" Click="room_Click" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Center" Width="32" Height="32" Background="#FFF9F7A6" BorderBrush="White" Foreground="White">
+                        <Image Height="32" Width="32"/>
+                    </Button>
+                    <Button x:Name="room5user4Btn" Click="room_Click" HorizontalAlignment="Right" Margin="0,48" VerticalAlignment="Center" Width="32" Height="32" Background="#FFF9F7A6" BorderBrush="White" Foreground="White">
+                        <Image Height="32" Width="32"/>
+                    </Button>
+                </Grid>
+                <Grid HorizontalAlignment="Left" Height="128" VerticalAlignment="Bottom" Width="128" Margin="135,0,0,41">
+                    <Image HorizontalAlignment="Left" Height="64" Margin="34,31,0,0" VerticalAlignment="Top" Width="64" Source="image/table.png"/>
+                    <Button x:Name="room6user1Btn" Click="room_Click" HorizontalAlignment="Center" Margin="48,0" VerticalAlignment="Top" Width="32" Height="32" Background="#FFF9F7A6" BorderBrush="White" Foreground="White">
+                        <Image Height="32" Width="32"/>
+                    </Button>
+                    <Image HorizontalAlignment="Left" Height="48" Margin="42,39,0,0" VerticalAlignment="Top" Width="48" Source="image/game.png"/>
+                    <Button x:Name="room6user2Btn" Click="room_Click" HorizontalAlignment="Center" Margin="48,0" VerticalAlignment="Bottom" Width="32" Height="32" Background="#FFF9F7A6" BorderBrush="White" Foreground="White">
+                        <Image Height="32" Width="32"/>
+                    </Button>
+                    <Button x:Name="room6user3Btn" Click="room_Click" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Center" Width="32" Height="32" Background="#FFF9F7A6" BorderBrush="White" Foreground="White">
+                        <Image Height="32" Width="32"/>
+                    </Button>
+                    <Button x:Name="room6user4Btn" Click="room_Click" HorizontalAlignment="Right" Margin="0,48" VerticalAlignment="Center" Width="32" Height="32" Background="#FFF9F7A6" BorderBrush="White" Foreground="White">
+                        <Image Height="32" Width="32"/>
+                    </Button>
+                </Grid>
+                <Grid HorizontalAlignment="Left" Height="128" VerticalAlignment="Bottom" Width="128" Margin="268,0,0,41">
+                    <Image HorizontalAlignment="Left" Height="64" Margin="34,31,0,0" VerticalAlignment="Top" Width="64" Source="image/table.png"/>
+                    <Button x:Name="room7user1Btn" Click="room_Click" HorizontalAlignment="Center" Margin="48,0" VerticalAlignment="Top" Width="32" Height="32" Background="#FFF9F7A6" BorderBrush="White" Foreground="White">
+                        <Image Height="32" Width="32"/>
+                    </Button>
+                    <Image HorizontalAlignment="Left" Height="48" Margin="42,39,0,0" VerticalAlignment="Top" Width="48" Source="image/game.png"/>
+                    <Button x:Name="room7user2Btn" Click="room_Click" HorizontalAlignment="Center" Margin="48,0" VerticalAlignment="Bottom" Width="32" Height="32" Background="#FFF9F7A6" BorderBrush="White" Foreground="White">
+                        <Image Height="32" Width="32"/>
+                    </Button>
+                    <Button x:Name="room7user3Btn" Click="room_Click" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Center" Width="32" Height="32" Background="#FFF9F7A6" BorderBrush="White" Foreground="White">
+                        <Image Height="32" Width="32"/>
+                    </Button>
+                    <Button x:Name="room7user4Btn" Click="room_Click" HorizontalAlignment="Right" Margin="0,48" VerticalAlignment="Center" Width="32" Height="32" Background="#FFF9F7A6" BorderBrush="White" Foreground="White">
+                        <Image Height="32" Width="32"/>
+                    </Button>
+                </Grid>
+                <Grid HorizontalAlignment="Left" Height="128" VerticalAlignment="Bottom" Width="128" Margin="401,0,0,41">
+                    <Image HorizontalAlignment="Left" Height="64" Margin="34,31,0,0" VerticalAlignment="Top" Width="64" Source="image/table.png"/>
+                    <Button x:Name="room8user1Btn" Click="room_Click" HorizontalAlignment="Center" Margin="48,0" VerticalAlignment="Top" Width="32" Height="32" Background="#FFF9F7A6" BorderBrush="White" Foreground="White">
+                        <Image Height="32" Width="32"/>
+                    </Button>
+                    <Image HorizontalAlignment="Left" Height="48" Margin="42,39,0,0" VerticalAlignment="Top" Width="48" Source="image/game.png"/>
+                    <Button x:Name="room8user2Btn" Click="room_Click" HorizontalAlignment="Center" Margin="48,0" VerticalAlignment="Bottom" Width="32" Height="32" Background="#FFF9F7A6" BorderBrush="White" Foreground="White">
+                        <Image Height="32" Width="32"/>
+                    </Button>
+                    <Button x:Name="room8user3Btn" Click="room_Click" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Center" Width="32" Height="32" Background="#FFF9F7A6" BorderBrush="White" Foreground="White">
+                        <Image Height="32" Width="32"/>
+                    </Button>
+                    <Button x:Name="room8user4Btn" Click="room_Click" HorizontalAlignment="Right" Margin="0,48" VerticalAlignment="Center" Width="32" Height="32" Background="#FFF9F7A6" BorderBrush="White" Foreground="White">
+                        <Image Height="32" Width="32"/>
+                    </Button>
+                </Grid>
+                <Grid HorizontalAlignment="Left" Height="349" Margin="581,-5,0,0" VerticalAlignment="Top" Width="213">
+                    <TextBlock x:Name="PlayerInfo" FontSize="16" HorizontalAlignment="Left" TextWrapping="Wrap" Width="210" Margin="0,0,0,36">
+                        <TextBlock.Background>
+                            <SolidColorBrush Color="#FFF8F6E2" Opacity="0.8"/>
+                        </TextBlock.Background>
+                    </TextBlock>
+                    <Border BorderBrush="Brown" BorderThickness ="1" CornerRadius="10" Margin="2,278,0,36" RenderTransformOrigin="0.497,-0.027" >
+                        <Grid Margin="-0.333,0,0,0">
+                            <TextBox Name="SendBox" FontSize="18" VerticalContentAlignment="Center" Background="#FFF5F4E9" BorderThickness="0,0,1,0" VerticalAlignment="Center" Height="35" Margin="10,0,47.933,-0.067" KeyUp="SendBox_KeyUp" />
+                            <Button x:Name="SendBnt" FontSize="13" BorderThickness="0,0,0,0" Content="SEND" HorizontalAlignment="Right" Margin="0,0,5.933,-0.067" Width="43" RenderTransformOrigin="-0.014,0.321" Foreground="#FF4E280F" Click="SendBnt_Click" >
+                                <Button.Background>
+                                    <SolidColorBrush Color="#FFF4F5E9" Opacity="0.2"/>
+                                </Button.Background>
+                            </Button>
+                        </Grid>
+                    </Border>
+                    <Border  BorderBrush="Brown" BorderThickness="1" CornerRadius="10" HorizontalAlignment="Left" Height="36" Margin="93,313,0,0" VerticalAlignment="Top" Width="120">
+                        <Border.Background>
+                            <SolidColorBrush Color="#FFB2E2F7" Opacity="0.7"/>
+                        </Border.Background>
+                        <Grid Margin="0.667,-4.333,-1,5">
+                            <Button x:Name="exitBnt" FontSize="13" BorderThickness="0,0,0,0" Content="EXIT" Margin="10,4,7.666,-4.334" VerticalAlignment="Top" Height="33" RenderTransformOrigin="-0.014,0.321" Foreground="#FF4E280F" Click="exitBnt_Click" >
+                                <Button.Background>
+                                    <SolidColorBrush Color="#FF66C0F3" Opacity="0.2"/>
+                                </Button.Background>
+                            </Button>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Grid>
+        </DockPanel>
+        <Border Background="White" CornerRadius="40" BorderBrush="Black" BorderThickness="1"  HorizontalAlignment="Left" Margin="7,380,0,13.667" Width="39">
+            <Button  Name="music" BorderThickness="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="31" Height="26"  BorderBrush="White" Foreground="White" Click="music_Click" Margin="1.667,3.667,3.333,0">
+                <Button.Background>
+                    <SolidColorBrush Color="#FFDDDDDD" Opacity="0.2"/>
+                </Button.Background>
+                <Image Source="/image/音乐.jpg" Width="27" />
+            </Button>
+        </Border>
+
+    </Grid>
+</Window>

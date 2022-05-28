@@ -1,0 +1,329 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{08A834C8-6ED5-4B06-A6B2-FB62299FB661}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Client</RootNamespace>
+    <AssemblyName>Client</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Controls.Ribbon" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Connected Services\CheckinReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\LoginReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="ForgetPwWindow.xaml.cs">
+      <DependentUpon>ForgetPwWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ImageFormatConvertHelper.cs" />
+    <Compile Include="LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CC.cs" />
+    <Compile Include="PlayerInfo.xaml.cs">
+      <DependentUpon>PlayerInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RegisteredWindow.xaml.cs">
+      <DependentUpon>RegisteredWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RoomWindow.xaml.cs">
+      <DependentUpon>RoomWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StartWindow.xaml.cs">
+      <DependentUpon>StartWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs" />
+    <Compile Include="VerifyCodeHelper.cs" />
+    <Page Include="ForgetPwWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Connected Services\ServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="PlayerInfo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RegisteredWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RoomWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StartWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Connected Services\CheckinReference\CheckinServer.wsdl" />
+    <None Include="Connected Services\CheckinReference\item.wsdl" />
+    <None Include="Connected Services\CheckinReference\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CheckinReference\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\LoginReference\Client.LoginReference.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\LoginReference\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\LoginReference\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\LoginReference\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\LoginReference\LoginService.wsdl" />
+    <None Include="Connected Services\ServiceReference\item.wsdl" />
+    <None Include="Connected Services\ServiceReference\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReference\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReference\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReference\Service.wsdl" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\CheckinReference\" />
+    <WCFMetadataStorage Include="Connected Services\LoginReference\" />
+    <WCFMetadataStorage Include="Connected Services\ServiceReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceReference\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\black.png" />
+    <Resource Include="image\blue.png" />
+    <Resource Include="image\clear.png" />
+    <Resource Include="image\delete.png" />
+    <Resource Include="image\green.png" />
+    <Resource Include="image\pink.png" />
+    <Resource Include="image\red.png" />
+    <Resource Include="image\yellow.png" />
+    <Resource Include="image\安全.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\table.png" />
+    <Resource Include="image\girl.png" />
+    <Resource Include="image\boy.png" />
+    <Resource Include="image\game.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\timg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\timg1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\樱桃小丸子.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\樱桃小丸子2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <SplashScreen Include="image\你画我猜.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\小丸.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\2.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\3.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\4.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\错.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\对.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\LoginReference\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\LoginReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\LoginReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\LoginReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\CheckinReference\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\CheckinReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\CheckinReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\CheckinReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\登录.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\音乐.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bgm.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="image\submitbutton.png" />
+    <Resource Include="image\background-1.png" />
+    <Resource Include="image\UI-background.png" />
+    <Resource Include="image\close.png" />
+    <Resource Include="image\colorpicker.png" />
+    <Resource Include="image\cross.png" />
+    <Resource Include="image\dots.png" />
+    <Resource Include="image\eraser.png" />
+    <Resource Include="image\pen.png" />
+    <Resource Include="image\question.png" />
+    <Resource Include="image\random.png" />
+    <Resource Include="image\rectangle.png" />
+    <Resource Include="image\send.png" />
+    <Resource Include="image\sharp.png" />
+    <Resource Include="image\tick.png" />
+    <Resource Include="image\undo.png" />
+    <Resource Include="image\voice.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

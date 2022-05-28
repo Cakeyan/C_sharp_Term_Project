@@ -1,0 +1,240 @@
+﻿<Window x:Class="Client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Client"
+        mc:Ignorable="d"
+        Title="Draw and Guess" SizeToContent="WidthAndHeight" Loaded="Window_Loaded" Closing="Window_Closing">
+    <Canvas Background="White" Width="1280" Height="720"  x:Name="canvas">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="210"/>
+                <ColumnDefinition Width="1070"/>
+            </Grid.ColumnDefinitions>
+            <Frame x:Name="bg" NavigationUIVisibility="Hidden" Grid.ColumnSpan="2" >
+                <Frame.Background>
+                    <ImageBrush AlignmentX="Left" ImageSource="image\UI-background.png" Opacity="1" AlignmentY="Top"/>
+                </Frame.Background>
+            </Frame>
+            
+            <Grid Height="720" VerticalAlignment="Top" Width="210" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="68"/>
+                    <RowDefinition Height="652"/>
+                </Grid.RowDefinitions>
+                <Grid.Resources>
+                    <Style x:Key="DecreaseBtn" TargetType="{x:Type RepeatButton}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                                    <Border Background="{TemplateBinding Background}"
+            Height="{TemplateBinding Height}" Width="{TemplateBinding Width}">
+                                        <!--轨迹，设置Background-->
+                                        <Border Margin="0,0,-1,0" Background="#000000"
+              VerticalAlignment="center" Height="4.0" />
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                    <Style x:Key="IncreaseBtn" TargetType="{x:Type RepeatButton}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                                    <Border Background="{TemplateBinding Background}"
+            Height="{TemplateBinding Height}" Width="{TemplateBinding Width}">
+                                        <!--轨迹，设置Background-->
+                                        <Border Margin="0,0,-1,0" Background="#000000"
+              VerticalAlignment="center" Height="4.0" />
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Grid.Resources>
+                <ListBox Name="UserBox" HorizontalAlignment="Center" Height="620" Margin="12,16,12,16" VerticalAlignment="Top" Width="188" Grid.Row="1" BorderThickness="0" Background="#0000">
+                    <Button x:Name="user1Btn1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="166" Height="64" Margin="4,8,0,0" BorderBrush="White" Click="user1Btn1_Click" RenderTransformOrigin="0.5,0.5">
+                        <Button.Background>
+                            <ImageBrush AlignmentX="Center" ImageSource="image\rectangle.png" Opacity="1" AlignmentY="Top"/>
+                        </Button.Background>
+                        <StackPanel Height="48" Width="150" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Image x:Name="photo1" Height="48"  Width="48" Margin="0,0,0,0"/>
+                            <TextBlock x:Name="U1" Foreground="#FF000000" TextWrapping="Wrap" Margin="0,0,0,0" Width="102" FontSize="20"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="user1Btn2" HorizontalAlignment="Center" VerticalAlignment="Top" Width="166" Height="64" Margin="4,8,0,0" BorderBrush="White" Click="user1Btn2_Click">
+                        <Button.Background>
+                            <ImageBrush AlignmentX="Center" ImageSource="image\rectangle.png" Opacity="1" AlignmentY="Top"/>
+                        </Button.Background>
+                        <StackPanel Height="48" Width="150" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Image x:Name="photo2" Height="48"  Width="48" Margin="0,0,0,0"/>
+                            <TextBlock x:Name="U2" Foreground="#FF000000" TextWrapping="Wrap" Margin="0,0,0,0" Width="102" FontSize="20"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="user1Btn3" HorizontalAlignment="Center" VerticalAlignment="Top" Width="166" Height="64" Margin="4,8,0,0" BorderBrush="White" Click="user1Btn3_Click">
+                        <Button.Background>
+                            <ImageBrush AlignmentX="Center" ImageSource="image\rectangle.png" Opacity="1" AlignmentY="Top"/>
+                        </Button.Background>
+                        <StackPanel Height="48" Width="150" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Image x:Name="photo3" Height="48"  Width="48" Margin="0,0,0,0"/>
+                            <TextBlock x:Name="U3" Foreground="#FF000000" TextWrapping="Wrap" Margin="0,0,0,0" Width="102" FontSize="20"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="user1Btn4" HorizontalAlignment="Center" VerticalAlignment="Top" Width="166" Height="64" Margin="4,8,0,0" BorderBrush="White" Click="user1Btn4_Click">
+                        <Button.Background>
+                            <ImageBrush AlignmentX="Center" ImageSource="image\rectangle.png" Opacity="1" AlignmentY="Top"/>
+                        </Button.Background>
+                        <StackPanel Height="48" Width="150" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Image x:Name="photo4" Height="48"  Width="48" Margin="0,0,0,0"/>
+                            <TextBlock x:Name="U4" Foreground="#FF000000" TextWrapping="Wrap" Margin="0,0,0,0" Width="102" FontSize="20"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="user1Btn5" HorizontalAlignment="Center" VerticalAlignment="Top" Width="166" Height="64" Margin="4,8,0,0" BorderBrush="White" Click="user1Btn5_Click">
+                        <Button.Background>
+                            <ImageBrush AlignmentX="Center" ImageSource="image\rectangle.png" Opacity="1" AlignmentY="Top"/>
+                        </Button.Background>
+                        <StackPanel Height="48" Width="150" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Image x:Name="photo5" Height="48"  Width="48" Margin="0,0,0,0"/>
+                            <TextBlock x:Name="U5" Foreground="#FF000000" TextWrapping="Wrap" Margin="0,0,0,0" Width="102" FontSize="20"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="user1Btn6" HorizontalAlignment="Center" VerticalAlignment="Top" Width="166" Height="64" Margin="4,8,0,0" BorderBrush="White" Click="user1Btn6_Click">
+                        <Button.Background>
+                            <ImageBrush AlignmentX="Center" ImageSource="image\rectangle.png" Opacity="1" AlignmentY="Top"/>
+                        </Button.Background>
+                        <StackPanel Height="48" Width="150" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Image x:Name="photo6" Height="48"  Width="48" Margin="0,0,0,0"/>
+                            <TextBlock x:Name="U6" Foreground="#FF000000" TextWrapping="Wrap" Margin="0,0,0,0" Width="102" FontSize="20"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="user1Btn7" HorizontalAlignment="Center" VerticalAlignment="Top" Width="166" Height="64" Margin="4,8,0,0" BorderBrush="White" Click="user1Btn7_Click">
+                        <Button.Background>
+                            <ImageBrush AlignmentX="Center" ImageSource="image\rectangle.png" Opacity="1" AlignmentY="Top"/>
+                        </Button.Background>
+                        <StackPanel Height="48" Width="150" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Image x:Name="photo7" Height="48"  Width="48" Margin="0,0,0,0"/>
+                            <TextBlock x:Name="U7" Foreground="#FF000000" TextWrapping="Wrap" Margin="0,0,0,0" Width="102" FontSize="20"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="user1Btn8" HorizontalAlignment="Center" VerticalAlignment="Top" Width="166" Height="64" Margin="4,8,0,0" BorderBrush="White" Click="user1Btn8_Click">
+                        <Button.Background>
+                            <ImageBrush AlignmentX="Center" ImageSource="image\rectangle.png" Opacity="1" AlignmentY="Top"/>
+                        </Button.Background>
+                        <StackPanel Height="48" Width="150" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Image x:Name="photo8" Height="48"  Width="48" Margin="0,0,0,0"/>
+                            <TextBlock x:Name="U8" Foreground="#FF000000" TextWrapping="Wrap" Margin="0,0,0,0" Width="102" FontSize="20"/>
+                        </StackPanel>
+                    </Button>
+                </ListBox>
+            </Grid>
+            <Grid Height="720" VerticalAlignment="Top" Width="1070" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="68"/>
+                    <RowDefinition Height="592"/>
+                    <RowDefinition Height="60"/>
+                </Grid.RowDefinitions>
+                <Grid Height="68" HorizontalAlignment="Left" Width="1070" Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="76"/>
+                        <ColumnDefinition Width="738"/>
+                        <ColumnDefinition Width="61"/>
+                        <ColumnDefinition Width="61"/>
+                        <ColumnDefinition Width="61"/>
+                        <ColumnDefinition Width="61"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="时间" Foreground="#FF000000" TextWrapping="Wrap" Margin="0,4,0,0"  FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Name="restTimeTextBox"/>
+                    <Label x:Name="TipLabel"  Foreground="#FF000000"  Margin="0,0,0,0"  FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1"/>
+                    <Button x:Name="random" HorizontalAlignment="Center" VerticalAlignment="Center" Width="56" Height="56" Margin="0,0,0,0" BorderBrush="White" Grid.Column="2">
+                        <Button.Background>
+                            <ImageBrush AlignmentX="Center" ImageSource="image\random.png" Opacity="1" AlignmentY="Top"/>
+                        </Button.Background>
+                    </Button>
+                    <Button x:Name="voice" HorizontalAlignment="Center" VerticalAlignment="Center" Width="56" Height="56" Margin="0,0,0,0" BorderBrush="White" Grid.Column="3">
+                        <Button.Background>
+                            <ImageBrush AlignmentX="Center" ImageSource="image\voice.png" Opacity="1" AlignmentY="Top"/>
+                        </Button.Background>
+                    </Button>
+                    <Button x:Name="question" HorizontalAlignment="Center" VerticalAlignment="Center" Width="56" Height="56" Margin="0,0,0,0" BorderBrush="White" Grid.Column="4">
+                        <Button.Background>
+                            <ImageBrush AlignmentX="Center" ImageSource="image\question.png" Opacity="1" AlignmentY="Top"/>
+                        </Button.Background>
+                    </Button>
+                    <Button x:Name="exitBnt" HorizontalAlignment="Center" VerticalAlignment="Center" Width="56" Height="56" Margin="0,0,0,0" BorderBrush="White" Click="exitBnt_Click" Grid.Column="5">
+                        <Button.Background>
+                            <ImageBrush AlignmentX="Center" ImageSource="image\close.png" Opacity="1" AlignmentY="Top"/>
+                        </Button.Background>
+                    </Button>
+                </Grid>
+                <Grid Height="592" HorizontalAlignment="Left" Width="1070" Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="814"/>
+                        <ColumnDefinition Width="256"/>
+                    </Grid.ColumnDefinitions>
+                    <InkCanvas x:Name="inkcanvas"  Margin="8,8,8,8" MouseUp="ink_MouseUp" Grid.Column="0">
+                        <InkCanvas.Background>
+                            <SolidColorBrush Color="#FFFFFF" Opacity="1"/>
+                        </InkCanvas.Background>
+                    </InkCanvas>
+                    <Grid Height="592" HorizontalAlignment="Left" Width="244" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="144"/>
+                            <RowDefinition Height="448"/>
+                        </Grid.RowDefinitions>
+                        <Grid Height="128" HorizontalAlignment="Left" Width="244" Grid.Row="0" Margin="0,16,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="61"/>
+                                <ColumnDefinition Width="61"/>
+                                <ColumnDefinition Width="122"/>
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="pen" HorizontalAlignment="Center" VerticalAlignment="Top" Width="56" Height="56" Margin="0,4,0,0" BorderBrush="White" Grid.Column="0" Click="Button_Checked">
+                                <Button.Background>
+                                    <ImageBrush AlignmentX="Center" ImageSource="image\pen.png" Opacity="1" AlignmentY="Top"/>
+                                </Button.Background>
+                            </Button>
+                            <Button x:Name="undo" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="56" Height="56" Margin="0,0,0,4" BorderBrush="White" Grid.Column="0" Click="Button_Checked">
+                                <Button.Background>
+                                    <ImageBrush AlignmentX="Center" ImageSource="image\undo.png" Opacity="1" AlignmentY="Top"/>
+                                </Button.Background>
+                            </Button>
+                            <Button x:Name="delete" HorizontalAlignment="Center" VerticalAlignment="Top" Width="56" Height="56" Margin="0,4,0,0" BorderBrush="White" Click="Button_Checked" Grid.Column="1">
+                                <Button.Background>
+                                    <ImageBrush AlignmentX="Center" ImageSource="image\eraser.png" Opacity="1" AlignmentY="Top"/>
+                                </Button.Background>
+                            </Button>
+                            <Button x:Name="clear" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="56" Height="56" Margin="0,0,0,4" BorderBrush="White" Click="Button_Checked" Grid.Column="1">
+                                <Button.Background>
+                                    <ImageBrush AlignmentX="Center" ImageSource="image\clear.png" Opacity="1" AlignmentY="Top"/>
+                                </Button.Background>
+                            </Button>
+                            <Image x:Name="SampleImage" Source="image\colorpicker.png" HorizontalAlignment="Left" Margin="2,6,0,0" VerticalAlignment="Top" Width="116" Height="87"  Stretch="Fill"  Grid.Column="2" MouseDown="image_MouseDown"/>
+
+                            <Slider Grid.Column="2" Maximum="20" Minimum="5" Margin="8,100,8,0" VerticalAlignment="Top"/>
+                        </Grid>
+                        <TextBlock Name="ConversationBox"  TextWrapping="Wrap" Text="" Margin="16,16,16,30" Focusable="True" Grid.Row="1" />
+                    </Grid>
+                </Grid>
+                <Grid Height="60" HorizontalAlignment="Left" Width="1070" Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="190"/>
+                        <ColumnDefinition Width="660"/>
+                        <ColumnDefinition Width="120"/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="ScoreLabel" Content="分数？" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Center" Height="31" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  FontSize="16"  Foreground="#FFFF0000" FontWeight="Bold" Grid.Column="0"/>
+                    <Label Name="textBoxUserName" Content="用户名？" FontSize="12" Margin="0,0,0,0" Foreground="Red" Grid.Column="1" VerticalAlignment="Center"/>
+                    <Button x:Name="readybtn" Content="准备" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Width="75" Height="28" Background="#7FF0E793" FontSize="16" Click="Button_Click" Grid.Column="2"/>
+
+                    <TextBox Name="SendBox"  Background="#00FFFFFF" BorderThickness="0" FontSize="16" Margin="16,14,16,12" KeyUp="SendBox_KeyUp" TextWrapping="Wrap" Grid.Column="3" VerticalAlignment="Center"/>
+
+                    <Button x:Name="sendbtn" BorderThickness="0,0,0,0"  Margin="16,10,12,9"  Click="send_Click"  Grid.Column="4">
+                        <Button.Background>
+                            <ImageBrush AlignmentX="Center" ImageSource="image\send.png" Opacity="1" AlignmentY="Center"/>
+                        </Button.Background>
+                    </Button>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Canvas>
+</Window>
