@@ -27,17 +27,17 @@ namespace Client.CheckinReference {
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="MyService/ICheckinServer/Logout")]
         System.Threading.Tasks.Task LogoutAsync(string userName);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="MyService/ICheckinServer/Checkin")]
-        void Checkin(string userName, int roomnumber);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="MyService/ICheckinServer/Checkin")]
-        System.Threading.Tasks.Task CheckinAsync(string userName, int roomnumber);
-        
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="MyService/ICheckinServer/Talk")]
         void Talk(string userName, string message);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="MyService/ICheckinServer/Talk")]
         System.Threading.Tasks.Task TalkAsync(string userName, string message);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="MyService/ICheckinServer/Checkin", ReplyAction="MyService/ICheckinServer/CheckinResponse")]
+        bool Checkin(string userName, int roomnumber);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="MyService/ICheckinServer/Checkin", ReplyAction="MyService/ICheckinServer/CheckinResponse")]
+        System.Threading.Tasks.Task<bool> CheckinAsync(string userName, int roomnumber);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -100,20 +100,20 @@ namespace Client.CheckinReference {
             return base.Channel.LogoutAsync(userName);
         }
         
-        public void Checkin(string userName, int roomnumber) {
-            base.Channel.Checkin(userName, roomnumber);
-        }
-        
-        public System.Threading.Tasks.Task CheckinAsync(string userName, int roomnumber) {
-            return base.Channel.CheckinAsync(userName, roomnumber);
-        }
-        
         public void Talk(string userName, string message) {
             base.Channel.Talk(userName, message);
         }
         
         public System.Threading.Tasks.Task TalkAsync(string userName, string message) {
             return base.Channel.TalkAsync(userName, message);
+        }
+        
+        public bool Checkin(string userName, int roomnumber) {
+            return base.Channel.Checkin(userName, roomnumber);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CheckinAsync(string userName, int roomnumber) {
+            return base.Channel.CheckinAsync(userName, roomnumber);
         }
     }
 }

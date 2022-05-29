@@ -10,6 +10,8 @@ namespace Client
     public class CC
     {
 
+        public static int maxUserNum = 8;
+
         public static List<User> Users { get; set; }
 
         public static User GetUser(string ID)

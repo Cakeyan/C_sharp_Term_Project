@@ -509,7 +509,7 @@ namespace Client
         {
             userdatas = mydata;
             //this.U1.Text += " 昵称：" + us.Name + '\n' + " 等级：" + us.Grade + '\n' + '\n';
-            Userdata[] usarr = new Userdata[4];
+            Userdata[] usarr = new Userdata[CC.maxUserNum];
             int cnt = 0;
             foreach (var item in mydata)
             {
@@ -649,6 +649,20 @@ namespace Client
         public void ShowTime(int restTime)
         {
             restTimeTextBox.Text = restTime.ToString();
+        }
+
+
+        public void EndGame(string[] userNames, int[] scores)
+        {
+            readybtn.IsEnabled = true;
+            readybtn.Content = "准备";
+
+            clear.IsEnabled = false;
+            inkcanvas.IsEnabled = false;
+            sendbtn.IsEnabled = true;
+            TipLabel.Content = "";
+            TipCheck = "";
+            //TODO
         }
 
         #endregion

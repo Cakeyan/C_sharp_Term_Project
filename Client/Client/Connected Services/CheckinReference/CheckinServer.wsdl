@@ -4,27 +4,6 @@
     <wsp:ExactlyOne>
       <wsp:All>
         <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
-        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <wsp:Policy>
-            <sp:TransportToken>
-              <wsp:Policy>
-                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
-                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
-                </msf:WindowsTransportSecurity>
-              </wsp:Policy>
-            </sp:TransportToken>
-            <sp:AlgorithmSuite>
-              <wsp:Policy>
-                <sp:Basic256 />
-              </wsp:Policy>
-            </sp:AlgorithmSuite>
-            <sp:Layout>
-              <wsp:Policy>
-                <sp:Strict />
-              </wsp:Policy>
-            </sp:Layout>
-          </wsp:Policy>
-        </sp:TransportBinding>
         <wsaw:UsingAddressing />
       </wsp:All>
     </wsp:ExactlyOne>
@@ -46,17 +25,20 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
-    <wsdl:operation name="Checkin">
-      <soap12:operation soapAction="MyService/ICheckinServer/Checkin" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
     <wsdl:operation name="Talk">
       <soap12:operation soapAction="MyService/ICheckinServer/Talk" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="Checkin">
+      <soap12:operation soapAction="MyService/ICheckinServer/Checkin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ShowLogin">
       <soap12:operation soapAction="MyService/ICheckinServer/ShowLogin" style="document" />
@@ -85,9 +67,9 @@
   </wsdl:binding>
   <wsdl:service name="CheckinServer">
     <wsdl:port name="NetTcpBinding_ICheckinServer" binding="tns:NetTcpBinding_ICheckinServer">
-      <soap12:address location="net.tcp://localhost:51888/CheckinServiceService/" />
+      <soap12:address location="net.tcp://localhost:802/CheckinServiceService/" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:51888/CheckinServiceService/</wsa10:Address>
+        <wsa10:Address>net.tcp://localhost:802/CheckinServiceService/</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
           <Dns>localhost</Dns>
         </Identity>

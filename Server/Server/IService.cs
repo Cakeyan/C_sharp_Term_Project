@@ -102,6 +102,10 @@ namespace Server
         //回调开始新游戏
         [OperationContract(IsOneWay = true)]
         void ShowNewTurn(string roommeg, string userName1, string answer, string tip);
+
+        [OperationContract(IsOneWay = true)]
+        void EndGame(List<string> userNames, List<int> scores);
+
         #endregion
     }
     [DataContract]
@@ -139,6 +143,10 @@ namespace Server
         public int id { get; set; }
         [DataMember]
         public List<MyUser> users { get; set; }
+
+        [DataMember]
+        public int maxUserNum = 8;
+
         [DataMember]
         public questions question { get; set; }
         
@@ -147,6 +155,8 @@ namespace Server
 
         [DataMember]
         public Timer timer { get; set; }
+        [DataMember]
+        public int currentTurn { get; set; }
     }
 
     [DataContract]

@@ -142,30 +142,33 @@ namespace Server
         {
             MyUser user = CC.GetUser(userName);
             string ans = CC.Rooms[user.inRoom].question.answer;
+
+            if (user.isCorrect && message.Contains(ans))
+            {
+                user.callback.ShowTalk("系统消息", "警告不得在猜中后再发送与答案相关内容");
+                return;
+            }
+
             if (message == ans)
             {
                 foreach (var item in CC.Rooms[user.inRoom].users)
                 {
                     if (item.Name == userName)
-                    {
-                        if (item.isCorrect==false)
-                        {
-                            item.callback.ShowTalk("系统消息", "你猜中了");
-                            item.isCorrect = true;
-                            CC.Rooms[user.inRoom].correctNum += 1;
-                        }
-                        else
-                        {
-                            item.callback.ShowTalk(userName,message);
-                        }
+                    {  
+                        item.callback.ShowTalk("系统消息", "你猜中了");
+                        item.isCorrect = true;
+                        CC.Rooms[user.inRoom].correctNum += 1;
                     }
                     else
                     {
                         item.callback.ShowTalk("系统消息", string.Format("{0}猜中了", item.Name));
                     }
-                    item.callback.ShowWin(userName, CC.Rooms[user.inRoom].users.First().Name);
+                    //item.callback.ShowWin(userName, CC.Rooms[user.inRoom].users.First().Name);
                 }
-                RollUserAndRestart(user.inRoom);
+                if (CC.Rooms[user.inRoom].correctNum == CC.Rooms[user.inRoom].users.Count-1)
+                {
+                    RollUserAndRestart(user.inRoom);
+                }
             }
             else
             {
@@ -305,21 +308,50 @@ namespace Server
             }
             CC.Rooms[roomId].timer.restTime = CC.Rooms[roomId].timer.gameTime;
             CC.Rooms[roomId].timer.Start();
+            CC.Rooms[roomId].currentTurn = 1;
         }
+
+
+        private void EndGame(int roomId)
+        {
+            List<int> scores = new List<int>();
+            List<string> userNames = new List<string>();
+            foreach(var user in CC.Rooms[roomId].users)
+            {
+                user.ready = false;
+                user.isCorrect = false;
+                scores.Add((int)user.Score);
+                user.Score = 0;
+                userNames.Add(user.Name);
+            }
+
+            foreach(var user in CC.Rooms[roomId].users)
+            {
+                user.callback.EndGame(userNames,scores);
+            }
+
+        }
+
         private void RollUserAndRestart(int roomId)
         {
+            if (CC.Rooms[roomId].currentTurn >= CC.Rooms[roomId].users.Count)
+            {
+                EndGame(roomId);
+                return;
+            }
+            CC.Rooms[roomId].currentTurn += 1;
             MyUser newuser = CC.Rooms[roomId].users.First();
             CC.Rooms[roomId].users.RemoveAt(0);
             CC.Rooms[roomId].users.Add(newuser);
             CC.Rooms[roomId].question.update();
+            CC.Rooms[roomId].correctNum = 0;
             string s = "";
-            foreach (var item in CC.Rooms[roomId].users)
+            foreach (var v in CC.Rooms[roomId].users)
             {
-                foreach (var v in CC.Rooms[roomId].users)
-                {
-                    s += v.Name + "," + v.Score.ToString() + ",";
-                }
+                v.isCorrect = false;
+                s += v.Name + "," + v.Score.ToString() + ",";
             }
+            
             foreach (var item in CC.Rooms[roomId].users)
             {
                 item.callback.ShowNewTurn(s, CC.Rooms[roomId].users.First().Name, CC.Rooms[roomId].question.answer, CC.Rooms[roomId].question.tip);

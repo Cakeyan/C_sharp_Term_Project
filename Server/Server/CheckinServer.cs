@@ -37,12 +37,14 @@ namespace Server
             }
         }
 
-        public void Checkin(string userName, int roomnumber)
+        public bool Checkin(string userName, int roomnumber)
         {
+            if (CC.Rooms.ContainsKey(roomnumber)&&CC.Rooms[roomnumber].users.Count >= CC.Rooms[roomnumber].maxUserNum) return false;
             foreach (var item in CheckinCC.Users)
             {
-                item.Checkincallback.ShowCheckin(userName, roomnumber);
+                if(userName!=item.Name)item.Checkincallback.ShowCheckin(userName, roomnumber);
             }
+            return true;
         }
 
         public void Talk(string userName, string message)

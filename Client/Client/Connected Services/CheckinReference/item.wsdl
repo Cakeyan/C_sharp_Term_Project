@@ -12,11 +12,14 @@
   <wsdl:message name="ICheckinServer_Logout_InputMessage">
     <wsdl:part name="parameters" element="tns:Logout" />
   </wsdl:message>
+  <wsdl:message name="ICheckinServer_Talk_InputMessage">
+    <wsdl:part name="parameters" element="tns:Talk" />
+  </wsdl:message>
   <wsdl:message name="ICheckinServer_Checkin_InputMessage">
     <wsdl:part name="parameters" element="tns:Checkin" />
   </wsdl:message>
-  <wsdl:message name="ICheckinServer_Talk_InputMessage">
-    <wsdl:part name="parameters" element="tns:Talk" />
+  <wsdl:message name="ICheckinServer_Checkin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckinResponse" />
   </wsdl:message>
   <wsdl:message name="ICheckinServer_ShowLogin_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ShowLogin" />
@@ -37,11 +40,12 @@
     <wsdl:operation name="Logout">
       <wsdl:input wsaw:Action="MyService/ICheckinServer/Logout" message="tns:ICheckinServer_Logout_InputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="Checkin">
-      <wsdl:input wsaw:Action="MyService/ICheckinServer/Checkin" message="tns:ICheckinServer_Checkin_InputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="Talk">
       <wsdl:input wsaw:Action="MyService/ICheckinServer/Talk" message="tns:ICheckinServer_Talk_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Checkin">
+      <wsdl:input wsaw:Action="MyService/ICheckinServer/Checkin" message="tns:ICheckinServer_Checkin_InputMessage" />
+      <wsdl:output wsaw:Action="MyService/ICheckinServer/CheckinResponse" message="tns:ICheckinServer_Checkin_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ShowLogin">
       <wsdl:output wsaw:Action="MyService/ICheckinServer/ShowLogin" message="tns:ICheckinServer_ShowLogin_OutputCallbackMessage" />

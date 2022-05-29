@@ -19,12 +19,10 @@ namespace Server
         void Logout(string userName);
 
         [OperationContract(IsOneWay = true)]
-        void Checkin(string userName, int roomnumber);
-
-        [OperationContract(IsOneWay = true)]
         void Talk(string userName, string message);
 
-
+        [OperationContract]
+        bool Checkin(string userName, int roomnumber);
     }
 
     public interface ICheckinServerCallback

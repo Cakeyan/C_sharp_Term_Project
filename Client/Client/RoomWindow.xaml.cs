@@ -53,8 +53,12 @@ namespace Client
             //确定点击了几号房间
             Button bt = e.Source as Button;
             int idx = (int)((bt.Name)[4]) - 48;
-            Checkinclient.Checkin(us.Name, idx);
-
+            bool isCanEnter = Checkinclient.Checkin(us.Name, idx);
+            if (!isCanEnter)
+            {
+                MessageBox.Show("房间人数已满。");
+                return;
+            }
             //设置大厅隐藏，打开游戏
             item.RoomWindow.Hide();
             MainWindow mw = new MainWindow(us);

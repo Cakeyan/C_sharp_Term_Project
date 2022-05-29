@@ -51,7 +51,7 @@ namespace Client
         {
             if (Code.Text.ToLower() != Verification)
             {
-                MessageBox.Show("验证码输入错误！请重新输入", "提示", MessageBoxButton.OKCancel, MessageBoxImage.Asterisk);
+                MessageBox.Show("验证码输入错误！请重新输入", "提示", MessageBoxButton.OKCancel);
                 Verification = GetImage();
                 Code.Text = "";
                 return;

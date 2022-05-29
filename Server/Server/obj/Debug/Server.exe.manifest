@@ -66,14 +66,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Server.exe" size="56272">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Server.exe" size="56784">
       <assemblyIdentity name="Server" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>FPtW+J675Im35dtq6P5ZWj+5GWxrACrYudqeKCAea00=</dsig:DigestValue>
+        <dsig:DigestValue>6LqBLCL5rxfi+KCg78FLglB+bPteTLHofAu90mr157A=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -92,7 +92,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>VTAhDKgb6cBBagxjxzbyfOYrP8RyqdKNR1yYoiCft6s=</dsig:DigestValue>
+      <dsig:DigestValue>Vfyu2RuY2gcwpfDZ1MMgtf93VNXBNZNoOwZxjijCEH0=</dsig:DigestValue>
     </hash>
   </file>
   <file name="MyDb.tt" size="25273">
@@ -110,16 +110,16 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>XQNxORkcLI98eYN2A7s1XvX1I9NIcezPsIX0SuB4hbo=</dsig:DigestValue>
+      <dsig:DigestValue>EIb5ckC8f5yzAu0z7eajzFSaskiN/qdCOXRhEXBfgXk=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Server.exe.config" size="3221">
+  <file name="Server.exe.config" size="3236">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>Oqi2V+z3zopyIy/o2lKrJiYwGT/uB7WEbHeM6379xTE=</dsig:DigestValue>
+      <dsig:DigestValue>VGUkGq7ujaY6vdw/15n+y/mBTuLS7jGXQIy2fpB4Nao=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

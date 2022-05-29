@@ -233,6 +233,9 @@ namespace Client.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="MyService/IService/ShowNewTurn")]
         void ShowNewTurn(string roommeg, string userName1, string answer, string tip);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="MyService/IService/EndGame")]
+        void EndGame(string[] userNames, int[] scores);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]

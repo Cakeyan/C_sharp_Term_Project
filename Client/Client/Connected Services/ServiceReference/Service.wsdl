@@ -118,6 +118,12 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="EndGame">
+      <soap12:operation soapAction="MyService/IService/EndGame" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Service">
     <wsdl:port name="NetTcpBinding_IService" binding="tns:NetTcpBinding_IService">

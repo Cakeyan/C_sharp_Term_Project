@@ -120,3 +120,33 @@ C:\Users\msm8976\Desktop\Client\Client\obj\Debug\Client.csproj.GenerateResource.
 C:\Users\msm8976\Desktop\Client\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
 C:\Users\msm8976\Desktop\Client\Client\obj\Debug\Client.exe
 C:\Users\msm8976\Desktop\Client\Client\obj\Debug\Client.pdb
+G:\Onedrive\OneDrive - whu.edu.cn\桌面\C#\BigWork\C_sharp_Term_Project\Client\Client\bin\Debug\bgm.mp3
+G:\Onedrive\OneDrive - whu.edu.cn\桌面\C#\BigWork\C_sharp_Term_Project\Client\Client\bin\Debug\Client.exe.config
+G:\Onedrive\OneDrive - whu.edu.cn\桌面\C#\BigWork\C_sharp_Term_Project\Client\Client\bin\Debug\Client.exe
+G:\Onedrive\OneDrive - whu.edu.cn\桌面\C#\BigWork\C_sharp_Term_Project\Client\Client\bin\Debug\Client.pdb
+G:\Onedrive\OneDrive - whu.edu.cn\桌面\C#\BigWork\C_sharp_Term_Project\Client\Client\obj\Debug\Client.csproj.AssemblyReference.cache
+G:\Onedrive\OneDrive - whu.edu.cn\桌面\C#\BigWork\C_sharp_Term_Project\Client\Client\obj\Debug\ForgetPwWindow.g.cs
+G:\Onedrive\OneDrive - whu.edu.cn\桌面\C#\BigWork\C_sharp_Term_Project\Client\Client\obj\Debug\LoginWindow.g.cs
+G:\Onedrive\OneDrive - whu.edu.cn\桌面\C#\BigWork\C_sharp_Term_Project\Client\Client\obj\Debug\MainWindow.g.cs
+G:\Onedrive\OneDrive - whu.edu.cn\桌面\C#\BigWork\C_sharp_Term_Project\Client\Client\obj\Debug\PlayerInfo.g.cs
+G:\Onedrive\OneDrive - whu.edu.cn\桌面\C#\BigWork\C_sharp_Term_Project\Client\Client\obj\Debug\RegisteredWindow.g.cs
+G:\Onedrive\OneDrive - whu.edu.cn\桌面\C#\BigWork\C_sharp_Term_Project\Client\Client\obj\Debug\RoomWindow.g.cs
+G:\Onedrive\OneDrive - whu.edu.cn\桌面\C#\BigWork\C_sharp_Term_Project\Client\Client\obj\Debug\StartWindow.g.cs
+G:\Onedrive\OneDrive - whu.edu.cn\桌面\C#\BigWork\C_sharp_Term_Project\Client\Client\obj\Debug\App.g.cs
+G:\Onedrive\OneDrive - whu.edu.cn\桌面\C#\BigWork\C_sharp_Term_Project\Client\Client\obj\Debug\Client_Content.g.cs
+G:\Onedrive\OneDrive - whu.edu.cn\桌面\C#\BigWork\C_sharp_Term_Project\Client\Client\obj\Debug\Client_MarkupCompile.cache
+G:\Onedrive\OneDrive - whu.edu.cn\桌面\C#\BigWork\C_sharp_Term_Project\Client\Client\obj\Debug\Client_MarkupCompile.lref
+G:\Onedrive\OneDrive - whu.edu.cn\桌面\C#\BigWork\C_sharp_Term_Project\Client\Client\obj\Debug\App.baml
+G:\Onedrive\OneDrive - whu.edu.cn\桌面\C#\BigWork\C_sharp_Term_Project\Client\Client\obj\Debug\ForgetPwWindow.baml
+G:\Onedrive\OneDrive - whu.edu.cn\桌面\C#\BigWork\C_sharp_Term_Project\Client\Client\obj\Debug\LoginWindow.baml
+G:\Onedrive\OneDrive - whu.edu.cn\桌面\C#\BigWork\C_sharp_Term_Project\Client\Client\obj\Debug\MainWindow.baml
+G:\Onedrive\OneDrive - whu.edu.cn\桌面\C#\BigWork\C_sharp_Term_Project\Client\Client\obj\Debug\PlayerInfo.baml
+G:\Onedrive\OneDrive - whu.edu.cn\桌面\C#\BigWork\C_sharp_Term_Project\Client\Client\obj\Debug\RegisteredWindow.baml
+G:\Onedrive\OneDrive - whu.edu.cn\桌面\C#\BigWork\C_sharp_Term_Project\Client\Client\obj\Debug\RoomWindow.baml
+G:\Onedrive\OneDrive - whu.edu.cn\桌面\C#\BigWork\C_sharp_Term_Project\Client\Client\obj\Debug\StartWindow.baml
+G:\Onedrive\OneDrive - whu.edu.cn\桌面\C#\BigWork\C_sharp_Term_Project\Client\Client\obj\Debug\Client.g.resources
+G:\Onedrive\OneDrive - whu.edu.cn\桌面\C#\BigWork\C_sharp_Term_Project\Client\Client\obj\Debug\Client.Properties.Resources.resources
+G:\Onedrive\OneDrive - whu.edu.cn\桌面\C#\BigWork\C_sharp_Term_Project\Client\Client\obj\Debug\Client.csproj.GenerateResource.cache
+G:\Onedrive\OneDrive - whu.edu.cn\桌面\C#\BigWork\C_sharp_Term_Project\Client\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
+G:\Onedrive\OneDrive - whu.edu.cn\桌面\C#\BigWork\C_sharp_Term_Project\Client\Client\obj\Debug\Client.exe
+G:\Onedrive\OneDrive - whu.edu.cn\桌面\C#\BigWork\C_sharp_Term_Project\Client\Client\obj\Debug\Client.pdb

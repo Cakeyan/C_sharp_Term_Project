@@ -5,6 +5,7 @@
       <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Service/?xsd=xsd0" namespace="MyService" />
       <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Service/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Service/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Server" />
+      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Service/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IService_test_InputMessage">
@@ -61,6 +62,9 @@
   <wsdl:message name="IService_ShowNewTurn_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ShowNewTurn" />
   </wsdl:message>
+  <wsdl:message name="IService_EndGame_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:EndGame" />
+  </wsdl:message>
   <wsdl:portType name="IService">
     <wsdl:operation name="test">
       <wsdl:input wsaw:Action="MyService/IService/test" message="tns:IService_test_InputMessage" />
@@ -113,6 +117,9 @@
     </wsdl:operation>
     <wsdl:operation name="ShowNewTurn">
       <wsdl:output wsaw:Action="MyService/IService/ShowNewTurn" message="tns:IService_ShowNewTurn_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EndGame">
+      <wsdl:output wsaw:Action="MyService/IService/EndGame" message="tns:IService_EndGame_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>
