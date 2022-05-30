@@ -11,6 +11,27 @@
     </Window.Background>
     <Canvas Background="#00FFFFFF" Width="1280" Height="720" x:Name="canvas">
         <Grid>
+            <Grid.Resources>
+                <Style TargetType="Button">
+                    <EventSetter Event="Click" Handler="Button_Click"></EventSetter>
+                    <Setter Property="OverridesDefaultStyle" Value="True" />
+                    <Setter Property="Cursor" Value="Hand" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border Name="border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Opacity" Value="0.8" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Grid.Resources>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="510"></ColumnDefinition>
                 <ColumnDefinition Width="505"></ColumnDefinition>
