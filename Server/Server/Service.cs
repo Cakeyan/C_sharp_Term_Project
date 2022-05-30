@@ -262,17 +262,10 @@ namespace Server
         {
             Timer timer = sender as Timer;
             timer.restTime -= 1;
-            foreach(var user in CC.Rooms[timer.roomId].users)
+
+            foreach (MyUser user in CC.Rooms[timer.roomId].users)
             {
-                try
-                {
-                    user.callback.ShowTime(timer.restTime);
-                }
-                catch
-                {
-                    //TODO
-                }
-                
+                user.callback.ShowTime(timer.restTime);
             }
 
             if (timer.restTime == 0)
