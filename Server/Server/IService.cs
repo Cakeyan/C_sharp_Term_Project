@@ -159,6 +159,8 @@ namespace Server
         public int currentTurn { get; set; }
         [DataMember]
         public bool isGameStart { get; set; }
+        [DataMember]
+        public int leastBeginNum = 2;
     }
 
     [DataContract]

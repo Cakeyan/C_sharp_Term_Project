@@ -9,7 +9,7 @@ namespace Server
 {
     // 注意: 使用“重构”菜单上的“重命名”命令，可以同时更改代码和配置文件中的类名“CheckinServer”。
     public class CheckinServer : ICheckinServer
-    {
+    {    
         public CheckinServer()
         {
             if (CheckinCC.Users == null)
@@ -39,7 +39,7 @@ namespace Server
 
         public bool Checkin(string userName, int roomnumber)
         {
-            if (CC.Rooms.ContainsKey(roomnumber)&&CC.Rooms[roomnumber].users.Count >= CC.Rooms[roomnumber].maxUserNum || CC.Rooms[roomnumber].isGameStart) return false;
+            if (CC.Rooms.ContainsKey(roomnumber)&&(CC.Rooms[roomnumber].users.Count >= CC.Rooms[roomnumber].maxUserNum || CC.Rooms[roomnumber].isGameStart)) return false;
             foreach (var item in CheckinCC.Users)
             {
                 try

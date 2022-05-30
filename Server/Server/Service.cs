@@ -208,7 +208,14 @@ namespace Server
         {
             MyUser logoutUser = CC.GetUser(userName);
             CC.Users.Remove(logoutUser);
-
+            foreach(var user in CC.Rooms[id].users)
+            {
+                if (userName == user.Name)
+                {
+                    CC.Rooms[id].users.Remove(user);
+                    break;
+                }
+            }
             List<Userdata> userdatas = new List<Userdata>();
             foreach (var item in CC.Users)
             {
@@ -322,6 +329,7 @@ namespace Server
             //当前用户已准备
             MyUser user = CC.GetUser(userName);
             user.ready = true;
+            if (CC.Rooms[roomId].users.Count < CC.Rooms[roomId].leastBeginNum) return;
             //判断当前房间内所有用户是否准备好
             foreach (var item in CC.Rooms[roomId].users)
             {
