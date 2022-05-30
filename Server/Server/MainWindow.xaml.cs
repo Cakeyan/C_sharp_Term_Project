@@ -38,12 +38,12 @@ namespace Server
             MyDbEntities myDbEntities = new MyDbEntities();
 
             
-            var q = from t in myDbEntities.Questions select t;
+            //var q = from t in myDbEntities.Questions select t;
 
-            foreach(var item in q)
-            {
-                Console.WriteLine(item.Id + " " + item.Question + " " + item.Tip);
-            }
+            //foreach(var item in q)
+            //{
+            //    Console.WriteLine(item.Id + " " + item.Question + " " + item.Tip);
+            //}
 
             ChangeState(btnStart, false, btnStop, true);
             host1 = new ServiceHost(typeof(Service));

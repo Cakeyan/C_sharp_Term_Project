@@ -21,22 +21,24 @@ namespace Server
             //数据库实例
             MyDbEntities myDbEntities = new MyDbEntities();
             //选中这一条数据
-            if (CC.Users != null)
+            if (CC.LoginUsers == null)
             {
-                foreach(var user in CC.Users)
-                {
-                    try
-                    {
-                        if (user.Acount == id) return false;
-                    }
-                    catch
-                    {
-                        return false;
-                    }
-                    
-                }
+                CC.LoginUsers = new List<User>();
             }
-           
+
+            foreach (var user in CC.LoginUsers)
+            {
+                try
+                {
+                    if (user.Acount == id) return false;
+                }
+                catch
+                {
+                    return false;
+                }
+
+            }
+
             var q = from t in myDbEntities.User
                     where t.Acount == id
                     select t;
@@ -47,7 +49,10 @@ namespace Server
                 if (us == null)
                     return false;
                 if (us.Password == pw)
+                {
+                    CC.LoginUsers.Add(us);
                     return true;
+                }
             }
             return false;
         }

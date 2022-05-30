@@ -9,7 +9,7 @@ namespace Server
 {
     public class CC
     {
-        public static List<MyUser> LoginUsers { get; set; }
+        public static List<User> LoginUsers { get; set; }
         public static List<MyUser> Users { get; set; }
         //public static Dictionary<string, MyUser> Users = new Dictionary<string, MyUser>();
         public static Dictionary<int, Room> Rooms = new Dictionary<int, Room>();
