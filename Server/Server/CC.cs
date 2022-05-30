@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Threading;
+using System.Timers;
 
 namespace Server
 {
@@ -28,7 +29,7 @@ namespace Server
         }
     }
 
-    public class Timer: DispatcherTimer
+    public class MyTimer: Timer
     {
         public int restTime { get; set; }
         public int roomId { get; set; }
