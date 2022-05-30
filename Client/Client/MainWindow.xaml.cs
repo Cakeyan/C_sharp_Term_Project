@@ -54,7 +54,7 @@ namespace Client
 
             ScoreLabel.Content = 0;
             inkcanvas.IsEnabled = false;
-            //clear.IsEnabled = false;
+            clear.IsEnabled = false;
 
         }
 
