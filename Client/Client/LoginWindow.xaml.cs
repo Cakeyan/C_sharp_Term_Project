@@ -30,6 +30,7 @@ namespace Client
         {
             InitializeComponent();
             client = new LoginServiceClient();
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
         
         private void Login_KeyUp(object sender, KeyEventArgs e)

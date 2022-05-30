@@ -58,7 +58,7 @@ namespace Client
             inkcanvas.IsEnabled = false;
             clear.IsEnabled = false;
             undo.IsEnabled = false;
-            WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            
 
         }
 
