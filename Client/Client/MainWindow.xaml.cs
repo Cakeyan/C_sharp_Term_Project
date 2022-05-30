@@ -513,8 +513,12 @@ namespace Client
             //猜图者
             else
             {
+                clear.IsEnabled = false;
+                undo.IsEnabled = false;
                 inkcanvas.IsEnabled = false;
                 sendbtn.IsEnabled = true;
+                clear.Opacity = 0.5;
+                undo.Opacity = 0.5;
                 sendbtn.Opacity = 1;
                 TipLabel.Content = "提示：" + tip;
                 ConversationBox.Text += "系统提示：请开始抢答\n";
