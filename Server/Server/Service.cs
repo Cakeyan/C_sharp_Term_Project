@@ -208,7 +208,14 @@ namespace Server
         {
             MyUser logoutUser = CC.GetUser(userName);
             CC.Users.Remove(logoutUser);
-
+            foreach(var user in CC.Rooms[id].users)
+            {
+                if (userName == user.Name)
+                {
+                    CC.Rooms[id].users.Remove(user);
+                    break;
+                }
+            }
             List<Userdata> userdatas = new List<Userdata>();
             foreach (var item in CC.Users)
             {
@@ -255,17 +262,10 @@ namespace Server
         {
             Timer timer = sender as Timer;
             timer.restTime -= 1;
-            foreach(var user in CC.Rooms[timer.roomId].users)
+
+            foreach (MyUser user in CC.Rooms[timer.roomId].users)
             {
-                try
-                {
-                    user.callback.ShowTime(timer.restTime);
-                }
-                catch
-                {
-                    //TODO
-                }
-                
+                user.callback.ShowTime(timer.restTime);
             }
 
             if (timer.restTime == 0)
@@ -287,6 +287,7 @@ namespace Server
             if (CC.Rooms.ContainsKey(roomId) == false)
             {
                 CC.Rooms.Add(roomId, new Room());
+                CC.Rooms[roomId].isGameStart = false;
                 CC.Rooms[roomId].users = new List<MyUser>();
                 CC.Rooms[roomId].question = new questions();
                 CC.Rooms[roomId].timer = new Timer();
@@ -321,11 +322,13 @@ namespace Server
             //当前用户已准备
             MyUser user = CC.GetUser(userName);
             user.ready = true;
+            if (CC.Rooms[roomId].users.Count < CC.Rooms[roomId].leastBeginNum) return;
             //判断当前房间内所有用户是否准备好
             foreach (var item in CC.Rooms[roomId].users)
             {
                 if (!item.ready) return;
             }
+            CC.Rooms[roomId].isGameStart = true;
             foreach (var item in CC.Rooms[roomId].users)
             {
                 try
@@ -338,6 +341,7 @@ namespace Server
                 }
                 item.Score = 0;
             }
+            
             CC.Rooms[roomId].timer.restTime = CC.Rooms[roomId].timer.gameTime;
             CC.Rooms[roomId].timer.Start();
             CC.Rooms[roomId].currentTurn = 1;
@@ -346,6 +350,7 @@ namespace Server
 
         private void EndGame(int roomId)
         {
+            CC.Rooms[roomId].isGameStart = false;
             CC.Rooms[roomId].timer.Stop();
             List<int> scores = new List<int>();
             List<string> userNames = new List<string>();
@@ -357,7 +362,7 @@ namespace Server
                 user.Score = 0;
                 userNames.Add(user.Name);
             }
-
+            
             foreach(var user in CC.Rooms[roomId].users)
             {
                 try

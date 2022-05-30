@@ -9,7 +9,7 @@ namespace Server
 {
     // 注意: 使用“重构”菜单上的“重命名”命令，可以同时更改代码和配置文件中的类名“CheckinServer”。
     public class CheckinServer : ICheckinServer
-    {
+    {    
         public CheckinServer()
         {
             if (CheckinCC.Users == null)
@@ -39,10 +39,17 @@ namespace Server
 
         public bool Checkin(string userName, int roomnumber)
         {
-            if (CC.Rooms.ContainsKey(roomnumber)&&CC.Rooms[roomnumber].users.Count >= CC.Rooms[roomnumber].maxUserNum) return false;
+            if (CC.Rooms.ContainsKey(roomnumber)&&(CC.Rooms[roomnumber].users.Count >= CC.Rooms[roomnumber].maxUserNum || CC.Rooms[roomnumber].isGameStart)) return false;
             foreach (var item in CheckinCC.Users)
             {
-                if(userName!=item.Name)item.Checkincallback.ShowCheckin(userName, roomnumber);
+                try
+                {
+                    if (userName != item.Name) item.Checkincallback.ShowCheckin(userName, roomnumber);
+                }
+                catch
+                {
+
+                }
             }
             return true;
         }
@@ -61,8 +68,14 @@ namespace Server
             CheckinCC.Users.Remove(logoutUser);
             foreach (var user in CheckinCC.Users)
             {
-                
+                try
+                {
                     user.Checkincallback.ShowLogout(userName);
+                }
+                catch
+                {
+
+                }
             }
             logoutUser = null; //将其设置为null后，WCF会自动关闭该客户端
 
