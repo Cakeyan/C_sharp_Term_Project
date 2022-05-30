@@ -80,13 +80,13 @@
                 </StackPanel>
                 <TextBox Name="Code" Grid.Column="1" Grid.Row="1"  Width="90"/>
                 <Image Name="img" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Height="30" Width="90" Margin="100,0,50,0" Stretch="Fill"/>
-                <Button Content="发送令牌" Margin="80,0,60,0" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"  Height="50" Foreground="#FF000000" FontSize="24" BorderThickness="0" Click="Button_Click_SendCode" Name="sendCode">
+                <Button Content="发送令牌" Margin="80,0,60,0" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"  Height="50" Foreground="#FF000000" FontSize="20" BorderThickness="0" Click="Button_Click_SendCode" Name="sendCode">
                     <Button.Background>
-                        <ImageBrush AlignmentX="Center" ImageSource="image\submitbutton.png" Opacity="1" AlignmentY="Center"/>
+                        <ImageBrush AlignmentX="Center" ImageSource="image\lingpai.png" Opacity="1" AlignmentY="Center"/>
                     </Button.Background>
                 </Button>
                 <TextBox Grid.Column="1" Grid.Row="2" Name="code"/>
-                <PasswordBox Name="PassWord" Grid.Column="1" Grid.Row="5"/>
+                <PasswordBox Name="PassWord" Grid.Column="1" Grid.Row="5" KeyUp="Reg_KeyUp"/>
                 <Button Content="注册" Margin="60,0" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="4" VerticalAlignment="Center"  Height="50" Foreground="#FF000000" FontSize="24" BorderThickness="0" Click="Button_Click_Register">
                     <Button.Background>
                         <ImageBrush AlignmentX="Center" ImageSource="image\submitbutton.png" Opacity="1" AlignmentY="Center"/>

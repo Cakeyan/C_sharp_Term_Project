@@ -31,12 +31,31 @@ namespace Client
             InitializeComponent();
             client = new LoginServiceClient();
         }
+        
+        private void Login_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Button_Click(sender, e);
+            }
+        }
 
 
         //所有button事件
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (e.Source == sign_in)//登录事件
+            if (e.Source == forgetPw)//忘记密码事件
+            {
+                this.Close();
+                ForgetPwWindow FP = new ForgetPwWindow();
+                FP.Show();
+            }
+            else if (e.Source == sign_for)//注册事件
+            {
+                this.Close();
+                RegisteredWindow RW = new RegisteredWindow();
+                RW.Show();
+            }else
             {
                 try
                 {
@@ -74,18 +93,7 @@ namespace Client
                 }
                 
             }
-            else if (e.Source == forgetPw)//忘记密码事件
-            {
-                this.Close();
-                ForgetPwWindow FP = new ForgetPwWindow();
-                FP.Show();
-            }
-            else if (e.Source == sign_for)//注册事件
-            {
-                this.Close();
-                RegisteredWindow RW = new RegisteredWindow();
-                RW.Show();
-            }
+            
         }
     }
 }

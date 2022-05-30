@@ -310,6 +310,7 @@
     <Content Include="bgm.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="image\lingpai.png" />
     <Resource Include="image\submitbutton.png" />
     <Resource Include="image\background-1.png" />
     <Resource Include="image\UI-background.png" />
