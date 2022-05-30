@@ -24,6 +24,7 @@ namespace Client
         public PlayerInfo(LoginReference.User us)
         {
             InitializeComponent();
+            if (us == null) return;
             this.account.Text = us.Acount;
             this.name.Text = us.Name;
             this.level.Text = us.Grade.ToString();

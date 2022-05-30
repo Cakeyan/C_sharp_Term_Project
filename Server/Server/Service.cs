@@ -155,13 +155,27 @@ namespace Server
                 {
                     if (item.Name == userName)
                     {  
-                        item.callback.ShowTalk("系统消息", "你猜中了");
+                        try
+                        {
+                            item.callback.ShowTalk("系统消息", "你猜中了"); 
+                        }
+                        catch
+                        {
+
+                        }
                         item.isCorrect = true;
                         CC.Rooms[user.inRoom].correctNum += 1;
                     }
                     else
                     {
-                        item.callback.ShowTalk("系统消息", string.Format("{0}猜中了", item.Name));
+                        try
+                        {
+                            item.callback.ShowTalk("系统消息", string.Format("{0}猜中了", item.Name));
+                        }
+                        catch
+                        {
+
+                        }
                     }
                     //item.callback.ShowWin(userName, CC.Rooms[user.inRoom].users.First().Name);
                 }
@@ -289,7 +303,15 @@ namespace Server
                 //{
                 //    s += v.Name + "," + v.Score.ToString() + ",";
                 //}
-                item.callback.ShowRoom();
+                try
+                {
+                    item.callback.ShowRoom();
+                }
+                catch
+                {
+
+                }
+                
             }
         }
         public void StartGame(string userName, int roomId)
@@ -304,7 +326,15 @@ namespace Server
             }
             foreach (var item in CC.Rooms[roomId].users)
             {
-                item.callback.ShowStart(CC.Rooms[roomId].users.First().Name, CC.Rooms[roomId].question.answer, CC.Rooms[roomId].question.tip);
+                try
+                {
+                    item.callback.ShowStart(CC.Rooms[roomId].users.First().Name, CC.Rooms[roomId].question.answer, CC.Rooms[roomId].question.tip);
+                }
+                catch
+                {
+
+                }
+                
             }
             CC.Rooms[roomId].timer.restTime = CC.Rooms[roomId].timer.gameTime;
             CC.Rooms[roomId].timer.Start();
@@ -314,6 +344,7 @@ namespace Server
 
         private void EndGame(int roomId)
         {
+            CC.Rooms[roomId].timer.Stop();
             List<int> scores = new List<int>();
             List<string> userNames = new List<string>();
             foreach(var user in CC.Rooms[roomId].users)
@@ -327,7 +358,14 @@ namespace Server
 
             foreach(var user in CC.Rooms[roomId].users)
             {
-                user.callback.EndGame(userNames,scores);
+                try
+                {
+                    user.callback.EndGame(userNames, scores);
+                }
+                catch
+                {
+
+                }
             }
 
         }
@@ -354,7 +392,14 @@ namespace Server
             
             foreach (var item in CC.Rooms[roomId].users)
             {
-                item.callback.ShowNewTurn(s, CC.Rooms[roomId].users.First().Name, CC.Rooms[roomId].question.answer, CC.Rooms[roomId].question.tip);
+                try
+                {
+                    item.callback.ShowNewTurn(s, CC.Rooms[roomId].users.First().Name, CC.Rooms[roomId].question.answer, CC.Rooms[roomId].question.tip);
+                }
+                catch
+                {
+
+                }
             }
             CC.Rooms[roomId].timer.restTime = CC.Rooms[roomId].timer.gameTime;
             CC.Rooms[roomId].timer.Start();

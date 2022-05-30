@@ -531,7 +531,7 @@ namespace Client
             if (usarr[0].Avart == null)
                 usarr[0].Avart = "boy.png";
             this.photo1.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + usarr[0].Avart));
-            this.U1.Text += " 昵称：" + usarr[0].Name + '\n' + " 等级：" + usarr[0].Grade + '\n' ;
+            this.U1.Text += usarr[0].Name + '\n' + " 等级：" + usarr[0].Grade + '\n' ;
 
             if (cnt == 1)
                 return;
@@ -539,7 +539,7 @@ namespace Client
             if (usarr[1].Avart == null)
                 usarr[1].Avart = "boy.png";
             this.photo2.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + usarr[1].Avart));
-            this.U2.Text += " 昵称：" + usarr[1].Name + '\n' + " 等级：" + usarr[1].Grade + '\n' ;
+            this.U2.Text += usarr[1].Name + '\n' + " 等级：" + usarr[1].Grade + '\n' ;
 
             if (cnt == 2)
                 return;
@@ -547,7 +547,7 @@ namespace Client
             if (usarr[2].Avart == null)
                 usarr[2].Avart = "boy.png";
             this.photo3.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + usarr[2].Avart));
-            this.U3.Text += " 昵称：" + usarr[2].Name + '\n' + " 等级：" + usarr[2].Grade + '\n' ;
+            this.U3.Text += usarr[2].Name + '\n' + " 等级：" + usarr[2].Grade + '\n' ;
 
             if (cnt == 3)
                 return;
@@ -555,7 +555,7 @@ namespace Client
             if (usarr[3].Avart == null)
                 usarr[3].Avart = "boy.png";
             this.photo4.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + usarr[3].Avart));
-            this.U4.Text += " 昵称：" + usarr[3].Name + '\n' + " 等级：" + usarr[3].Grade + '\n' + '\n';
+            this.U4.Text += usarr[3].Name + '\n' + " 等级：" + usarr[3].Grade + '\n' + '\n';
 
         }
 
@@ -656,7 +656,7 @@ namespace Client
         {
             readybtn.IsEnabled = true;
             readybtn.Content = "准备";
-
+            restTimeTextBox.Text = "时间";
             clear.IsEnabled = false;
             inkcanvas.IsEnabled = false;
             sendbtn.IsEnabled = true;
