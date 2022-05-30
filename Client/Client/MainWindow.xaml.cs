@@ -583,6 +583,27 @@ namespace Client
             readybtn.IsEnabled = false;
             readybtn.Content = "游戏中";
         }
+
+        public void ShowNewQues(string roommeg, string userName1, string answer, string tip)
+        {
+            if (us.Name == userName1)
+            {
+                TipLabel.Content = "题目：" + answer;
+                TipCheck = answer;
+                ConversationBox.Text += "系统提示：你已更换题目";
+            }
+            //猜图者
+            else
+            {
+                TipLabel.Content = "提示：" + tip;
+                ConversationBox.Text += string.Format("系统提示：{0}更换题目\n",userName1);
+            }
+        }
         #endregion
+
+        private void changeQues(object sender, RoutedEventArgs e)
+        {
+            client.changeQuestion(roomId, us.Acount);
+        }
     }
 }

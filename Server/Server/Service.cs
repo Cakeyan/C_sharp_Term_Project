@@ -279,7 +279,6 @@ namespace Server
                 try
                 {
                     user.callback.ShowTime(timer.restTime);
-                    Console.WriteLine(timer.restTime);
                 }
                 catch
                 {

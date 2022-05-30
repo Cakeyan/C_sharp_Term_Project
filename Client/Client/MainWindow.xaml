@@ -13,7 +13,7 @@
                 <ColumnDefinition Width="1070"/>
             </Grid.ColumnDefinitions>
             <Grid.Resources>
-                
+
                 <Style x:Key="hover" TargetType="Button">
                     <Setter Property="OverridesDefaultStyle" Value="True" />
                     <Setter Property="Cursor" Value="Hand" />
@@ -39,13 +39,13 @@
                     <ImageBrush AlignmentX="Left" ImageSource="image\UI-background.png" Opacity="1" AlignmentY="Top"/>
                 </Frame.Background>
             </Frame>
-            
+
             <Grid Height="720" VerticalAlignment="Top" Width="210" Grid.Column="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="68"/>
                     <RowDefinition Height="652"/>
                 </Grid.RowDefinitions>
-                
+
                 <ListBox Name="UserBox" HorizontalAlignment="Center" Height="620" Margin="12,16,12,16" VerticalAlignment="Top" Width="188" Grid.Row="1" BorderThickness="0" Background="#0000">
                     <Button x:Name="user1Btn1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="166" Height="64" Margin="4,8,0,0" BorderBrush="White" Style="{StaticResource hover}">
                         <Button.Background>
@@ -138,7 +138,7 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="时间" Foreground="#FF000000" TextWrapping="Wrap" Margin="0,4,0,0"  FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Name="restTimeTextBox"/>
                     <Label x:Name="TipLabel"  Foreground="#FF000000"  Margin="0,0,0,0"  FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1"/>
-                    <Button x:Name="random" HorizontalAlignment="Center" VerticalAlignment="Center" Width="56" Height="56" Margin="0,0,0,0" BorderBrush="White" Grid.Column="2" Style="{StaticResource hover}">
+                    <Button x:Name="random" VerticalAlignment="Bottom" Height="56" Margin="0,0,2.8,6" BorderBrush="White" Grid.Column="2" Style="{StaticResource hover}" HorizontalAlignment="Right" Width="56" Click="changeQues">
                         <Button.Background>
                             <ImageBrush AlignmentX="Center" ImageSource="image\random.png" Opacity="1" AlignmentY="Top"/>
                         </Button.Background>
@@ -224,7 +224,7 @@
                         <ColumnDefinition Width="660"/>
                         <ColumnDefinition Width="120"/>
                     </Grid.ColumnDefinitions>
-                    
+
                     <Label Name="textBoxUserName" Content="用户名" FontSize="16" Margin="8,0,0,0" Foreground="Black" Grid.Column="0" VerticalAlignment="Center"/>
                     <Button x:Name="readybtn" Content="准备" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Width="80" Height="40" FontSize="18" Click="Button_Click" Grid.Column="1" Foreground="Black" Style="{StaticResource hover}">
                         <Button.Background>

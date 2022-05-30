@@ -56,6 +56,9 @@ namespace Server
 
         [OperationContract(IsOneWay = true)]
         void CancelReadyGame(string userName, int roomId);
+
+        [OperationContract(IsOneWay = true)]
+        void changeQuestion(int roomid, string Account);
         #endregion
 
     }
@@ -111,6 +114,8 @@ namespace Server
         [OperationContract(IsOneWay = true)]
         void stopCancelReady();
 
+        [OperationContract(IsOneWay = true)]
+        void ShowNewQues(string roommeg, string userName1, string answer, string tip);
         #endregion
     }
     [DataContract]
