@@ -58,6 +58,8 @@ namespace Client
             inkcanvas.IsEnabled = false;
             clear.IsEnabled = false;
             undo.IsEnabled = false;
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
         }
 
 
@@ -765,6 +767,7 @@ namespace Client
             restTimeTextBox.Text = "时间";
             clear.IsEnabled = false;
             undo.IsEnabled = false;
+            inkcanvas.Strokes.Clear();
             inkcanvas.IsEnabled = false;
             sendbtn.IsEnabled = true;
             TipLabel.Content = "";
