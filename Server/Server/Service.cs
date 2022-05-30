@@ -443,6 +443,21 @@ namespace Server
             user.ready = false;
         }
 
+        public void changeQuestion(int roomid,string Account)
+        {
+            CC.Rooms[roomid].question.update();
+            foreach (var item in CC.Rooms[roomid].users)
+            {
+                try
+                {
+                    item.callback.ShowNewQues("", CC.Rooms[roomid].users.First().Name, CC.Rooms[roomid].question.answer, CC.Rooms[roomid].question.tip);
+                }
+                catch
+                {
+
+                }
+            }
+        }
         #endregion
 
     }

@@ -121,16 +121,28 @@ namespace Server
         [DataMember]
         public string tip { get; set; }
         private Random r=new Random();
+        private int randNum { get; set; }
         public questions()
         {
-            update();
+            MyDbEntities myDbEntities = new MyDbEntities();
+            var ques = from t in myDbEntities.Questions select t;
+            randNum = r.Next(1, ques.Count() - 8);
+            var q = from t in myDbEntities.Questions
+                    where t.Id == randNum
+                    select t;
+            if (q.Count() > 0)
+            {
+                var Q = q.First();
+                answer = Q.Question;
+                tip = Q.Tip;
+            }
         }
         public void update()
         {
-            int num = r.Next(1, 20 + 1);
+            randNum += 1;
             MyDbEntities myDbEntities = new MyDbEntities();
             var q = from t in myDbEntities.Questions
-                    where t.Id == num
+                    where t.Id == randNum
                     select t;
             if (q.Count() > 0)
             {
