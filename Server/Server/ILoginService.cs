@@ -18,13 +18,14 @@ namespace Server
 
         //注册
         [OperationContract]
-        bool Registered(string id, string pw, string sn, string name,string code);
+        string Registered(string id, string pw, string sn, string name,string code);
+
 
         [OperationContract]
         bool sendEmail(string email);
         //修改密码
         [OperationContract]
-        bool ForgetPassword(string id, string ps, string code);
+        string ForgetPassword(string id, string ps, string code);
 
         [OperationContract]
         User Userinfo(string id);

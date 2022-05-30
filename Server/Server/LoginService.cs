@@ -56,7 +56,7 @@ namespace Server
             return false;
         }
         //远程注册
-        public bool Registered(string id, string pw, string sn, string name,string code)
+        public string Registered(string id, string pw, string sn, string name,string code)
         {
             User us = new User();
             MyDbEntities myDbEntities = new MyDbEntities();
@@ -69,23 +69,22 @@ namespace Server
                     orderby t.ableTime descending
                     where t.email == id
                     select t;
-            if (q == null) return false;
+            if (q == null) return "该账号验证码不存在";
             Table table = q.FirstOrDefault();
-            if (table.ableTime < DateTime.Now) return false;
-            if (table.code != code) return false;
+            if (table.ableTime < DateTime.Now) return "验证码已过期";
+            if (table.code != code) return "验证码错误";
 
             try
             {
                 myDbEntities.User.Add(us);
                 myDbEntities.Table.Remove(table);
                 myDbEntities.SaveChanges();
-                return true;
+                return "OK";
             }
             catch (Exception)
             {
-                return false;
+                return "数据库错误";
             }
-            return false;
         }
 
         private string getCode()
@@ -156,7 +155,7 @@ namespace Server
     
 
         //修改密码
-        public bool ForgetPassword(string id, string pw, string code)
+        public string ForgetPassword(string id, string pw, string code)
         {
             //用户信息
             User us;
@@ -167,12 +166,12 @@ namespace Server
                     orderby t.ableTime descending
                     where t.email == id
                     select t;
-            if (tmp == null) return false;
+            if (tmp == null) return "该账号不存在";
             Table table = tmp.FirstOrDefault();
-            if (table.ableTime < DateTime.Now) return false;
-            if (table.code != code) return false;
+            if (table.ableTime < DateTime.Now) return "验证码已过期";
+            if (table.code != code) return "验证码错误";
 
-            
+
             //选中这一条数据
             var q = from t in myDbEntities.User
                     where t.Acount == id
@@ -180,8 +179,7 @@ namespace Server
             if (q != null)
             {
                 us = q.FirstOrDefault();
-                if (us == null)
-                    return false;
+                if (us == null)return "该账号不存在";
                 us.Password = pw;
                 try
                 {
@@ -189,11 +187,11 @@ namespace Server
                 }
                 catch (Exception)
                 {
-                    return false;
+                    return "数据库错误";
                 }
-                return true;
+                return "OK";
             }
-            return false;
+            return "修改失败";
         }
 
         public User Userinfo(string id)
