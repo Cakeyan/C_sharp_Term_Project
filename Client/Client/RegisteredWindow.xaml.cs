@@ -43,10 +43,6 @@ namespace Client
             code = code.ToLower();
             return code;
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void Button_Click_SendCode(object sender, RoutedEventArgs e)
         {
@@ -101,6 +97,11 @@ namespace Client
             {
                 Button_Click_Register(sender,e);
             }
+        }
+
+        private void img_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Verification = GetImage();
         }
     }
 }
