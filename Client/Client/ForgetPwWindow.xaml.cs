@@ -109,5 +109,10 @@ namespace Client
                 MessageBox.Show("与远程服务器连接失败！", "提示", MessageBoxButton.OKCancel, MessageBoxImage.Asterisk);
             }
         }
+
+        private void img_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Verification = GetImage();
+        }
     }
 }
