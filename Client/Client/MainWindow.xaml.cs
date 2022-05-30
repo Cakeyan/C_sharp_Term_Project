@@ -54,12 +54,11 @@ namespace Client
             item = CC.GetUser(us.Acount);
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
-            ScoreLabel.Content = 0;
+
             inkcanvas.IsEnabled = false;
             clear.IsEnabled = false;
             undo.IsEnabled = false;
-            clear.Opacity = 0.5;
-            undo.Opacity = 0.5;
+            random.IsEnabled = false;
             
 
         }
@@ -77,7 +76,7 @@ namespace Client
             loginclient = new LoginServiceClient();
             //显示登录
             client.Login(roomId,us.Name);
-            this.textBoxUserName.Content = us.Name;
+            this.textBoxUserName.Content = "当前用户："+us.Name;
 
             //初始化墨迹和画板
             currentColor = Colors.Red;
@@ -91,6 +90,7 @@ namespace Client
             inkcanvas.DefaultDrawingAttributes = inkDA;
             inkcanvas.EditingMode = InkCanvasEditingMode.Ink;
         }
+
 
 
         //用于绑定enter建
@@ -495,17 +495,17 @@ namespace Client
         public void ShowStart(string userName1, string answer, string tip)
         {
             inkcanvas.Strokes.Clear();
-            //ScoreLabel.Content = 0;
             //画图者
             if(us.Name==userName1)
             {
                 clear.IsEnabled = true;
                 undo.IsEnabled = true;
+                random.IsEnabled = true;
                 inkcanvas.IsEnabled = true;
                 sendbtn.IsEnabled = false;
-                clear.Opacity = 1;
-                undo.Opacity = 1;
+                SendBox.IsEnabled = false;
                 sendbtn.Opacity = 0.5;
+                SendBox.Opacity = 0.5;
                 TipLabel.Content = "题目：" + answer;
                 ConversationBox.Text += "系统提示：请开始绘画\n";
                 TipCheck = answer;
@@ -515,32 +515,23 @@ namespace Client
             {
                 clear.IsEnabled = false;
                 undo.IsEnabled = false;
+                random.IsEnabled = false;
                 inkcanvas.IsEnabled = false;
                 sendbtn.IsEnabled = true;
-                clear.Opacity = 0.5;
-                undo.Opacity = 0.5;
+                SendBox.IsEnabled = true;
                 sendbtn.Opacity = 1;
+                SendBox.Opacity = 1;
                 TipLabel.Content = "提示：" + tip;
                 ConversationBox.Text += "系统提示：请开始抢答\n";
             }
             restTimeTextBox.Text = "60";
         }
-        public void ShowWin(string userName,string userName0)
+
+        public void ShowWin(string userName, string userName0)
         {
-            if (userName == us.Name)
-            {
-                ScoreLabel.Content = int.Parse(ScoreLabel.Content.ToString())+1;
-                ConversationBox.Text += "系统信息：你赢了！\n";
-            }
-            else if(us.Name==userName0)
-            {
-                ConversationBox.Text += "系统信息：有人猜到了！\n";
-            }
-            else
-            {
-                ConversationBox.Text += "系统信息：好遗憾，继续加油！\n";
-            }
+
         }
+
         public void ShowNewTurn(string roommeg, string userName1, string answer, string tip)
         {
             //更新用户列表和积分
@@ -569,12 +560,13 @@ namespace Client
             restTimeTextBox.Text = "时间";
             clear.IsEnabled = false;
             undo.IsEnabled = false;
-            clear.Opacity = 0.5;
-            undo.Opacity = 0.5;
+            random.IsEnabled = false;
             inkcanvas.Strokes.Clear();
             inkcanvas.IsEnabled = false;
             sendbtn.IsEnabled = true;
             sendbtn.Opacity = 1;
+            SendBox.IsEnabled = true;
+            SendBox.Opacity = 1;
             TipLabel.Content = "";
             TipCheck = "";
             //TODO
@@ -585,9 +577,11 @@ namespace Client
             }
             ConversationBox.Text += rank;
         }
+
         public void stopCancelReady()
         {
             readybtn.IsEnabled = false;
+            readybtn.Content = "游戏中";
         }
         #endregion
     }

@@ -219,19 +219,22 @@
                 </Grid>
                 <Grid Height="60" HorizontalAlignment="Left" Width="1070" Grid.Row="2">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="50"/>
-                        <ColumnDefinition Width="50"/>
-                        <ColumnDefinition Width="190"/>
+                        <ColumnDefinition Width="170"/>
+                        <ColumnDefinition Width="120"/>
                         <ColumnDefinition Width="660"/>
                         <ColumnDefinition Width="120"/>
                     </Grid.ColumnDefinitions>
-                    <Label x:Name="ScoreLabel" Content="分数？" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Center" Height="31" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  FontSize="16"  Foreground="#FFFF0000" FontWeight="Bold" Grid.Column="0"/>
-                    <Label Name="textBoxUserName" Content="用户名？" FontSize="12" Margin="0,0,0,0" Foreground="Red" Grid.Column="1" VerticalAlignment="Center"/>
-                    <Button x:Name="readybtn" Content="准备" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Width="75" Height="28" Background="#7FF0E793" FontSize="16" Click="Button_Click" Grid.Column="2" Style="{StaticResource hover}"/>
+                    
+                    <Label Name="textBoxUserName" Content="用户名" FontSize="16" Margin="8,0,0,0" Foreground="Black" Grid.Column="0" VerticalAlignment="Center"/>
+                    <Button x:Name="readybtn" Content="准备" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Width="80" Height="40" FontSize="18" Click="Button_Click" Grid.Column="1" Foreground="Black" Style="{StaticResource hover}">
+                        <Button.Background>
+                            <ImageBrush AlignmentX="Center" ImageSource="image\lingpai.png" Opacity="1" AlignmentY="Top"/>
+                        </Button.Background>
+                    </Button>
 
-                    <TextBox Name="SendBox"  Background="#00FFFFFF" BorderThickness="0" FontSize="16" Margin="16,14,16,12" KeyUp="SendBox_KeyUp" TextWrapping="NoWrap" Grid.Column="3" VerticalAlignment="Center"/>
+                    <TextBox Name="SendBox"  Background="#00FFFFFF" BorderThickness="0" FontSize="16" Margin="16,14,16,12" KeyUp="SendBox_KeyUp" TextWrapping="NoWrap" Grid.Column="2" VerticalAlignment="Center"/>
 
-                    <Button x:Name="sendbtn" BorderThickness="0,0,0,0"  Margin="16,10,12,9"  Click="send_Click"  Grid.Column="4" Style="{StaticResource hover}">
+                    <Button x:Name="sendbtn" BorderThickness="0,0,0,0"  Margin="16,10,12,9"  Click="send_Click"  Grid.Column="3" Style="{StaticResource hover}">
                         <Button.Template>
                             <ControlTemplate>
                                 <Grid>
