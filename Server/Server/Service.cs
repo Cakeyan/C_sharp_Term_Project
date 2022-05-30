@@ -132,8 +132,15 @@ namespace Server
             {
                 if(item.id==id)
                 {
-                    item.callback.ShowLogin(userName);
-                    item.callback.ShowInfo(userdatas);
+                    try
+                    {
+                        item.callback.ShowLogin(userName);
+                        item.callback.ShowInfo(userdatas);
+                    }
+                    catch
+                    {
+
+                    }
                 }
             }
         }
@@ -261,27 +268,30 @@ namespace Server
         private void timer_Tick(object sender, EventArgs e)
         {
             Timer timer = sender as Timer;
-            timer.restTime -= 1;
 
-            foreach (MyUser user in CC.Rooms[timer.roomId].users)
-            {
-                try
-                {
-                    user.callback.ShowTime(timer.restTime);
-                }
-                catch
-                {
+            CC.Rooms[timer.roomId].timer.Stop();
+            RollUserAndRestart(timer.roomId);
+            return;
 
-                }
-            }
+            //foreach (MyUser user in CC.Rooms[timer.roomId].users)
+            //{
+            //    try
+            //    {
+            //        user.callback.ShowTime(timer.restTime);
+            //    }
+            //    catch
+            //    {
 
-            if (timer.restTime == 0)
-            {
-                //TODO
-                CC.Rooms[timer.roomId].timer.Stop();
-                RollUserAndRestart(timer.roomId);
-                return;
-            }
+            //    }
+            //}
+
+            //if (timer.restTime == 0)
+            //{
+            //    //TODO
+            //    CC.Rooms[timer.roomId].timer.Stop();
+            //    RollUserAndRestart(timer.roomId);
+            //    return;
+            //}
         }
 
         //进入房间
@@ -298,7 +308,7 @@ namespace Server
                 CC.Rooms[roomId].users = new List<MyUser>();
                 CC.Rooms[roomId].question = new questions();
                 CC.Rooms[roomId].timer = new Timer();
-                CC.Rooms[roomId].timer.Interval = TimeSpan.FromSeconds(1);
+                CC.Rooms[roomId].timer.Interval = TimeSpan.FromSeconds(60);
                 CC.Rooms[roomId].timer.Tick += new EventHandler(timer_Tick);
                 CC.Rooms[roomId].timer.roomId = roomId;
             }
@@ -330,11 +340,6 @@ namespace Server
             MyUser user = CC.GetUser(userName);
             user.ready = true;
             CC.Rooms[roomId].correctNum = 0;
-
-
-
-
-
 
             if (CC.Rooms[roomId].users.Count < CC.Rooms[roomId].leastBeginNum) return;
             //判断当前房间内所有用户是否准备好
