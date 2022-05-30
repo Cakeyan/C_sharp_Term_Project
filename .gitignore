@@ -1,0 +1,13 @@
+Client/Client/bin/
+Client/Client/obj/
+Client/.vs/
+Server/Server/bin/
+Server/Server/obj/
+Server/.vs/
+*.suo
+*.orig
+*.bat
+*.v11
+*.v12
+*.suo
+*.user
