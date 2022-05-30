@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client"
         mc:Ignorable="d"
-        Title="Draw and Guess" SizeToContent="WidthAndHeight" Closing="Window_Closing" ResizeMode="NoResize">
+        Title="Draw and Guess" SizeToContent="WidthAndHeight" Closing="Window_Closing" ResizeMode="NoResize"  Icon="image\exe_logo.png">
     <Window.Background>
         <ImageBrush ImageSource="/image/background-1.png" />
     </Window.Background>

@@ -58,6 +58,8 @@ namespace Client
             inkcanvas.IsEnabled = false;
             clear.IsEnabled = false;
             undo.IsEnabled = false;
+            clear.Opacity = 0.5;
+            undo.Opacity = 0.5;
             
 
         }
@@ -90,215 +92,6 @@ namespace Client
             inkcanvas.EditingMode = InkCanvasEditingMode.Ink;
         }
 
-        //用户信息显示
-        private void user1Btn1_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                LoginReference.User tmp;
-                string acc = "";
-                for (int i = 0; i < userdatas.Length; i++)
-                {
-                    if (U1.Text.Contains(userdatas[i].Name))
-                    {
-                        acc = userdatas[i].Acount;
-                    }
-                }
-                Button item = e.Source as Button;
-                if (item != null)
-                {
-                    tmp = loginclient.Userinfo(acc);
-                    //this.U1.Source = new Uri(item.Tag.ToString(), UriKind.Relative);
-                    PlayerInfo pi = new PlayerInfo(tmp);
-                    pi.ShowDialog();
-                }
-            }
-            catch { }
-        }
-
-        private void user1Btn2_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                LoginReference.User tmp;
-                string acc = "";
-                for (int i = 0; i < userdatas.Length; i++)
-                {
-                    if (U2.Text.Contains(userdatas[i].Name))
-                    {
-                        acc = userdatas[i].Acount;
-                    }
-                }
-                Button item = e.Source as Button;
-                if (item != null)
-                {
-                    tmp = loginclient.Userinfo(acc);
-                    //this.U1.Source = new Uri(item.Tag.ToString(), UriKind.Relative);
-                    PlayerInfo pi = new PlayerInfo(tmp);
-                    pi.ShowDialog();
-                }
-            }
-            catch { }
-        }
-        private void user1Btn3_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                LoginReference.User tmp;
-                string acc = "";
-                for (int i = 0; i < userdatas.Length; i++)
-                {
-                    if (U3.Text.Contains(userdatas[i].Name))
-                    {
-                        acc = userdatas[i].Acount;
-                    }
-                }
-                Button item = e.Source as Button;
-                if (item != null)
-                {
-                    tmp = loginclient.Userinfo(acc);
-                    //this.U1.Source = new Uri(item.Tag.ToString(), UriKind.Relative);
-                    PlayerInfo pi = new PlayerInfo(tmp);
-                    pi.ShowDialog();
-                }
-            }
-            catch { }
-        }
-        private void user1Btn4_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                LoginReference.User tmp;
-                string acc = "";
-                for (int i = 0; i < userdatas.Length; i++)
-                {
-                    if (U4.Text.Contains(userdatas[i].Name))
-                    {
-                        acc = userdatas[i].Acount;
-                    }
-                }
-                Button item = e.Source as Button;
-                if (item != null)
-                {
-                    tmp = loginclient.Userinfo(acc);
-                    //this.U1.Source = new Uri(item.Tag.ToString(), UriKind.Relative);
-                    PlayerInfo pi = new PlayerInfo(tmp);
-                    pi.ShowDialog();
-                }
-            }
-            catch
-            {
-
-            }
-        }
-        private void user1Btn5_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                LoginReference.User tmp;
-                string acc = "";
-                for (int i = 0; i < userdatas.Length; i++)
-                {
-                    if (U5.Text.Contains(userdatas[i].Name))
-                    {
-                        acc = userdatas[i].Acount;
-                    }
-                }
-                Button item = e.Source as Button;
-                if (item != null)
-                {
-                    tmp = loginclient.Userinfo(acc);
-                    //this.U1.Source = new Uri(item.Tag.ToString(), UriKind.Relative);
-                    PlayerInfo pi = new PlayerInfo(tmp);
-                    pi.ShowDialog();
-                }
-            }
-            catch
-            {
-
-            }
-        }
-        private void user1Btn6_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                LoginReference.User tmp;
-                string acc = "";
-                for (int i = 0; i < userdatas.Length; i++)
-                {
-                    if (U6.Text.Contains(userdatas[i].Name))
-                    {
-                        acc = userdatas[i].Acount;
-                    }
-                }
-                Button item = e.Source as Button;
-                if (item != null)
-                {
-                    tmp = loginclient.Userinfo(acc);
-                    //this.U1.Source = new Uri(item.Tag.ToString(), UriKind.Relative);
-                    PlayerInfo pi = new PlayerInfo(tmp);
-                    pi.ShowDialog();
-                }
-            }
-            catch
-            {
-
-            }
-        }
-        private void user1Btn7_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                LoginReference.User tmp;
-                string acc = "";
-                for (int i = 0; i < userdatas.Length; i++)
-                {
-                    if (U7.Text.Contains(userdatas[i].Name))
-                    {
-                        acc = userdatas[i].Acount;
-                    }
-                }
-                Button item = e.Source as Button;
-                if (item != null)
-                {
-                    tmp = loginclient.Userinfo(acc);
-                    //this.U1.Source = new Uri(item.Tag.ToString(), UriKind.Relative);
-                    PlayerInfo pi = new PlayerInfo(tmp);
-                    pi.ShowDialog();
-                }
-            }
-            catch
-            {
-
-            }
-        }
-        private void user1Btn8_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                LoginReference.User tmp;
-                string acc = "";
-                for (int i = 0; i < userdatas.Length; i++)
-                {
-                    if (U8.Text.Contains(userdatas[i].Name))
-                    {
-                        acc = userdatas[i].Acount;
-                    }
-                }
-                Button item = e.Source as Button;
-                if (item != null)
-                {
-                    tmp = loginclient.Userinfo(acc);
-                    //this.U1.Source = new Uri(item.Tag.ToString(), UriKind.Relative);
-                    PlayerInfo pi = new PlayerInfo(tmp);
-                    pi.ShowDialog();
-                }
-            }
-            catch
-            {
-
-            }
-        }
 
         //用于绑定enter建
         private void SendBox_KeyUp(object sender, KeyEventArgs e)
@@ -710,6 +503,9 @@ namespace Client
                 undo.IsEnabled = true;
                 inkcanvas.IsEnabled = true;
                 sendbtn.IsEnabled = false;
+                clear.Opacity = 1;
+                undo.Opacity = 1;
+                sendbtn.Opacity = 0.5;
                 TipLabel.Content = "题目：" + answer;
                 ConversationBox.Text += "系统提示：请开始绘画\n";
                 TipCheck = answer;
@@ -719,6 +515,7 @@ namespace Client
             {
                 inkcanvas.IsEnabled = false;
                 sendbtn.IsEnabled = true;
+                sendbtn.Opacity = 1;
                 TipLabel.Content = "提示：" + tip;
                 ConversationBox.Text += "系统提示：请开始抢答\n";
             }
@@ -762,14 +559,18 @@ namespace Client
 
         public void EndGame(string[] userNames, int[] scores)
         {
+            ink_stack.Clear();
             readybtn.IsEnabled = true;
             readybtn.Content = "准备";
             restTimeTextBox.Text = "时间";
             clear.IsEnabled = false;
             undo.IsEnabled = false;
+            clear.Opacity = 0.5;
+            undo.Opacity = 0.5;
             inkcanvas.Strokes.Clear();
             inkcanvas.IsEnabled = false;
             sendbtn.IsEnabled = true;
+            sendbtn.Opacity = 1;
             TipLabel.Content = "";
             TipCheck = "";
             //TODO

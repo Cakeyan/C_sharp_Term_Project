@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client"
         mc:Ignorable="d"
-        Title="Draw and Guess" SizeToContent="WidthAndHeight" Closing="Window_Closing" ResizeMode="NoResize">
+        Title="Draw and Guess" SizeToContent="WidthAndHeight" Closing="Window_Closing" ResizeMode="NoResize" Icon="image\exe_logo.png">
     <Window.Background>
         <ImageBrush ImageSource="/image/background-1.png" />
     </Window.Background>
@@ -95,7 +95,7 @@
                 </StackPanel>
                 <TextBox Name="Code" Grid.Column="1" Grid.Row="1"  Width="90"/>
                 <Image Name="img" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Height="30" Width="90" Margin="100,0,50,0" Stretch="Fill" MouseDown="img_MouseDown"/>
-                <Button Content="发送令牌" Margin="80,0,60,0" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"  Height="50" Foreground="#FF000000" FontSize="20" BorderThickness="0" Click="Button_Click_SendCode" Name="sendCode" Style="{StaticResource ButtonHover}">
+                <Button Content="发送令牌" Margin="80,0,60,0" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"  Height="50" Foreground="#FF000000" FontSize="20" BorderThickness="0" Click="Button_Click_SendCode" Name="sendCode">
                     <Button.Background>
                         <ImageBrush AlignmentX="Center" ImageSource="image\lingpai.png" Opacity="1" AlignmentY="Center"/>
                     </Button.Background>

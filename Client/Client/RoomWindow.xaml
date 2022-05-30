@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client"
         mc:Ignorable="d"
-        Title="Draw and Guess" SizeToContent="WidthAndHeight" >
+        Title="Draw and Guess" SizeToContent="WidthAndHeight" ResizeMode="NoResize"  Icon="image\exe_logo.png">
     <Window.Background>
         <ImageBrush ImageSource="/image/BigHall.png" />
     </Window.Background>
@@ -48,6 +48,9 @@
             <Button x:Name="SendBnt" Grid.Column="1" Grid.Row="2" BorderThickness="0,0,0,0"  HorizontalAlignment="Right" Margin="0,4,30,24" Width="80" Click="SendBnt_Click" Background="#00FFFFFF"/>
             <Button  Name="music" Grid.Column="0" Grid.Row="2" BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="48" Height="48"  BorderBrush="White" Foreground="White" Click="music_Click" Margin="16,0,0,0" Background="#00ffffff">
                 <Image Source="/image/voice.png" Width="42" />
+            </Button>
+            <Button  x:Name="exitBnt" Grid.Column="0" Grid.Row="2" BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="48" Height="48"  BorderBrush="White" Foreground="White" Click="exitBnt_Click" Margin="72,0,0,0" Background="#00ffffff">
+                <Image Source="/image/close.png" Width="42" />
             </Button>
             <Button x:Name="room1user1Btn" Content="房间1" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" Margin="0,0,32,32" VerticalAlignment="Bottom" Width="420" Height="260" Background="#FFFFEE" Foreground="Black" Click="room_Click"/>
             <Button x:Name="room2user1Btn" Content="房间2" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" Margin="32,0,0,32" VerticalAlignment="Bottom" Width="420" Height="260" Background="#FFFFEE" Foreground="Black" Click="room_Click"/>

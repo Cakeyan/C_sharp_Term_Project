@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client"
         mc:Ignorable="d"
-        Title="Draw and Guess" SizeToContent="WidthAndHeight" Loaded="Window_Loaded" Closing="Window_Closing">
+        Title="Draw and Guess" SizeToContent="WidthAndHeight" Loaded="Window_Loaded" Closing="Window_Closing" ResizeMode="NoResize"  Icon="image\exe_logo.png">
     <Canvas Background="White" Width="1280" Height="720"  x:Name="canvas">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -13,30 +13,7 @@
                 <ColumnDefinition Width="1070"/>
             </Grid.ColumnDefinitions>
             <Grid.Resources>
-                <Style x:Key="DecreaseBtn" TargetType="{x:Type RepeatButton}">
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type RepeatButton}">
-                                <Border Background="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}">
-                                    <!--轨迹，设置Background-->
-                                    <Border Margin="0,0,-1,0" Background="#000000" VerticalAlignment="center" Height="4.0" />
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-                <Style x:Key="IncreaseBtn" TargetType="{x:Type RepeatButton}">
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type RepeatButton}">
-                                <Border Background="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}">
-                                    <!--轨迹，设置Background-->
-                                    <Border Margin="0,0,-1,0" Background="#000000" VerticalAlignment="center" Height="4.0" />
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
+                
                 <Style x:Key="hover" TargetType="Button">
                     <Setter Property="OverridesDefaultStyle" Value="True" />
                     <Setter Property="Cursor" Value="Hand" />
@@ -70,16 +47,16 @@
                 </Grid.RowDefinitions>
                 
                 <ListBox Name="UserBox" HorizontalAlignment="Center" Height="620" Margin="12,16,12,16" VerticalAlignment="Top" Width="188" Grid.Row="1" BorderThickness="0" Background="#0000">
-                    <Button x:Name="user1Btn1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="166" Height="64" Margin="4,8,0,0" BorderBrush="White" Click="user1Btn1_Click" RenderTransformOrigin="0.5,0.5">
+                    <Button x:Name="user1Btn1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="166" Height="64" Margin="4,8,0,0" BorderBrush="White" Style="{StaticResource hover}">
                         <Button.Background>
                             <ImageBrush AlignmentX="Center" ImageSource="image\rectangle.png" Opacity="1" AlignmentY="Top"/>
                         </Button.Background>
                         <StackPanel Height="48" Width="150" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Image x:Name="photo1" Height="48"  Width="48" Margin="0,0,0,0"/>
-                            <TextBlock x:Name="U1" Foreground="#FF000000" TextWrapping="Wrap" Margin="0,0,0,0" Width="102" FontSize="20"/>
+                            <TextBlock x:Name="U1" Foreground="#FF000000" TextWrapping="Wrap" Margin="0,0,0,0" Width="96" FontSize="20"/>
                         </StackPanel>
                     </Button>
-                    <Button x:Name="user1Btn2" HorizontalAlignment="Center" VerticalAlignment="Top" Width="166" Height="64" Margin="4,8,0,0" BorderBrush="White" Click="user1Btn2_Click">
+                    <Button x:Name="user1Btn2" HorizontalAlignment="Center" VerticalAlignment="Top" Width="166" Height="64" Margin="4,8,0,0" BorderBrush="White" Style="{StaticResource hover}">
                         <Button.Background>
                             <ImageBrush AlignmentX="Center" ImageSource="image\rectangle.png" Opacity="1" AlignmentY="Top"/>
                         </Button.Background>
@@ -88,7 +65,7 @@
                             <TextBlock x:Name="U2" Foreground="#FF000000" TextWrapping="Wrap" Margin="0,0,0,0" Width="102" FontSize="20"/>
                         </StackPanel>
                     </Button>
-                    <Button x:Name="user1Btn3" HorizontalAlignment="Center" VerticalAlignment="Top" Width="166" Height="64" Margin="4,8,0,0" BorderBrush="White" Click="user1Btn3_Click">
+                    <Button x:Name="user1Btn3" HorizontalAlignment="Center" VerticalAlignment="Top" Width="166" Height="64" Margin="4,8,0,0" BorderBrush="White" Style="{StaticResource hover}">
                         <Button.Background>
                             <ImageBrush AlignmentX="Center" ImageSource="image\rectangle.png" Opacity="1" AlignmentY="Top"/>
                         </Button.Background>
@@ -97,7 +74,7 @@
                             <TextBlock x:Name="U3" Foreground="#FF000000" TextWrapping="Wrap" Margin="0,0,0,0" Width="102" FontSize="20"/>
                         </StackPanel>
                     </Button>
-                    <Button x:Name="user1Btn4" HorizontalAlignment="Center" VerticalAlignment="Top" Width="166" Height="64" Margin="4,8,0,0" BorderBrush="White" Click="user1Btn4_Click">
+                    <Button x:Name="user1Btn4" HorizontalAlignment="Center" VerticalAlignment="Top" Width="166" Height="64" Margin="4,8,0,0" BorderBrush="White" Style="{StaticResource hover}">
                         <Button.Background>
                             <ImageBrush AlignmentX="Center" ImageSource="image\rectangle.png" Opacity="1" AlignmentY="Top"/>
                         </Button.Background>
@@ -106,7 +83,7 @@
                             <TextBlock x:Name="U4" Foreground="#FF000000" TextWrapping="Wrap" Margin="0,0,0,0" Width="102" FontSize="20"/>
                         </StackPanel>
                     </Button>
-                    <Button x:Name="user1Btn5" HorizontalAlignment="Center" VerticalAlignment="Top" Width="166" Height="64" Margin="4,8,0,0" BorderBrush="White" Click="user1Btn5_Click">
+                    <Button x:Name="user1Btn5" HorizontalAlignment="Center" VerticalAlignment="Top" Width="166" Height="64" Margin="4,8,0,0" BorderBrush="White" Style="{StaticResource hover}">
                         <Button.Background>
                             <ImageBrush AlignmentX="Center" ImageSource="image\rectangle.png" Opacity="1" AlignmentY="Top"/>
                         </Button.Background>
@@ -115,7 +92,7 @@
                             <TextBlock x:Name="U5" Foreground="#FF000000" TextWrapping="Wrap" Margin="0,0,0,0" Width="102" FontSize="20"/>
                         </StackPanel>
                     </Button>
-                    <Button x:Name="user1Btn6" HorizontalAlignment="Center" VerticalAlignment="Top" Width="166" Height="64" Margin="4,8,0,0" BorderBrush="White" Click="user1Btn6_Click">
+                    <Button x:Name="user1Btn6" HorizontalAlignment="Center" VerticalAlignment="Top" Width="166" Height="64" Margin="4,8,0,0" BorderBrush="White" Style="{StaticResource hover}">
                         <Button.Background>
                             <ImageBrush AlignmentX="Center" ImageSource="image\rectangle.png" Opacity="1" AlignmentY="Top"/>
                         </Button.Background>
@@ -124,7 +101,7 @@
                             <TextBlock x:Name="U6" Foreground="#FF000000" TextWrapping="Wrap" Margin="0,0,0,0" Width="102" FontSize="20"/>
                         </StackPanel>
                     </Button>
-                    <Button x:Name="user1Btn7" HorizontalAlignment="Center" VerticalAlignment="Top" Width="166" Height="64" Margin="4,8,0,0" BorderBrush="White" Click="user1Btn7_Click">
+                    <Button x:Name="user1Btn7" HorizontalAlignment="Center" VerticalAlignment="Top" Width="166" Height="64" Margin="4,8,0,0" BorderBrush="White" Style="{StaticResource hover}">
                         <Button.Background>
                             <ImageBrush AlignmentX="Center" ImageSource="image\rectangle.png" Opacity="1" AlignmentY="Top"/>
                         </Button.Background>
@@ -133,7 +110,7 @@
                             <TextBlock x:Name="U7" Foreground="#FF000000" TextWrapping="Wrap" Margin="0,0,0,0" Width="102" FontSize="20"/>
                         </StackPanel>
                     </Button>
-                    <Button x:Name="user1Btn8" HorizontalAlignment="Center" VerticalAlignment="Top" Width="166" Height="64" Margin="4,8,0,0" BorderBrush="White" Click="user1Btn8_Click">
+                    <Button x:Name="user1Btn8" HorizontalAlignment="Center" VerticalAlignment="Top" Width="166" Height="64" Margin="4,8,0,0" BorderBrush="White" Style="{StaticResource hover}">
                         <Button.Background>
                             <ImageBrush AlignmentX="Center" ImageSource="image\rectangle.png" Opacity="1" AlignmentY="Top"/>
                         </Button.Background>
@@ -208,17 +185,28 @@
                                     <ImageBrush AlignmentX="Center" ImageSource="image\pen.png" Opacity="1" AlignmentY="Top"/>
                                 </Button.Background>
                             </Button>
-                            <Image Source="image\undo.png" Opacity="1" Width="56" Height="56"  Grid.Column="0" VerticalAlignment="Bottom" Margin="0,0,0,4"/>
-                            <Button x:Name="undo" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="56" Height="56" Margin="0,0,0,4" BorderBrush="White" BorderThickness="0" Grid.Column="0" Click="Button_Checked" Background="#00ffffff" Style="{StaticResource hover}"/>
+                            <Button x:Name="undo" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="56" Height="56" Margin="0,0,0,4" BorderBrush="White" Click="Button_Checked" Grid.Column="0" Style="{StaticResource hover}">
+                                <Button.Template>
+                                    <ControlTemplate>
+                                        <Grid>
+                                            <Image Source="image\undo.png" />
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
                             <Button x:Name="delete" HorizontalAlignment="Center" VerticalAlignment="Top" Width="56" Height="56" Margin="0,4,0,0" BorderBrush="White" Click="Button_Checked" Grid.Column="1" Style="{StaticResource hover}">
                                 <Button.Background>
                                     <ImageBrush AlignmentX="Center" ImageSource="image\eraser.png" Opacity="1" AlignmentY="Top"/>
                                 </Button.Background>
                             </Button>
                             <Button x:Name="clear" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="56" Height="56" Margin="0,0,0,4" BorderBrush="White" Click="Button_Checked" Grid.Column="1" Style="{StaticResource hover}">
-                                <Button.Background>
-                                    <ImageBrush AlignmentX="Center" ImageSource="image\clear.png" Opacity="1" AlignmentY="Top"/>
-                                </Button.Background>
+                                <Button.Template>
+                                    <ControlTemplate>
+                                        <Grid>
+                                            <Image Source="image\clear.png" />
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Button.Template>
                             </Button>
                             <Image x:Name="SampleImage" Source="image\colorpicker.png" HorizontalAlignment="Left" Margin="2,6,0,0" VerticalAlignment="Top" Width="116" Height="87"  Stretch="Fill"  Grid.Column="2" MouseDown="image_MouseDown"/>
 
@@ -244,9 +232,13 @@
                     <TextBox Name="SendBox"  Background="#00FFFFFF" BorderThickness="0" FontSize="16" Margin="16,14,16,12" KeyUp="SendBox_KeyUp" TextWrapping="NoWrap" Grid.Column="3" VerticalAlignment="Center"/>
 
                     <Button x:Name="sendbtn" BorderThickness="0,0,0,0"  Margin="16,10,12,9"  Click="send_Click"  Grid.Column="4" Style="{StaticResource hover}">
-                        <Button.Background>
-                            <ImageBrush AlignmentX="Center" ImageSource="image\send.png" Opacity="1" AlignmentY="Center"/>
-                        </Button.Background>
+                        <Button.Template>
+                            <ControlTemplate>
+                                <Grid>
+                                    <Image Stretch="fill" Source="image\send.png" />
+                                </Grid>
+                            </ControlTemplate>
+                        </Button.Template>
                     </Button>
                 </Grid>
             </Grid>
