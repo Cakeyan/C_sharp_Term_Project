@@ -163,6 +163,8 @@ namespace Server
                         {
 
                         }
+                        item.Score += CC.Rooms[user.inRoom].users.Count - CC.Rooms[user.inRoom].correctNum - 1;
+                        CC.Rooms[user.inRoom].users[0].Score += 1;
                         item.isCorrect = true;
                         CC.Rooms[user.inRoom].correctNum += 1;
                     }
@@ -334,7 +336,7 @@ namespace Server
                 {
 
                 }
-                
+                item.Score = 0;
             }
             CC.Rooms[roomId].timer.restTime = CC.Rooms[roomId].timer.gameTime;
             CC.Rooms[roomId].timer.Start();

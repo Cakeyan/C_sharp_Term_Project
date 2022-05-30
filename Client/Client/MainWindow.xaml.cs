@@ -663,6 +663,12 @@ namespace Client
             TipLabel.Content = "";
             TipCheck = "";
             //TODO
+            string rank = "积分榜：\n";
+            for(int i=0;i<userNames.Length;++i)
+            {
+                rank += userNames[i] + " " + scores[i] + "\n";
+            }
+            ConversationBox.Text += rank;
         }
 
         #endregion
