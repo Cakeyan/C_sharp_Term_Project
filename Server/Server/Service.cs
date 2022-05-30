@@ -290,7 +290,7 @@ namespace Server
             if (timer.restTime == 0)
             {
                 //TODO
-                CC.Rooms[timer.roomId].timer.Stop();
+                CC.Rooms[timer.roomId].timer.Enabled = false;
                 RollUserAndRestart(timer.roomId);
                 return;
             }
@@ -311,7 +311,9 @@ namespace Server
                 CC.Rooms[roomId].question = new questions();
                 CC.Rooms[roomId].timer = new MyTimer();
                 CC.Rooms[roomId].timer.Interval = 1000;
-                CC.Rooms[roomId].timer.Enabled = true;
+                CC.Rooms[roomId].timer.restTime = 60;
+                //CC.Rooms[roomId].timer.Enabled = true;
+                
                 CC.Rooms[roomId].timer.Elapsed += timer_Tick;
                 CC.Rooms[roomId].timer.roomId = roomId;
             }
@@ -344,7 +346,7 @@ namespace Server
             user.ready = true;
             CC.Rooms[roomId].correctNum = 0;
 
-            //if (CC.Rooms[roomId].users.Count < CC.Rooms[roomId].leastBeginNum) return;
+            if (CC.Rooms[roomId].users.Count < CC.Rooms[roomId].leastBeginNum) return;
             //判断当前房间内所有用户是否准备好
             foreach (var item in CC.Rooms[roomId].users)
             {
@@ -366,7 +368,7 @@ namespace Server
             }
             
             CC.Rooms[roomId].timer.restTime = CC.Rooms[roomId].timer.gameTime;
-            CC.Rooms[roomId].timer.Start();
+            CC.Rooms[roomId].timer.Enabled = true;
             CC.Rooms[roomId].currentTurn = 1;
         }
 
@@ -374,7 +376,7 @@ namespace Server
         private void EndGame(int roomId)
         {
             CC.Rooms[roomId].isGameStart = false;
-            CC.Rooms[roomId].timer.Stop();
+            CC.Rooms[roomId].timer.Enabled = false;
             List<int> scores = new List<int>();
             List<string> userNames = new List<string>();
             foreach(var user in CC.Rooms[roomId].users)
@@ -432,7 +434,7 @@ namespace Server
                 }
             }
             CC.Rooms[roomId].timer.restTime = CC.Rooms[roomId].timer.gameTime;
-            CC.Rooms[roomId].timer.Start();
+            CC.Rooms[roomId].timer.Enabled = true;
         }
 
         public void CancelReadyGame(string userName, int roomId)
