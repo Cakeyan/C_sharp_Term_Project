@@ -36,7 +36,6 @@ namespace Server
                 {
                     return false;
                 }
-
             }
 
             var q = from t in myDbEntities.User

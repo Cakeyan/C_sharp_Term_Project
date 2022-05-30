@@ -73,7 +73,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>qsWLemK7dfVT0yyayX1W9zvHeFg0DkjBiOcRfGbPYRw=</dsig:DigestValue>
+        <dsig:DigestValue>62T8E4WL25fhBC2tmQVsA7kyhwdslGEHD1mUd4wAoyE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -92,7 +92,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>3nNQlUdQHngNkHW9x3xdKaojNwsaeuX/4Z8SNFhrySc=</dsig:DigestValue>
+      <dsig:DigestValue>tGiP1qFD7db0zmrfElYkrhO60kdeTYaADMj4eVb/o50=</dsig:DigestValue>
     </hash>
   </file>
   <file name="MyDb.tt" size="25273">
@@ -110,7 +110,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>5/WzLMkwcp8WB0iWpfsAk30fj87dufWdZ5kg5dFiJNc=</dsig:DigestValue>
+      <dsig:DigestValue>dtyPKZkyZFMqNLVXFxzxFI2vML3/swGPe55UAa8hMQc=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Server.exe.config" size="3236">
