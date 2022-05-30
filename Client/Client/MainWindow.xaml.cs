@@ -55,7 +55,7 @@ namespace Client
             ScoreLabel.Content = 0;
             inkcanvas.IsEnabled = false;
             clear.IsEnabled = false;
-
+            undo.IsEnabled = false;
         }
 
 
@@ -369,36 +369,6 @@ namespace Client
             string name = (e.Source as Button).Name;
             switch (name)
             {
-                case "red":
-                    inkcanvas.EditingMode = InkCanvasEditingMode.Ink;
-                    currentColor = Colors.Red;
-                    InitColor();
-                    break;
-                case "yellow":
-                    inkcanvas.EditingMode = InkCanvasEditingMode.Ink;
-                    currentColor = Colors.Yellow;
-                    InitColor();
-                    break;
-                case "blue":
-                    inkcanvas.EditingMode = InkCanvasEditingMode.Ink;
-                    currentColor = Colors.Blue;
-                    InitColor();
-                    break;
-                case "green":
-                    inkcanvas.EditingMode = InkCanvasEditingMode.Ink;
-                    currentColor = Colors.Green;
-                    InitColor();
-                    break;
-                case "pink":
-                    inkcanvas.EditingMode = InkCanvasEditingMode.Ink;
-                    currentColor = Colors.Pink;
-                    InitColor();
-                    break;
-                case "black":
-                    inkcanvas.EditingMode = InkCanvasEditingMode.Ink;
-                    currentColor = Colors.Black;
-                    InitColor();
-                    break;
                 case "delete":
                     inkcanvas.EditingMode = InkCanvasEditingMode.EraseByPoint;
                     break;
@@ -481,6 +451,12 @@ namespace Client
 
             this.MouseMove -= MainWindow_MouseMove;
             this.MouseUp -= MainWindow_MouseUp;
+        }
+
+        private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            inkcanvas.DefaultDrawingAttributes.Width = slider.Value;
+            inkcanvas.DefaultDrawingAttributes.Height = slider.Value;
         }
 
         #endregion
@@ -600,6 +576,7 @@ namespace Client
             if(us.Name==userName1)
             {
                 clear.IsEnabled = true;
+                undo.IsEnabled = true;
                 inkcanvas.IsEnabled = true;
                 sendbtn.IsEnabled = false;
                 TipLabel.Content = "题目：" + answer;
@@ -658,6 +635,7 @@ namespace Client
             readybtn.Content = "准备";
             restTimeTextBox.Text = "时间";
             clear.IsEnabled = false;
+            undo.IsEnabled = false;
             inkcanvas.IsEnabled = false;
             sendbtn.IsEnabled = true;
             TipLabel.Content = "";
@@ -672,6 +650,5 @@ namespace Client
         }
 
         #endregion
- 
     }
 }

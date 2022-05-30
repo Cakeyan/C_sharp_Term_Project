@@ -209,7 +209,7 @@
                             </Button>
                             <Image x:Name="SampleImage" Source="image\colorpicker.png" HorizontalAlignment="Left" Margin="2,6,0,0" VerticalAlignment="Top" Width="116" Height="87"  Stretch="Fill"  Grid.Column="2" MouseDown="image_MouseDown"/>
 
-                            <Slider Grid.Column="2" Maximum="20" Minimum="5" Margin="8,100,8,0" VerticalAlignment="Top"/>
+                            <Slider x:Name="slider" Grid.Column="2" Minimum="5" Maximum="20" Margin="8,100,8,0" VerticalAlignment="Top" ValueChanged="slider_ValueChanged"/>
                         </Grid>
                         <TextBlock Name="ConversationBox"  TextWrapping="Wrap" Text="" Margin="16,16,16,30" Focusable="True" Grid.Row="1" />
                     </Grid>
