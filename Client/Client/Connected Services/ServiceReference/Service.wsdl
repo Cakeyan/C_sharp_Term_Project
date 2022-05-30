@@ -58,6 +58,12 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
+    <wsdl:operation name="CancelReadyGame">
+      <soap12:operation soapAction="MyService/IService/CancelReadyGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="ShowInk">
       <soap12:operation soapAction="MyService/IService/ShowInk" style="document" />
       <wsdl:output>
@@ -120,6 +126,12 @@
     </wsdl:operation>
     <wsdl:operation name="EndGame">
       <soap12:operation soapAction="MyService/IService/EndGame" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="stopCancelReady">
+      <soap12:operation soapAction="MyService/IService/stopCancelReady" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

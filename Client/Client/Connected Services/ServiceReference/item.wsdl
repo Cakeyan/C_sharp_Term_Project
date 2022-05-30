@@ -32,6 +32,9 @@
   <wsdl:message name="IService_StartGame_InputMessage">
     <wsdl:part name="parameters" element="tns:StartGame" />
   </wsdl:message>
+  <wsdl:message name="IService_CancelReadyGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelReadyGame" />
+  </wsdl:message>
   <wsdl:message name="IService_ShowInk_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ShowInk" />
   </wsdl:message>
@@ -65,6 +68,9 @@
   <wsdl:message name="IService_EndGame_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:EndGame" />
   </wsdl:message>
+  <wsdl:message name="IService_stopCancelReady_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:stopCancelReady" />
+  </wsdl:message>
   <wsdl:portType name="IService">
     <wsdl:operation name="test">
       <wsdl:input wsaw:Action="MyService/IService/test" message="tns:IService_test_InputMessage" />
@@ -87,6 +93,9 @@
     </wsdl:operation>
     <wsdl:operation name="StartGame">
       <wsdl:input wsaw:Action="MyService/IService/StartGame" message="tns:IService_StartGame_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelReadyGame">
+      <wsdl:input wsaw:Action="MyService/IService/CancelReadyGame" message="tns:IService_CancelReadyGame_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ShowInk">
       <wsdl:output wsaw:Action="MyService/IService/ShowInk" message="tns:IService_ShowInk_OutputCallbackMessage" />
@@ -120,6 +129,9 @@
     </wsdl:operation>
     <wsdl:operation name="EndGame">
       <wsdl:output wsaw:Action="MyService/IService/EndGame" message="tns:IService_EndGame_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="stopCancelReady">
+      <wsdl:output wsaw:Action="MyService/IService/stopCancelReady" message="tns:IService_stopCancelReady_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>

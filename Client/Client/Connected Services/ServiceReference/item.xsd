@@ -62,6 +62,14 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="CancelReadyGame">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="roomId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="ShowInk">
     <xs:complexType>
       <xs:sequence>
@@ -143,6 +151,11 @@
         <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="userNames" nillable="true" type="q2:ArrayOfstring" />
         <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="scores" nillable="true" type="q3:ArrayOfint" />
       </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="stopCancelReady">
+    <xs:complexType>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
 </xs:schema>

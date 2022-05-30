@@ -41,20 +41,7 @@
                         </Setter.Value>
                     </Setter>
                 </Style>
-                <Style TargetType="Button">
-
-                    <Style.Triggers>
-                        <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Background" Value="#00FFFFFF"/>
-                            <Setter Property="Foreground" Value="#00FFFFFF"/>
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="true">
-                            <Setter Property="Background" Value="#00FFFFFF"/>
-                            <Setter Property="Foreground" Value="#00FFFFFF"/>
-                        </Trigger>
-                    </Style.Triggers>
-
-                </Style>
+                
             </Grid.Resources>
             <Frame x:Name="bg" NavigationUIVisibility="Hidden" Grid.ColumnSpan="2" >
                 <Frame.Background>

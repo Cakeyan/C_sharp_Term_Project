@@ -199,6 +199,12 @@ namespace Client.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="MyService/IService/StartGame")]
         System.Threading.Tasks.Task StartGameAsync(string userName, int roomId);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="MyService/IService/CancelReadyGame")]
+        void CancelReadyGame(string userName, int roomId);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="MyService/IService/CancelReadyGame")]
+        System.Threading.Tasks.Task CancelReadyGameAsync(string userName, int roomId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -236,6 +242,9 @@ namespace Client.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="MyService/IService/EndGame")]
         void EndGame(string[] userNames, int[] scores);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="MyService/IService/stopCancelReady")]
+        void stopCancelReady();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -320,6 +329,14 @@ namespace Client.ServiceReference {
         
         public System.Threading.Tasks.Task StartGameAsync(string userName, int roomId) {
             return base.Channel.StartGameAsync(userName, roomId);
+        }
+        
+        public void CancelReadyGame(string userName, int roomId) {
+            base.Channel.CancelReadyGame(userName, roomId);
+        }
+        
+        public System.Threading.Tasks.Task CancelReadyGameAsync(string userName, int roomId) {
+            return base.Channel.CancelReadyGameAsync(userName, roomId);
         }
     }
 }

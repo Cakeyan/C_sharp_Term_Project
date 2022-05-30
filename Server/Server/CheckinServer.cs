@@ -65,6 +65,16 @@ namespace Server
         public void Logout(string userName)
         {
             CheckinUser logoutUser = CheckinCC.GetUser(userName);
+            
+            
+            foreach(var user in CC.LoginUsers)
+            {
+                if (user.Name == userName)
+                {
+                    CC.LoginUsers.Remove(user);
+                    break;
+                }
+            }
             CheckinCC.Users.Remove(logoutUser);
             foreach (var user in CheckinCC.Users)
             {

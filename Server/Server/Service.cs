@@ -265,7 +265,14 @@ namespace Server
 
             foreach (MyUser user in CC.Rooms[timer.roomId].users)
             {
-                user.callback.ShowTime(timer.restTime);
+                try
+                {
+                    user.callback.ShowTime(timer.restTime);
+                }
+                catch
+                {
+
+                }
             }
 
             if (timer.restTime == 0)

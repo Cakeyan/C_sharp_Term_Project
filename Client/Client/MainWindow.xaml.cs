@@ -686,8 +686,15 @@ namespace Client
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            readybtn.IsEnabled = false;
-            readybtn.Content = "已准备";
+            //readybtn.IsEnabled = false;
+            if (readybtn.Content.ToString() == "取消准备")
+            {
+                client.CancelReadyGame(us.Name, roomId);
+                readybtn.Content = "准备";
+                return;
+            }
+            
+            readybtn.Content = "取消准备";
             client.StartGame(us.Name, roomId);
         }
         public void ShowStart(string userName1, string answer, string tip)
@@ -770,7 +777,10 @@ namespace Client
             }
             ConversationBox.Text += rank;
         }
-
+        public void stopCancelReady()
+        {
+            readybtn.IsEnabled = false;
+        }
         #endregion
     }
 }
