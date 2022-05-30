@@ -1,9 +1,8 @@
-Client/Client/bin/
-Client/Client/obj/
-Client/.vs/
-Server/Server/bin/
-Server/Server/obj/
-Server/.vs/
+Client/bin/*
+Client/obj/*
+Server/bin/*
+Server/obj/*
+.vs/*
 *.suo
 *.orig
 *.bat
