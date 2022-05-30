@@ -39,10 +39,10 @@ namespace Client
             loginclient = new LoginServiceClient();
             if (us.Avart == null)
                 us.Avart = "boy.png";
-            this.photo.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + us.Avart));
+            //this.photo.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + us.Avart));
             Checkinclient.Login(us.Name);
             //音效
-            
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
             player.Open(new Uri("bgm.mp3", UriKind.Relative));
             player.Play();
         }

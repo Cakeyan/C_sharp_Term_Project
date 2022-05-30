@@ -58,7 +58,15 @@ namespace Server
         {
             foreach (var item in CheckinCC.Users)
             {
-                item.Checkincallback.ShowTalk(userName, message);
+                try
+                {
+                    item.Checkincallback.ShowTalk(userName, message);
+                }
+                catch
+                {
+
+                }
+               
             }
         }
 

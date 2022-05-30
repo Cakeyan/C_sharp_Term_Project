@@ -52,7 +52,7 @@ namespace Client
             InitializeComponent();
             us = ustmp;
             item = CC.GetUser(us.Acount);
-
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
             ScoreLabel.Content = 0;
             inkcanvas.IsEnabled = false;

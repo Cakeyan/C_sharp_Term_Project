@@ -29,6 +29,7 @@ namespace Client
         {
             InitializeComponent();
             Verification = GetImage();
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
             client = new LoginServiceClient();
         }
 
