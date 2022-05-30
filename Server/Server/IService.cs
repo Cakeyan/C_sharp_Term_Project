@@ -159,7 +159,7 @@ namespace Server
         public int correctNum { get; set; }
 
         [DataMember]
-        public Timer timer { get; set; }
+        public MyTimer timer { get; set; }
         [DataMember]
         public int currentTurn { get; set; }
         [DataMember]
