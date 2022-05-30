@@ -172,7 +172,7 @@ namespace Server
                     {
                         try
                         {
-                            item.callback.ShowTalk("系统消息", string.Format("{0}猜中了", item.Name));
+                            item.callback.ShowTalk("系统消息", string.Format("{0}猜中了", userName));
                         }
                         catch
                         {
@@ -322,6 +322,13 @@ namespace Server
             //当前用户已准备
             MyUser user = CC.GetUser(userName);
             user.ready = true;
+            CC.Rooms[roomId].correctNum = 0;
+
+
+
+
+
+
             if (CC.Rooms[roomId].users.Count < CC.Rooms[roomId].leastBeginNum) return;
             //判断当前房间内所有用户是否准备好
             foreach (var item in CC.Rooms[roomId].users)
@@ -334,6 +341,7 @@ namespace Server
                 try
                 {
                     item.callback.ShowStart(CC.Rooms[roomId].users.First().Name, CC.Rooms[roomId].question.answer, CC.Rooms[roomId].question.tip);
+                    item.callback.stopCancelReady();
                 }
                 catch
                 {
@@ -411,6 +419,13 @@ namespace Server
             CC.Rooms[roomId].timer.restTime = CC.Rooms[roomId].timer.gameTime;
             CC.Rooms[roomId].timer.Start();
         }
+
+        public void CancelReadyGame(string userName, int roomId)
+        {
+            MyUser user = CC.GetUser(userName);
+            user.ready = false;
+        }
+
         #endregion
 
     }

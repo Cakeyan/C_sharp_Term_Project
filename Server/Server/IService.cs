@@ -54,6 +54,8 @@ namespace Server
         [OperationContract(IsOneWay = true)]
         void StartGame(string userName, int roomId);
 
+        [OperationContract(IsOneWay = true)]
+        void CancelReadyGame(string userName, int roomId);
         #endregion
 
     }
@@ -105,6 +107,9 @@ namespace Server
 
         [OperationContract(IsOneWay = true)]
         void EndGame(List<string> userNames, List<int> scores);
+
+        [OperationContract(IsOneWay = true)]
+        void stopCancelReady();
 
         #endregion
     }
