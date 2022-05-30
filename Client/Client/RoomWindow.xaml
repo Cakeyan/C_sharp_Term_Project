@@ -52,10 +52,34 @@
             <Button  x:Name="exitBnt" Grid.Column="0" Grid.Row="2" BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="48" Height="48"  BorderBrush="White" Foreground="White" Click="exitBnt_Click" Margin="72,0,0,0" Background="#00ffffff">
                 <Image Source="/image/close.png" Width="42" />
             </Button>
-            <Button x:Name="room1user1Btn" Content="房间1" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" Margin="0,0,32,32" VerticalAlignment="Bottom" Width="420" Height="260" Background="#FFFFEE" Foreground="Black" Click="room_Click"/>
-            <Button x:Name="room2user1Btn" Content="房间2" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" Margin="32,0,0,32" VerticalAlignment="Bottom" Width="420" Height="260" Background="#FFFFEE" Foreground="Black" Click="room_Click"/>
-            <Button x:Name="room3user1Btn" Content="房间3" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" Margin="0,32,32,0" VerticalAlignment="Top" Width="420" Height="260" Background="#FFFFEE" Foreground="Black" Click="room_Click"/>
-            <Button x:Name="room4user1Btn" Content="房间4" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Margin="32,32,0,0" VerticalAlignment="Top" Width="420" Height="260" Background="#FFFFEE" Foreground="Black" Click="room_Click"/>
+            <Button x:Name="room1user1Btn" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" Margin="0,0,32,32" VerticalAlignment="Bottom" Width="420" Height="260" Foreground="Black" Click="room_Click" FontSize="36">
+                <StackPanel Height="260" Width="420" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Foreground="#FF000000" HorizontalAlignment="Center" Text="房间1" FontSize="48" Padding="120,32,120,8"/>
+                    <TextBlock Name="room1player" Foreground="#FF000000" HorizontalAlignment="Center" Text="1/8" FontSize="36" Padding="144,8,144,8"/>
+                    <TextBlock Name="room1info" Foreground="#FF000000" HorizontalAlignment="Center" Text="游戏中" FontSize="40" Padding="120,8,120,32"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="room2user1Btn" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" Margin="32,0,0,32" VerticalAlignment="Bottom" Width="420" Height="260" Foreground="Black" Click="room_Click">
+                <StackPanel Height="260" Width="420" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Foreground="#FF000000" HorizontalAlignment="Center" Text="房间2" FontSize="48" Padding="120,32,120,8"/>
+                    <TextBlock Name="room2player" Foreground="#FF000000" HorizontalAlignment="Center" Text="2/8" FontSize="36" Padding="144,8,144,8"/>
+                    <TextBlock Name="room2info" Foreground="#FF000000" HorizontalAlignment="Center" Text="可加入" FontSize="40" Padding="120,8,120,32"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="room3user1Btn" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" Margin="0,32,32,0" VerticalAlignment="Top" Width="420" Height="260" Foreground="Black" Click="room_Click">
+                <StackPanel Height="260" Width="420" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Foreground="#FF000000" HorizontalAlignment="Center" Text="房间3" FontSize="48" Padding="120,32,120,8"/>
+                    <TextBlock Name="room3player" Foreground="#FF000000" HorizontalAlignment="Center" Text="3/8" FontSize="36" Padding="144,8,144,8"/>
+                    <TextBlock Name="room3info" Foreground="#FF000000" HorizontalAlignment="Center" Text="可加入" FontSize="40" Padding="120,8,120,32"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="room4user1Btn" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Margin="32,32,0,0" VerticalAlignment="Top" Width="420" Height="260" Foreground="Black" Click="room_Click">
+                <StackPanel Height="260" Width="420" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Foreground="#FF000000" HorizontalAlignment="Center" Text="房间4" FontSize="48" Padding="120,32,120,8"/>
+                    <TextBlock Name="room4player" Foreground="#FF000000" HorizontalAlignment="Center" Text="4/8" FontSize="36" Padding="144,8,144,8"/>
+                    <TextBlock Name="room4info" Foreground="#FF000000" HorizontalAlignment="Center" Text="游戏中" FontSize="40" Padding="120,8,120,32"/>
+                </StackPanel>
+            </Button>
         </Grid>
     </Canvas>
 </Window>

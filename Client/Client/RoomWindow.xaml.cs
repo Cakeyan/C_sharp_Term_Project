@@ -29,6 +29,9 @@ namespace Client
         private User item;//每一个id所属，item可以控制该id下的所有窗口
         public LoginReference.User us;//用户的所有信息
         MediaPlayer player = new MediaPlayer();
+        bool[] arr1 = { true, false, true, false};
+        string[] arr2 = { "3", "2", "4", "1"};
+
 
         public RoomWindow(LoginReference.User ustmp)
         {
@@ -45,6 +48,19 @@ namespace Client
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             player.Open(new Uri("bgm.mp3", UriKind.Relative));
             player.Play();
+            refreshRoomInfo(arr2, arr1);
+        }
+
+        private void refreshRoomInfo(string[] roomplayernum, bool[] hasstart)
+        {
+            room1player.Text = roomplayernum[0] + "/8";
+            room2player.Text = roomplayernum[1] + "/8";
+            room3player.Text = roomplayernum[2] + "/8";
+            room4player.Text = roomplayernum[3] + "/8";
+            room1info.Text = hasstart[0] ? "游戏中" : "可加入";
+            room2info.Text = hasstart[1] ? "游戏中" : "可加入";
+            room3info.Text = hasstart[2] ? "游戏中" : "可加入";
+            room4info.Text = hasstart[3] ? "游戏中" : "可加入";
         }
 
         //进入房间
@@ -133,7 +149,7 @@ namespace Client
 
         #endregion
 
-       public int musiccount = 0;
+        public int musiccount = 0;
         private void music_Click(object sender, RoutedEventArgs e)
         {
             musiccount++;
