@@ -599,6 +599,13 @@ namespace Client
                 ConversationBox.Text += string.Format("系统提示：{0}更换题目\n",userName1);
             }
         }
+
+
+        public void refreshRoomInfo(int[] roomPlayerNum, bool[] isStart)
+        {
+
+        }
+
         #endregion
 
         private void changeQues(object sender, RoutedEventArgs e)

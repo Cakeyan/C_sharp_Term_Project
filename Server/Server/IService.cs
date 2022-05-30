@@ -85,6 +85,7 @@ namespace Server
         [OperationContract(IsOneWay = true)]
         void ShowTalk(string userName, string message);
 
+
         //为了刷新用户列表
         [OperationContract(IsOneWay = true)]
         void ShowInfo(List<Userdata> userdatas);

@@ -29,8 +29,8 @@ namespace Client
         private User item;//每一个id所属，item可以控制该id下的所有窗口
         public LoginReference.User us;//用户的所有信息
         MediaPlayer player = new MediaPlayer();
-        bool[] arr1 = { true, false, true, false};
-        string[] arr2 = { "3", "2", "4", "1"};
+        //bool[] arr1 = { true, false, true, false};
+        //string[] arr2 = { "3", "2", "4", "1"};
 
 
         public RoomWindow(LoginReference.User ustmp)
@@ -48,19 +48,19 @@ namespace Client
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             player.Open(new Uri("bgm.mp3", UriKind.Relative));
             player.Play();
-            refreshRoomInfo(arr2, arr1);
+            //refreshRoomInfo(arr2, arr1);
         }
 
-        private void refreshRoomInfo(string[] roomplayernum, bool[] hasstart)
+        public void refreshRoomInfo(int[] roomPlayerNum, bool[] isStart)
         {
-            room1player.Text = roomplayernum[0] + "/8";
-            room2player.Text = roomplayernum[1] + "/8";
-            room3player.Text = roomplayernum[2] + "/8";
-            room4player.Text = roomplayernum[3] + "/8";
-            room1info.Text = hasstart[0] ? "游戏中" : "可加入";
-            room2info.Text = hasstart[1] ? "游戏中" : "可加入";
-            room3info.Text = hasstart[2] ? "游戏中" : "可加入";
-            room4info.Text = hasstart[3] ? "游戏中" : "可加入";
+            room1player.Text = roomPlayerNum[0].ToString() + "/8";
+            room2player.Text = roomPlayerNum[1].ToString() + "/8";
+            room3player.Text = roomPlayerNum[2].ToString() + "/8";
+            room4player.Text = roomPlayerNum[3].ToString() + "/8";
+            room1info.Text = isStart[0] ? "游戏中" : "可加入";
+            room2info.Text = isStart[1] ? "游戏中" : "可加入";
+            room3info.Text = isStart[2] ? "游戏中" : "可加入";
+            room4info.Text = isStart[3] ? "游戏中" : "可加入";
         }
 
         //进入房间
@@ -69,10 +69,10 @@ namespace Client
             //确定点击了几号房间
             Button bt = e.Source as Button;
             int idx = (int)((bt.Name)[4]) - 48;
-            bool isCanEnter = Checkinclient.Checkin(us.Name, idx);
-            if (!isCanEnter)
+            string isCanEnter = Checkinclient.Checkin(us.Name, idx);
+            if (isCanEnter!="OK")
             {
-                MessageBox.Show("房间人数已满。");
+                MessageBox.Show(isCanEnter);
                 return;
             }
             //设置大厅隐藏，打开游戏

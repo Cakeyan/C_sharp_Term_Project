@@ -64,6 +64,15 @@ namespace Server
             us.Password = pw;
             us.Sign = sn;
             us.Name = name;
+            
+            var users = from t in myDbEntities.User
+                    where t.Acount == id
+                    select t;
+            if (users.Count() > 0)
+            {
+                return "该用户已经存在";
+            }
+
 
             var q = from t in myDbEntities.Table
                     orderby t.ableTime descending
@@ -134,9 +143,8 @@ namespace Server
 
                 NetworkCredential networkCredential = new NetworkCredential(sendEmail, sendpwd);
                 smtpclient.Credentials = networkCredential;
-
-                smtpclient.Send(mailMessage);
                 MyDbEntities myDbEntities = new MyDbEntities();
+                smtpclient.Send(mailMessage);
                 Table table = new Table();
                 table.email = email;
                 table.code = code;

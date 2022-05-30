@@ -98,11 +98,11 @@ namespace Client
             //开始向服务端申请，尝试修改密码
             try
             {
-                bool flag = client.ForgetPassword(Account.Text, PassWord.Password,mailCode.Text);
-                if (flag)
+                string flag = client.ForgetPassword(Account.Text, PassWord.Password,mailCode.Text);
+                if (flag=="OK")
                     MessageBox.Show("修改成功！");
                 else
-                    MessageBox.Show("修改失败，请检查账号是否输入有误！");
+                    MessageBox.Show(flag);
             }
             catch (Exception)
             {

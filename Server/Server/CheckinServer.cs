@@ -18,6 +18,36 @@ namespace Server
             }
         }
 
+        private void refreshRoomInfo()
+        {
+            List<int> roomPlayerNum = new List<int>();
+            List<bool> isStart = new List<bool>();
+            for (int i = 1; i <= 4; ++i)
+            {
+                if (CC.Rooms.ContainsKey(i))
+                {
+                    roomPlayerNum.Add(CC.Rooms[i].users.Count());
+                    isStart.Add(CC.Rooms[i].isGameStart);
+                }
+                else
+                {
+                    roomPlayerNum.Add(0);
+                    isStart.Add(false);
+                }
+            }
+            foreach (var item in CheckinCC.Users)
+            {
+                try
+                {
+                    item.Checkincallback.refreshRoomInfo(roomPlayerNum, isStart);
+                }
+                catch
+                {
+
+                }
+            }
+        }
+
         public void Login(string userName)
         {
             OperationContext context = OperationContext.Current;
@@ -35,11 +65,13 @@ namespace Server
                     Console.WriteLine(ex.Message);
                 }
             }
+            refreshRoomInfo();
         }
 
-        public bool Checkin(string userName, int roomnumber)
+        public string Checkin(string userName, int roomnumber)
         {
-            if (CC.Rooms.ContainsKey(roomnumber)&&(CC.Rooms[roomnumber].users.Count >= CC.Rooms[roomnumber].maxUserNum || CC.Rooms[roomnumber].isGameStart)) return false;
+            if (CC.Rooms.ContainsKey(roomnumber)&&(CC.Rooms[roomnumber].users.Count >= CC.Rooms[roomnumber].maxUserNum)) return "人数已满";
+            if (CC.Rooms.ContainsKey(roomnumber)&&(CC.Rooms[roomnumber].isGameStart)) return "游戏已经开始";
             foreach (var item in CheckinCC.Users)
             {
                 try
@@ -51,7 +83,7 @@ namespace Server
 
                 }
             }
-            return true;
+            return "OK";
         }
 
         public void Talk(string userName, string message)

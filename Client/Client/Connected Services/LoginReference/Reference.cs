@@ -181,10 +181,10 @@ namespace Client.LoginReference {
         System.Threading.Tasks.Task<bool> LoginAsync(string id, string pw);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/Registered", ReplyAction="http://tempuri.org/ILoginService/RegisteredResponse")]
-        bool Registered(string id, string pw, string sn, string name, string code);
+        string Registered(string id, string pw, string sn, string name, string code);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/Registered", ReplyAction="http://tempuri.org/ILoginService/RegisteredResponse")]
-        System.Threading.Tasks.Task<bool> RegisteredAsync(string id, string pw, string sn, string name, string code);
+        System.Threading.Tasks.Task<string> RegisteredAsync(string id, string pw, string sn, string name, string code);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/sendEmail", ReplyAction="http://tempuri.org/ILoginService/sendEmailResponse")]
         bool sendEmail(string email);
@@ -193,10 +193,10 @@ namespace Client.LoginReference {
         System.Threading.Tasks.Task<bool> sendEmailAsync(string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/ForgetPassword", ReplyAction="http://tempuri.org/ILoginService/ForgetPasswordResponse")]
-        bool ForgetPassword(string id, string ps, string code);
+        string ForgetPassword(string id, string ps, string code);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/ForgetPassword", ReplyAction="http://tempuri.org/ILoginService/ForgetPasswordResponse")]
-        System.Threading.Tasks.Task<bool> ForgetPasswordAsync(string id, string ps, string code);
+        System.Threading.Tasks.Task<string> ForgetPasswordAsync(string id, string ps, string code);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/Userinfo", ReplyAction="http://tempuri.org/ILoginService/UserinfoResponse")]
         Client.LoginReference.User Userinfo(string id);
@@ -246,11 +246,11 @@ namespace Client.LoginReference {
             return base.Channel.LoginAsync(id, pw);
         }
         
-        public bool Registered(string id, string pw, string sn, string name, string code) {
+        public string Registered(string id, string pw, string sn, string name, string code) {
             return base.Channel.Registered(id, pw, sn, name, code);
         }
         
-        public System.Threading.Tasks.Task<bool> RegisteredAsync(string id, string pw, string sn, string name, string code) {
+        public System.Threading.Tasks.Task<string> RegisteredAsync(string id, string pw, string sn, string name, string code) {
             return base.Channel.RegisteredAsync(id, pw, sn, name, code);
         }
         
@@ -262,11 +262,11 @@ namespace Client.LoginReference {
             return base.Channel.sendEmailAsync(email);
         }
         
-        public bool ForgetPassword(string id, string ps, string code) {
+        public string ForgetPassword(string id, string ps, string code) {
             return base.Channel.ForgetPassword(id, ps, code);
         }
         
-        public System.Threading.Tasks.Task<bool> ForgetPasswordAsync(string id, string ps, string code) {
+        public System.Threading.Tasks.Task<string> ForgetPasswordAsync(string id, string ps, string code) {
             return base.Channel.ForgetPasswordAsync(id, ps, code);
         }
         

@@ -84,11 +84,11 @@ namespace Client
 
         private void Button_Click_Register(object sender, RoutedEventArgs e)
         {
-            bool flag = client.Registered(Account.Text, PassWord.Password, "签名文本删掉", AccountName.Text, code.Text);
-            if (flag)
+            string flag = client.Registered(Account.Text, PassWord.Password, "签名文本删掉", AccountName.Text, code.Text);
+            if (flag=="OK")
                 MessageBox.Show("注册成功！");
             else
-                MessageBox.Show("注册失败，该账号可能已存在！");
+                MessageBox.Show(flag);
         }
 
         private void Reg_KeyUp(object sender, KeyEventArgs e)

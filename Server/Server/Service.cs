@@ -255,7 +255,7 @@ namespace Server
                 }
             }
             logoutUser = null; //将其设置为null后，WCF会自动关闭该客户端
-
+            refreshRoomInfo();
         }
 
 
@@ -264,7 +264,35 @@ namespace Server
         #endregion
 
         #region 游戏的服务端接口实现
+        private void refreshRoomInfo()
+        {
+            List<int> roomPlayerNum = new List<int>();
+            List<bool> isStart = new List<bool>();
+            for(int i=1;i<=4;++i)
+            {
+                if (CC.Rooms.ContainsKey(i))
+                {
+                    roomPlayerNum.Add(CC.Rooms[i].users.Count());
+                    isStart.Add(CC.Rooms[i].isGameStart);
+                }
+                else
+                {
+                    roomPlayerNum.Add(0);
+                    isStart.Add(false);
+                }
+            }
+            foreach (var item in CheckinCC.Users)
+            {
+                try
+                {
+                    item.Checkincallback.refreshRoomInfo(roomPlayerNum, isStart);
+                }
+                catch
+                {
 
+                }
+            }
+        }
         private void timer_Tick(object sender, EventArgs e)
         {
             MyTimer timer = sender as MyTimer;
@@ -337,6 +365,7 @@ namespace Server
                 }
                 
             }
+            refreshRoomInfo();
         }
         public void StartGame(string userName, int roomId)
         {
@@ -369,6 +398,7 @@ namespace Server
             CC.Rooms[roomId].timer.restTime = CC.Rooms[roomId].timer.gameTime;
             CC.Rooms[roomId].timer.Enabled = true;
             CC.Rooms[roomId].currentTurn = 1;
+            refreshRoomInfo();
         }
 
 
@@ -376,6 +406,7 @@ namespace Server
         {
             CC.Rooms[roomId].isGameStart = false;
             CC.Rooms[roomId].timer.Enabled = false;
+            refreshRoomInfo();
             List<int> scores = new List<int>();
             List<string> userNames = new List<string>();
             foreach(var user in CC.Rooms[roomId].users)

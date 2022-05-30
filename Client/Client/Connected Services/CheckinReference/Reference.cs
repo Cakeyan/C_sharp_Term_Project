@@ -34,10 +34,10 @@ namespace Client.CheckinReference {
         System.Threading.Tasks.Task TalkAsync(string userName, string message);
         
         [System.ServiceModel.OperationContractAttribute(Action="MyService/ICheckinServer/Checkin", ReplyAction="MyService/ICheckinServer/CheckinResponse")]
-        bool Checkin(string userName, int roomnumber);
+        string Checkin(string userName, int roomnumber);
         
         [System.ServiceModel.OperationContractAttribute(Action="MyService/ICheckinServer/Checkin", ReplyAction="MyService/ICheckinServer/CheckinResponse")]
-        System.Threading.Tasks.Task<bool> CheckinAsync(string userName, int roomnumber);
+        System.Threading.Tasks.Task<string> CheckinAsync(string userName, int roomnumber);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -54,6 +54,9 @@ namespace Client.CheckinReference {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="MyService/ICheckinServer/ShowTalk")]
         void ShowTalk(string userName, string message);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="MyService/ICheckinServer/refreshRoomInfo")]
+        void refreshRoomInfo(int[] roomPlayerNum, bool[] isStart);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -108,11 +111,11 @@ namespace Client.CheckinReference {
             return base.Channel.TalkAsync(userName, message);
         }
         
-        public bool Checkin(string userName, int roomnumber) {
+        public string Checkin(string userName, int roomnumber) {
             return base.Channel.Checkin(userName, roomnumber);
         }
         
-        public System.Threading.Tasks.Task<bool> CheckinAsync(string userName, int roomnumber) {
+        public System.Threading.Tasks.Task<string> CheckinAsync(string userName, int roomnumber) {
             return base.Channel.CheckinAsync(userName, roomnumber);
         }
     }

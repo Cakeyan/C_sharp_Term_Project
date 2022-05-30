@@ -22,7 +22,8 @@ namespace Server
         void Talk(string userName, string message);
 
         [OperationContract]
-        bool Checkin(string userName, int roomnumber);
+        string Checkin(string userName, int roomnumber);
+
     }
 
     public interface ICheckinServerCallback
@@ -38,5 +39,8 @@ namespace Server
 
         [OperationContract(IsOneWay = true)]
         void ShowTalk(string userName, string message);
+
+        [OperationContract(IsOneWay = true)]
+        void refreshRoomInfo(List<int> roomPlayerNum, List<bool> isStart);
     }
 }
