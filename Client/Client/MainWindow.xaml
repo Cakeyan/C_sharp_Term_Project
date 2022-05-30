@@ -12,6 +12,50 @@
                 <ColumnDefinition Width="210"/>
                 <ColumnDefinition Width="1070"/>
             </Grid.ColumnDefinitions>
+            <Grid.Resources>
+                <Style x:Key="DecreaseBtn" TargetType="{x:Type RepeatButton}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type RepeatButton}">
+                                <Border Background="{TemplateBinding Background}"
+            Height="{TemplateBinding Height}" Width="{TemplateBinding Width}">
+                                    <!--轨迹，设置Background-->
+                                    <Border Margin="0,0,-1,0" Background="#000000"
+              VerticalAlignment="center" Height="4.0" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+                <Style x:Key="IncreaseBtn" TargetType="{x:Type RepeatButton}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type RepeatButton}">
+                                <Border Background="{TemplateBinding Background}"
+            Height="{TemplateBinding Height}" Width="{TemplateBinding Width}">
+                                    <!--轨迹，设置Background-->
+                                    <Border Margin="0,0,-1,0" Background="#000000"
+              VerticalAlignment="center" Height="4.0" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+                <Style TargetType="Button">
+
+                    <Style.Triggers>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Background" Value="#00FFFFFF"/>
+                            <Setter Property="Foreground" Value="#00FFFFFF"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="true">
+                            <Setter Property="Background" Value="#00FFFFFF"/>
+                            <Setter Property="Foreground" Value="#00FFFFFF"/>
+                        </Trigger>
+                    </Style.Triggers>
+
+                </Style>
+            </Grid.Resources>
             <Frame x:Name="bg" NavigationUIVisibility="Hidden" Grid.ColumnSpan="2" >
                 <Frame.Background>
                     <ImageBrush AlignmentX="Left" ImageSource="image\UI-background.png" Opacity="1" AlignmentY="Top"/>
@@ -23,36 +67,7 @@
                     <RowDefinition Height="68"/>
                     <RowDefinition Height="652"/>
                 </Grid.RowDefinitions>
-                <Grid.Resources>
-                    <Style x:Key="DecreaseBtn" TargetType="{x:Type RepeatButton}">
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="{x:Type RepeatButton}">
-                                    <Border Background="{TemplateBinding Background}"
-            Height="{TemplateBinding Height}" Width="{TemplateBinding Width}">
-                                        <!--轨迹，设置Background-->
-                                        <Border Margin="0,0,-1,0" Background="#000000"
-              VerticalAlignment="center" Height="4.0" />
-                                    </Border>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                    <Style x:Key="IncreaseBtn" TargetType="{x:Type RepeatButton}">
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="{x:Type RepeatButton}">
-                                    <Border Background="{TemplateBinding Background}"
-            Height="{TemplateBinding Height}" Width="{TemplateBinding Width}">
-                                        <!--轨迹，设置Background-->
-                                        <Border Margin="0,0,-1,0" Background="#000000"
-              VerticalAlignment="center" Height="4.0" />
-                                    </Border>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </Grid.Resources>
+                
                 <ListBox Name="UserBox" HorizontalAlignment="Center" Height="620" Margin="12,16,12,16" VerticalAlignment="Top" Width="188" Grid.Row="1" BorderThickness="0" Background="#0000">
                     <Button x:Name="user1Btn1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="166" Height="64" Margin="4,8,0,0" BorderBrush="White" Click="user1Btn1_Click" RenderTransformOrigin="0.5,0.5">
                         <Button.Background>
@@ -192,11 +207,8 @@
                                     <ImageBrush AlignmentX="Center" ImageSource="image\pen.png" Opacity="1" AlignmentY="Top"/>
                                 </Button.Background>
                             </Button>
-                            <Button x:Name="undo" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="56" Height="56" Margin="0,0,0,4" BorderBrush="White" Grid.Column="0" Click="Button_Checked">
-                                <Button.Background>
-                                    <ImageBrush AlignmentX="Center" ImageSource="image\undo.png" Opacity="1" AlignmentY="Top"/>
-                                </Button.Background>
-                            </Button>
+                            <Image Source="image\undo.png" Opacity="1" Width="56" Height="56"  Grid.Column="0" VerticalAlignment="Bottom" Margin="0,0,0,4"/>
+                            <Button x:Name="undo" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="56" Height="56" Margin="0,0,0,4" BorderBrush="White" BorderThickness="0" Grid.Column="0" Click="Button_Checked" Background="#00ffffff" />
                             <Button x:Name="delete" HorizontalAlignment="Center" VerticalAlignment="Top" Width="56" Height="56" Margin="0,4,0,0" BorderBrush="White" Click="Button_Checked" Grid.Column="1">
                                 <Button.Background>
                                     <ImageBrush AlignmentX="Center" ImageSource="image\eraser.png" Opacity="1" AlignmentY="Top"/>
@@ -211,7 +223,9 @@
 
                             <Slider x:Name="slider" Grid.Column="2" Minimum="5" Maximum="20" Margin="8,100,8,0" VerticalAlignment="Top" ValueChanged="slider_ValueChanged"/>
                         </Grid>
-                        <TextBlock Name="ConversationBox"  TextWrapping="Wrap" Text="" Margin="16,16,16,30" Focusable="True" Grid.Row="1" />
+                        <ScrollViewer Margin="16,16,8,30" Grid.Row="1">
+                            <TextBlock Name="ConversationBox"  TextWrapping="Wrap" Text=""  Focusable="True"/>
+                        </ScrollViewer>
                     </Grid>
                 </Grid>
                 <Grid Height="60" HorizontalAlignment="Left" Width="1070" Grid.Row="2">
@@ -226,7 +240,7 @@
                     <Label Name="textBoxUserName" Content="用户名？" FontSize="12" Margin="0,0,0,0" Foreground="Red" Grid.Column="1" VerticalAlignment="Center"/>
                     <Button x:Name="readybtn" Content="准备" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Width="75" Height="28" Background="#7FF0E793" FontSize="16" Click="Button_Click" Grid.Column="2"/>
 
-                    <TextBox Name="SendBox"  Background="#00FFFFFF" BorderThickness="0" FontSize="16" Margin="16,14,16,12" KeyUp="SendBox_KeyUp" TextWrapping="Wrap" Grid.Column="3" VerticalAlignment="Center"/>
+                    <TextBox Name="SendBox"  Background="#00FFFFFF" BorderThickness="0" FontSize="16" Margin="16,14,16,12" KeyUp="SendBox_KeyUp" TextWrapping="NoWrap" Grid.Column="3" VerticalAlignment="Center"/>
 
                     <Button x:Name="sendbtn" BorderThickness="0,0,0,0"  Margin="16,10,12,9"  Click="send_Click"  Grid.Column="4">
                         <Button.Background>

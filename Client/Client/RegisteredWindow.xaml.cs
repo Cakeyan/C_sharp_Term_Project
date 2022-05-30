@@ -93,5 +93,13 @@ namespace Client
             else
                 MessageBox.Show("注册失败，该账号可能已存在！");
         }
+
+        private void Reg_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Button_Click_Register(sender,e);
+            }
+        }
     }
 }

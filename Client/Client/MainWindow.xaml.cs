@@ -1,4 +1,6 @@
-﻿using System;
+﻿// zyx 1248
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -497,41 +499,161 @@ namespace Client
             this.photo2.Source = null;
             this.photo3.Source = null;
             this.photo4.Source = null;
+            this.photo5.Source = null;
+            this.photo6.Source = null;
+            this.photo7.Source = null;
+            this.photo8.Source = null;
             this.U1.Text = "";
             this.U2.Text = "";
             this.U3.Text = "";
             this.U4.Text = "";
+            this.U5.Text = "";
+            this.U6.Text = "";
+            this.U7.Text = "";
+            this.U8.Text = "";
 
 
             //得到了已登录的所有用户的信息
             if (usarr[0].Avart == null)
                 usarr[0].Avart = "boy.png";
             this.photo1.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + usarr[0].Avart));
-            this.U1.Text += usarr[0].Name + '\n' + " 等级：" + usarr[0].Grade + '\n' ;
+            this.U1.Text += usarr[0].Name + '\n' + usarr[0].Grade;
 
             if (cnt == 1)
+            {
+                user1Btn1.Visibility = Visibility.Visible;
+                user1Btn2.Visibility = Visibility.Collapsed;
+                user1Btn3.Visibility = Visibility.Collapsed;
+                user1Btn4.Visibility = Visibility.Collapsed;
+                user1Btn5.Visibility = Visibility.Collapsed;
+                user1Btn6.Visibility = Visibility.Collapsed;
+                user1Btn7.Visibility = Visibility.Collapsed;
+                user1Btn8.Visibility = Visibility.Collapsed;
                 return;
+            }
 
             if (usarr[1].Avart == null)
                 usarr[1].Avart = "boy.png";
             this.photo2.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + usarr[1].Avart));
-            this.U2.Text += usarr[1].Name + '\n' + " 等级：" + usarr[1].Grade + '\n' ;
+            this.U2.Text += usarr[1].Name + '\n' + usarr[1].Grade;
 
             if (cnt == 2)
+            {
+                user1Btn1.Visibility = Visibility.Visible;
+                user1Btn2.Visibility = Visibility.Visible;
+                user1Btn3.Visibility = Visibility.Collapsed;
+                user1Btn4.Visibility = Visibility.Collapsed;
+                user1Btn5.Visibility = Visibility.Collapsed;
+                user1Btn6.Visibility = Visibility.Collapsed;
+                user1Btn7.Visibility = Visibility.Collapsed;
+                user1Btn8.Visibility = Visibility.Collapsed;
                 return;
+            }
 
             if (usarr[2].Avart == null)
                 usarr[2].Avart = "boy.png";
             this.photo3.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + usarr[2].Avart));
-            this.U3.Text += usarr[2].Name + '\n' + " 等级：" + usarr[2].Grade + '\n' ;
+            this.U3.Text += usarr[2].Name + '\n' + usarr[2].Grade;
 
             if (cnt == 3)
+            {
+                user1Btn1.Visibility = Visibility.Visible;
+                user1Btn2.Visibility = Visibility.Visible;
+                user1Btn3.Visibility = Visibility.Visible;
+                user1Btn4.Visibility = Visibility.Collapsed;
+                user1Btn5.Visibility = Visibility.Collapsed;
+                user1Btn6.Visibility = Visibility.Collapsed;
+                user1Btn7.Visibility = Visibility.Collapsed;
+                user1Btn8.Visibility = Visibility.Collapsed;
                 return;
+            }
 
             if (usarr[3].Avart == null)
                 usarr[3].Avart = "boy.png";
             this.photo4.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + usarr[3].Avart));
-            this.U4.Text += usarr[3].Name + '\n' + " 等级：" + usarr[3].Grade + '\n' + '\n';
+            this.U4.Text += usarr[3].Name + '\n' + usarr[3].Grade;
+
+            if (cnt == 4)
+            {
+                user1Btn1.Visibility = Visibility.Visible;
+                user1Btn2.Visibility = Visibility.Visible;
+                user1Btn3.Visibility = Visibility.Visible;
+                user1Btn4.Visibility = Visibility.Visible;
+                user1Btn5.Visibility = Visibility.Collapsed;
+                user1Btn6.Visibility = Visibility.Collapsed;
+                user1Btn7.Visibility = Visibility.Collapsed;
+                user1Btn8.Visibility = Visibility.Collapsed;
+                return;
+            }
+
+            if (usarr[4].Avart == null)
+                usarr[4].Avart = "boy.png";
+            this.photo5.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + usarr[4].Avart));
+            this.U5.Text += usarr[4].Name + '\n' + usarr[4].Grade;
+
+            if (cnt == 5)
+            {
+                user1Btn1.Visibility = Visibility.Visible;
+                user1Btn2.Visibility = Visibility.Visible;
+                user1Btn3.Visibility = Visibility.Visible;
+                user1Btn4.Visibility = Visibility.Visible;
+                user1Btn5.Visibility = Visibility.Visible;
+                user1Btn6.Visibility = Visibility.Collapsed;
+                user1Btn7.Visibility = Visibility.Collapsed;
+                user1Btn8.Visibility = Visibility.Collapsed;
+                return;
+            }
+
+            if (usarr[5].Avart == null)
+                usarr[5].Avart = "boy.png";
+            this.photo6.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + usarr[5].Avart));
+            this.U6.Text += usarr[5].Name + '\n' + usarr[5].Grade;
+
+            if (cnt == 6)
+            {
+                user1Btn1.Visibility = Visibility.Visible;
+                user1Btn2.Visibility = Visibility.Visible;
+                user1Btn3.Visibility = Visibility.Visible;
+                user1Btn4.Visibility = Visibility.Visible;
+                user1Btn5.Visibility = Visibility.Visible;
+                user1Btn6.Visibility = Visibility.Visible;
+                user1Btn7.Visibility = Visibility.Collapsed;
+                user1Btn8.Visibility = Visibility.Collapsed;
+                return;
+            }
+
+            if (usarr[6].Avart == null)
+                usarr[6].Avart = "boy.png";
+            this.photo7.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + usarr[6].Avart));
+            this.U7.Text += usarr[6].Name + '\n' + usarr[6].Grade;
+
+            if (cnt == 7)
+            {
+                user1Btn1.Visibility = Visibility.Visible;
+                user1Btn2.Visibility = Visibility.Visible;
+                user1Btn3.Visibility = Visibility.Visible;
+                user1Btn4.Visibility = Visibility.Visible;
+                user1Btn5.Visibility = Visibility.Visible;
+                user1Btn6.Visibility = Visibility.Visible;
+                user1Btn7.Visibility = Visibility.Visible;
+                user1Btn8.Visibility = Visibility.Collapsed;
+                return;
+            }
+
+            if (usarr[7].Avart == null)
+                usarr[7].Avart = "boy.png";
+            this.photo8.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + usarr[7].Avart));
+            this.U8.Text += usarr[7].Name + '\n' + usarr[7].Grade;
+
+            user1Btn1.Visibility = Visibility.Visible;
+            user1Btn2.Visibility = Visibility.Visible;
+            user1Btn3.Visibility = Visibility.Visible;
+            user1Btn4.Visibility = Visibility.Visible;
+            user1Btn5.Visibility = Visibility.Visible;
+            user1Btn6.Visibility = Visibility.Visible;
+            user1Btn7.Visibility = Visibility.Visible;
+            user1Btn8.Visibility = Visibility.Visible;
+
 
         }
 

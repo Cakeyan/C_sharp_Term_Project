@@ -53,6 +53,14 @@ namespace Client
             LW.Show();
         }
 
+        private void Forget_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Button_Click_ResetPassword(sender, e);
+            }
+        }
+
 
         //点击按钮事件
         private void Button_Click(object sender, RoutedEventArgs e)
