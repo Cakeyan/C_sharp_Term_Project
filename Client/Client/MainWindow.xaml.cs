@@ -41,6 +41,7 @@ namespace Client
         private Color currentColor;
         string TipCheck;
         private Color penColor = Colors.Black;
+        bool ink_runtime_flag = false;
 
         //用于回退步骤
         private static Stack<string> ink_stack = new Stack<string>();
@@ -89,6 +90,8 @@ namespace Client
             };
             inkcanvas.DefaultDrawingAttributes = inkDA;
             inkcanvas.EditingMode = InkCanvasEditingMode.Ink;
+
+            inkcanvas.AddHandler(InkCanvas.MouseDownEvent, new MouseButtonEventHandler(ink_MouseDown), true);
         }
 
 
@@ -131,6 +134,8 @@ namespace Client
         /// </summary>
         private void ink_MouseUp(object sender, MouseButtonEventArgs e)
         {
+            ink_runtime_flag = false;
+
             StrokeCollection sc = inkcanvas.Strokes;
             string inkData = (new StrokeCollectionConverter()).ConvertToString(sc);
             ink_stack.Push(inkData);
@@ -256,6 +261,33 @@ namespace Client
             inkcanvas.DefaultDrawingAttributes.Height = slider.Value;
         }
 
+        private void ink_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (inkcanvas.EditingMode == InkCanvasEditingMode.Ink)
+                ink_runtime_flag = true;
+        }
+
+        private void ink_MouseMove(object sender, MouseEventArgs e)
+        {
+            Point pos = e.GetPosition(inkcanvas);
+            if (ink_runtime_flag)
+                ink_runtime(pos);
+        }
+
+        private void ink_runtime(Point pos)
+        {
+            StylusPoint stylusPoint = new StylusPoint(pos.X, pos.Y);
+            StylusPointCollection stylusPoints = new StylusPointCollection();
+            stylusPoints.Add(stylusPoint);
+            Stroke stroke = new Stroke(stylusPoints, inkDA);
+
+            StrokeCollection sc = inkcanvas.Strokes;
+            sc.Add(stroke);
+            string inkData = (new StrokeCollectionConverter()).ConvertToString(sc);
+
+            client.SendInk(roomId, inkData);
+        }
+
         #endregion
 
         /*----------------------------------------------------- 分割线  ----------------------------------------------------------------*/
@@ -264,17 +296,20 @@ namespace Client
         public void ShowLogin(string loginUserName)
         {
             this.ConversationBox.Text += "[" + loginUserName + "]" + "进入房间" + '\n';
+            scrollviewer.ScrollToBottom();
         }
 
         /// <summary>其他用户退出</summary>
         public void ShowLogout(string userName)
         {
             this.ConversationBox.Text += "[" + userName + "]" + "退出房间" + '\n';
+            scrollviewer.ScrollToBottom();
         }
 
         public void ShowTalk(string userName, string message)
         {
             this.ConversationBox.Text += "[" + userName + "]说：" + message + '\n';
+            scrollviewer.ScrollToBottom();
         }
 
         //还有一点小bug，点击只会出现自己的信息卡
@@ -524,6 +559,7 @@ namespace Client
                 TipLabel.Content = "提示：" + tip;
                 ConversationBox.Text += "系统提示：请开始抢答\n";
             }
+            scrollviewer.ScrollToBottom();
             restTimeTextBox.Text = "60";
         }
 
@@ -590,7 +626,7 @@ namespace Client
             {
                 TipLabel.Content = "题目：" + answer;
                 TipCheck = answer;
-                ConversationBox.Text += "系统提示：你已更换题目";
+                ConversationBox.Text += "系统提示：你已更换题目\n";
             }
             //猜图者
             else
@@ -598,6 +634,7 @@ namespace Client
                 TipLabel.Content = "提示：" + tip;
                 ConversationBox.Text += string.Format("系统提示：{0}更换题目\n",userName1);
             }
+            scrollviewer.ScrollToBottom();
         }
 
 

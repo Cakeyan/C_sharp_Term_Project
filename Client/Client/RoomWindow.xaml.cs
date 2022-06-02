@@ -109,7 +109,11 @@ namespace Client
         {
             Checkinclient.Logout(us.Name);
             this.Close();
+        }
 
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Checkinclient.Logout(us.Name);
         }
 
         //显示玩家信息
@@ -125,27 +129,27 @@ namespace Client
         public void ShowLogin(string loginUserName)
         {
             this.PlayerInfo.Text += "[" + loginUserName + "]" + "进入大厅" + '\n';
+            scrollviewer.ScrollToBottom();
         }
 
         /// <summary>其他用户退出</summary>
         public void ShowLogout(string userName)
         {
             this.PlayerInfo.Text += "[" + userName + "]" + "退出大厅" + '\n';
+            scrollviewer.ScrollToBottom();
         }
 
         public void ShowCheckin(string userName, int roomnumber)
         {
             this.PlayerInfo.Text += "[" + userName + "]" + "进入了"+roomnumber+"号房间" + '\n';
+            scrollviewer.ScrollToBottom();
         }
 
         public void ShowTalk(string userName, string message)
         {
             this.PlayerInfo.Text += "[" + userName + "]说：" + message + '\n';
+            scrollviewer.ScrollToBottom();
         }
-
-
-
-
 
         #endregion
 
@@ -157,6 +161,11 @@ namespace Client
                 player.Stop();
             else
                 player.Play();
+        }
+
+        private void Window_Closing(object sender, EventArgs e)
+        {
+
         }
     }
 }

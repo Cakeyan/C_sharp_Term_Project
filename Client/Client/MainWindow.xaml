@@ -172,7 +172,7 @@
                         <ColumnDefinition Width="814"/>
                         <ColumnDefinition Width="256"/>
                     </Grid.ColumnDefinitions>
-                    <InkCanvas x:Name="inkcanvas"  Margin="8,8,8,8" MouseUp="ink_MouseUp" Grid.Column="0">
+                    <InkCanvas x:Name="inkcanvas"  Margin="8,8,8,8" MouseDown="ink_MouseDown" MouseMove="ink_MouseMove" MouseUp="ink_MouseUp" Grid.Column="0">
                         <InkCanvas.Background>
                             <SolidColorBrush Color="#FFFFFF" Opacity="1"/>
                         </InkCanvas.Background>
@@ -220,7 +220,7 @@
 
                             <Slider x:Name="slider" Grid.Column="2" Minimum="5" Maximum="20" Margin="8,100,8,0" VerticalAlignment="Top" ValueChanged="slider_ValueChanged"/>
                         </Grid>
-                        <ScrollViewer Margin="16,16,8,30" Grid.Row="1">
+                        <ScrollViewer x:Name="scrollviewer" Margin="16,16,8,30" Grid.Row="1">
                             <TextBlock Name="ConversationBox"  TextWrapping="Wrap" Text=""  Focusable="True"/>
                         </ScrollViewer>
                     </Grid>

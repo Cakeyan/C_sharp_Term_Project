@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client"
         mc:Ignorable="d"
-        Title="Draw and Guess" SizeToContent="WidthAndHeight" ResizeMode="NoResize"  Icon="image\exe_logo.png">
+        Title="Draw and Guess" SizeToContent="WidthAndHeight" ResizeMode="NoResize"  Icon="image\exe_logo.png" Closing="Window_Closing">
     <Window.Background>
         <ImageBrush ImageSource="/image/BigHall.png" />
     </Window.Background>
@@ -41,7 +41,7 @@
                 <RowDefinition Height="320"></RowDefinition>
                 <RowDefinition Height="70"></RowDefinition>
             </Grid.RowDefinitions>
-            <ScrollViewer Margin="8,64,24,40" Grid.RowSpan="3" Grid.Column="2">
+            <ScrollViewer x:Name="scrollviewer" Margin="8,64,24,40" Grid.RowSpan="3" Grid.Column="2">
                 <TextBlock Name="PlayerInfo" TextWrapping="Wrap" Text=""  Focusable="True"/>
             </ScrollViewer>
             <TextBox Name="SendBox" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="2" Background="#00FFFFFF" BorderThickness="0" FontSize="16" Margin="215,12,160,32" KeyUp="SendBox_KeyUp" TextWrapping="NoWrap" VerticalContentAlignment="Center" />
