@@ -145,8 +145,10 @@ namespace Server
         }
         public void update()
         {
-            randNum += 1;
             MyDbEntities myDbEntities = new MyDbEntities();
+            var tot = from t in myDbEntities.Questions
+                    select t;
+            randNum = (randNum + 1) % tot.Count();
             var q = from t in myDbEntities.Questions
                     where t.Id == randNum
                     select t;

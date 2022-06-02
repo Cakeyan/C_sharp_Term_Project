@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.ServiceModel;
 using System.Text;
@@ -32,18 +33,34 @@ namespace Server
             InitializeComponent();
         }
 
+        private void insertQues(string filePath)
+        {
+            string[] lines = File.ReadAllLines(filePath, Encoding.UTF8);
+            MyDbEntities myDbEntities = new MyDbEntities();
+
+            int id = 20;
+
+            foreach (string line in lines)
+            {
+                ++id;
+                Questions q = new Questions();
+                q.Question = line;
+                q.Id = id;
+                q.Tip = string.Format("{0}个字", line.Count());
+                myDbEntities.Questions.Add(q);
+                
+            }
+            myDbEntities.SaveChanges();
+        }
+
         //启动服务
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
             MyDbEntities myDbEntities = new MyDbEntities();
 
+            string filePath = @"D:\QQ\QQchatFile\1946146453\FileRecv\[中文] 啥都有（245个词）.txt";
+            insertQues(filePath);
             
-            //var q = from t in myDbEntities.Questions select t;
-
-            //foreach(var item in q)
-            //{
-            //    Console.WriteLine(item.Id + " " + item.Question + " " + item.Tip);
-            //}
 
             ChangeState(btnStart, false, btnStop, true);
             host1 = new ServiceHost(typeof(Service));
