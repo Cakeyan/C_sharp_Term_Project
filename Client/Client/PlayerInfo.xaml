@@ -8,9 +8,7 @@
         Title="PlayerInfo" Height="300" Width="400">
     <Grid>
         <Frame x:Name="frame1" Margin="0,3,0.333,-2" BorderThickness="2" BorderBrush="#FFA6C9FD" NavigationUIVisibility="Hidden" >
-            <Frame.Background>
-                <ImageBrush AlignmentX="Right" ImageSource="image\小丸.jpg" Opacity="0.6" AlignmentY="Bottom"/>
-            </Frame.Background>
+            
         </Frame>
         <StackPanel HorizontalAlignment="Left" Height="100" Margin="42,42,0,0" VerticalAlignment="Top" Width="90" Background="White"  >
             <Image x:Name="photo" Height="100" Stretch="Fill"/>

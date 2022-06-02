@@ -99,8 +99,13 @@ namespace Client
             try
             {
                 string flag = client.ForgetPassword(Account.Text, PassWord.Password,mailCode.Text);
-                if (flag=="OK")
-                    MessageBox.Show("修改成功！");
+                if (flag == "OK")
+                {
+                    if (MessageBox.Show("重置密码成功", "提示", MessageBoxButton.OK) == MessageBoxResult.OK)
+                    {
+                        Close();
+                    }
+                }
                 else
                     MessageBox.Show(flag);
             }
@@ -110,9 +115,15 @@ namespace Client
             }
         }
 
+        private void Button_Click_Back(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
         private void img_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Verification = GetImage();
         }
+
     }
 }

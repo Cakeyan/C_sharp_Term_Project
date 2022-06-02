@@ -107,6 +107,11 @@
                         <ImageBrush AlignmentX="Center" ImageSource="image\submitbutton.png" Opacity="1" AlignmentY="Center"/>
                     </Button.Background>
                 </Button>
+                <Button Content="返回" Margin="60,0" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="4" VerticalAlignment="Center"  Height="50" Foreground="#FF000000" FontSize="24" BorderThickness="0" Click="Button_Click_Back">
+                    <Button.Background>
+                        <ImageBrush AlignmentX="Center" ImageSource="image\submitbutton.png" Opacity="1" AlignmentY="Center"/>
+                    </Button.Background>
+                </Button>
             </Grid>
         </Grid>
     </Canvas>

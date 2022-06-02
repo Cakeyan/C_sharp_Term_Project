@@ -218,39 +218,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="image\black.png" />
-    <Resource Include="image\blue.png" />
     <Resource Include="image\clear.png" />
     <Resource Include="image\delete.png" />
-    <Resource Include="image\green.png" />
-    <Resource Include="image\pink.png" />
-    <Resource Include="image\red.png" />
-    <Resource Include="image\yellow.png" />
-    <Resource Include="image\安全.PNG" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="image\table.png" />
     <Resource Include="image\girl.png" />
     <Resource Include="image\boy.png" />
-    <Resource Include="image\game.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="image\timg.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="image\timg1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="image\樱桃小丸子.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="image\樱桃小丸子2.jpg" />
   </ItemGroup>
   <ItemGroup>
     <SplashScreen Include="image\你画我猜.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="image\小丸.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="image\1.png" />
@@ -263,12 +239,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="image\4.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="image\错.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="image\对.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\LoginReference\item.disco" />
@@ -301,12 +271,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="image\登录.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="image\音乐.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="bgm.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -318,16 +282,12 @@
     <Resource Include="image\UI-background.png" />
     <Resource Include="image\close.png" />
     <Resource Include="image\colorpicker.png" />
-    <Resource Include="image\cross.png" />
-    <Resource Include="image\dots.png" />
     <Resource Include="image\eraser.png" />
     <Resource Include="image\pen.png" />
     <Resource Include="image\question.png" />
     <Resource Include="image\random.png" />
     <Resource Include="image\rectangle.png" />
     <Resource Include="image\send.png" />
-    <Resource Include="image\sharp.png" />
-    <Resource Include="image\tick.png" />
     <Resource Include="image\undo.png" />
     <Resource Include="image\voice.png" />
   </ItemGroup>

@@ -57,6 +57,7 @@ namespace Client
             {
                 sendCode.IsEnabled = false;
                 bool flag = client.sendEmail(Account.Text);
+
                 if (flag)
                 {
                     MessageBox.Show("令牌发送成功！");
@@ -85,10 +86,20 @@ namespace Client
         private void Button_Click_Register(object sender, RoutedEventArgs e)
         {
             string flag = client.Registered(Account.Text, PassWord.Password, "签名文本删掉", AccountName.Text, code.Text);
-            if (flag=="OK")
-                MessageBox.Show("注册成功！");
+            if (flag == "OK")
+            {
+                if (MessageBox.Show("注册成功", "提示", MessageBoxButton.OK) == MessageBoxResult.OK)
+                {
+                    Close();
+                }
+            }
             else
                 MessageBox.Show(flag);
+        }
+
+        private void Button_Click_Back(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
 
         private void Reg_KeyUp(object sender, KeyEventArgs e)
