@@ -66,24 +66,24 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Server.exe" size="57856">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Server.exe" size="58880">
       <assemblyIdentity name="Server" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>SAAC4L7oJkWwISvgEFXMmrxt665od6ufbzU7qsvZp1Q=</dsig:DigestValue>
+        <dsig:DigestValue>B+CbW1GxM1GIv2R0iw3ylqv5nlaznkYWdBpGAMaNxXY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="MyDb.Context.tt" size="22928">
+  <file name="MyDb.Context.tt" size="22293">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>uReN18BKbZzVq2hUsjh8SVsaewwsDP5/1SU0ePGL2KM=</dsig:DigestValue>
+      <dsig:DigestValue>h1chb1fzCxJwctDS7lWSdBuStlB/ymZmjtiDZApo7ts=</dsig:DigestValue>
     </hash>
   </file>
   <file name="MyDb.mdf" size="8388608" writeableType="applicationData">
@@ -95,13 +95,13 @@
       <dsig:DigestValue>Q70zxv7txCHjoF+vCXtHQciRrmqYkOsFO9DfSH9bfD8=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="MyDb.tt" size="25273">
+  <file name="MyDb.tt" size="24541">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>CGKj5r+uWO2n9BATG6n3A4KRRYSEC+iHvqLeoKW7IlM=</dsig:DigestValue>
+      <dsig:DigestValue>GetsHiDrVC6VFGbvj9X6xIAtAIg0aMPWj/1MVyo043o=</dsig:DigestValue>
     </hash>
   </file>
   <file name="MyDb_log.ldf" size="8388608" writeableType="applicationData">
@@ -113,13 +113,13 @@
       <dsig:DigestValue>gxPolXhFaZ4J9BKNjLXBnQcqwjsv9NPoOnmHwTN16Sk=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Server.exe.config" size="3209">
+  <file name="Server.exe.config" size="3163">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>Wubh9O7BuKJNYblztMyAanVqwtbWFF2hG+MwU1+qh40=</dsig:DigestValue>
+      <dsig:DigestValue>5DGJqMr4Ax7SxvdM9JjTX2O5cU/IGuonn1ol8q4jfhc=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

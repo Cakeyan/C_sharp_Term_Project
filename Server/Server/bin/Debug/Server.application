@@ -8,7 +8,7 @@
         <beforeApplicationStartup />
       </update>
     </subscription>
-    <deploymentProvider codebase="http://lenovo-pro13/Server/Server.application" />
+    <deploymentProvider codebase="http://laptop-l0m2boma/Server/Server.application" />
   </deployment>
   <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
     <framework targetVersion="4.7.2" profile="Full" supportedRuntime="4.0.30319" />
@@ -21,7 +21,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>aGGFkus9vW8vUCQwIUygI81/qTXWGmukeY6hQqKX46o=</dsig:DigestValue>
+        <dsig:DigestValue>qLh4UzdxUBbuxbRJs6m0d/4iZkEWXDTLZBjX6taEVY0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
