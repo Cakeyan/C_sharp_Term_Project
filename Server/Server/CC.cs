@@ -34,6 +34,6 @@ namespace Server
         public int restTime { get; set; }
         public int roomId { get; set; }
 
-        public int gameTime = 60;
+        public int gameTime = 120;
     }
 }

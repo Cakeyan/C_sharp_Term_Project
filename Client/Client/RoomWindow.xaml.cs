@@ -119,8 +119,7 @@ namespace Client
         //显示玩家信息
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            PlayerInfo PI = new PlayerInfo(us);
-            PI.ShowDialog();
+            
         }
 
 

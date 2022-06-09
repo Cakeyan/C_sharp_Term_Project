@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Server"
         mc:Ignorable="d"
-        Title="服务端" Height="240" Width="360" Closing="Window_Closing">
+        Title="服务端" Height="240" Width="360" Closing="Window_Closing" Icon="image\exe_logo.png">
     <Grid>
         <Frame x:Name="frame1" Margin="5,3,0.333,-0.333" BorderThickness="2" BorderBrush="#FFA6C9FD" NavigationUIVisibility="Hidden" >
             <Frame.Background>
-                <ImageBrush AlignmentX="Right" ImageSource="image\樱桃小丸子2.jpg" Opacity="0.7" AlignmentY="Bottom"/>
+                <ImageBrush AlignmentX="Right"  Opacity="0" AlignmentY="Bottom"/>
             </Frame.Background>
         </Frame>
         <DockPanel>

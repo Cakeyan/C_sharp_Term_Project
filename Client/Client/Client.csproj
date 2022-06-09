@@ -77,9 +77,6 @@
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="CC.cs" />
-    <Compile Include="PlayerInfo.xaml.cs">
-      <DependentUpon>PlayerInfo.xaml</DependentUpon>
-    </Compile>
     <Compile Include="RegisteredWindow.xaml.cs">
       <DependentUpon>RegisteredWindow.xaml</DependentUpon>
     </Compile>
@@ -116,10 +113,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="PlayerInfo.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="RegisteredWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -224,9 +217,6 @@
   <ItemGroup>
     <Resource Include="image\girl.png" />
     <Resource Include="image\boy.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <SplashScreen Include="image\你画我猜.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="image\1.png" />
