@@ -54,7 +54,7 @@
                         <StackPanel Height="48" Width="150" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Image x:Name="photo1" Height="48"  Width="48" Margin="0,0,0,0"/>
                             <TextBlock x:Name="U1" Foreground="#FF000000" TextWrapping="Wrap" Margin="4,0,0,0" Width="98" FontSize="20"/>
-                            <Image x:Name="ready1" Height="20"  Width="20" Margin="-20,28,0,0"/>
+                            <Image x:Name="ready1" Height="20" Source="image\tick.png" Width="26" Margin="-26,28,0,0"/>
                         </StackPanel>
                     </Button>
                     <Button x:Name="user1Btn2" HorizontalAlignment="Center" VerticalAlignment="Top" Width="166" Height="64" Margin="4,8,0,0" BorderBrush="White" Style="{StaticResource hover}">
@@ -64,7 +64,7 @@
                         <StackPanel Height="48" Width="150" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Image x:Name="photo2" Height="48"  Width="48" Margin="0,0,0,0"/>
                             <TextBlock x:Name="U2" Foreground="#FF000000" TextWrapping="Wrap" Margin="4,0,0,0" Width="98" FontSize="20"/>
-                            <Image x:Name="ready2" Height="20"  Width="20" Margin="-20,28,0,0"/>
+                            <Image x:Name="ready2" Height="20" Source="image\tick.png" Width="26" Margin="-26,28,0,0"/>
                         </StackPanel>
                     </Button>
                     <Button x:Name="user1Btn3" HorizontalAlignment="Center" VerticalAlignment="Top" Width="166" Height="64" Margin="4,8,0,0" BorderBrush="White" Style="{StaticResource hover}">
@@ -74,7 +74,7 @@
                         <StackPanel Height="48" Width="150" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Image x:Name="photo3" Height="48"  Width="48" Margin="0,0,0,0"/>
                             <TextBlock x:Name="U3" Foreground="#FF000000" TextWrapping="Wrap" Margin="4,0,0,0" Width="98" FontSize="20"/>
-                            <Image x:Name="ready3" Height="20"  Width="20" Margin="-20,28,0,0"/>
+                            <Image x:Name="ready3" Height="20" Source="image\tick.png" Width="26" Margin="-26,28,0,0"/>
                         </StackPanel>
                     </Button>
                     <Button x:Name="user1Btn4" HorizontalAlignment="Center" VerticalAlignment="Top" Width="166" Height="64" Margin="4,8,0,0" BorderBrush="White" Style="{StaticResource hover}">
@@ -84,7 +84,7 @@
                         <StackPanel Height="48" Width="150" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Image x:Name="photo4" Height="48"  Width="48" Margin="0,0,0,0"/>
                             <TextBlock x:Name="U4" Foreground="#FF000000" TextWrapping="Wrap" Margin="4,0,0,0" Width="98" FontSize="20"/>
-                            <Image x:Name="ready4" Height="20"  Width="20" Margin="-20,28,0,0"/>
+                            <Image x:Name="ready4" Height="20" Source="image\tick.png" Width="26" Margin="-26,28,0,0"/>
                         </StackPanel>
                     </Button>
                     <Button x:Name="user1Btn5" HorizontalAlignment="Center" VerticalAlignment="Top" Width="166" Height="64" Margin="4,8,0,0" BorderBrush="White" Style="{StaticResource hover}">
@@ -94,7 +94,7 @@
                         <StackPanel Height="48" Width="150" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Image x:Name="photo5" Height="48"  Width="48" Margin="0,0,0,0"/>
                             <TextBlock x:Name="U5" Foreground="#FF000000" TextWrapping="Wrap" Margin="4,0,0,0" Width="98" FontSize="20"/>
-                            <Image x:Name="ready5" Height="20"  Width="20" Margin="-20,28,0,0"/>
+                            <Image x:Name="ready5" Height="20" Source="image\tick.png" Width="26" Margin="-26,28,0,0"/>
                         </StackPanel>
                     </Button>
                     <Button x:Name="user1Btn6" HorizontalAlignment="Center" VerticalAlignment="Top" Width="166" Height="64" Margin="4,8,0,0" BorderBrush="White" Style="{StaticResource hover}">
@@ -104,7 +104,7 @@
                         <StackPanel Height="48" Width="150" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Image x:Name="photo6" Height="48"  Width="48" Margin="0,0,0,0"/>
                             <TextBlock x:Name="U6" Foreground="#FF000000" TextWrapping="Wrap" Margin="4,0,0,0" Width="98" FontSize="20"/>
-                            <Image x:Name="ready6" Height="20"  Width="20" Margin="-20,28,0,0"/>
+                            <Image x:Name="ready6" Height="20" Source="image\tick.png" Width="26" Margin="-26,28,0,0"/>
                         </StackPanel>
                     </Button>
                     <Button x:Name="user1Btn7" HorizontalAlignment="Center" VerticalAlignment="Top" Width="166" Height="64" Margin="4,8,0,0" BorderBrush="White" Style="{StaticResource hover}">
@@ -114,7 +114,7 @@
                         <StackPanel Height="48" Width="150" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Image x:Name="photo7" Height="48"  Width="48" Margin="0,0,0,0"/>
                             <TextBlock x:Name="U7" Foreground="#FF000000" TextWrapping="Wrap" Margin="4,0,0,0" Width="98" FontSize="20"/>
-                            <Image x:Name="ready7" Height="20"  Width="20" Margin="-20,28,0,0"/>
+                            <Image x:Name="ready7" Height="20" Source="image\tick.png" Width="26" Margin="-26,28,0,0"/>
                         </StackPanel>
                     </Button>
                     <Button x:Name="user1Btn8" HorizontalAlignment="Center" VerticalAlignment="Top" Width="166" Height="64" Margin="4,8,0,0" BorderBrush="White" Style="{StaticResource hover}">
@@ -124,7 +124,7 @@
                         <StackPanel Height="48" Width="150" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Image x:Name="photo8" Height="48"  Width="48" Margin="0,0,0,0"/>
                             <TextBlock x:Name="U8" Foreground="#FF000000" TextWrapping="Wrap" Margin="4,0,0,0" Width="98" FontSize="20"/>
-                            <Image x:Name="ready8" Height="20"  Width="20" Margin="-20,28,0,0"/>
+                            <Image x:Name="ready8" Height="20" Source="image\tick.png" Width="26" Margin="-26,28,0,0"/>
                         </StackPanel>
                     </Button>
                 </ListBox>

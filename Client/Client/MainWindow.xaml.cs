@@ -35,6 +35,7 @@ namespace Client
         public LoginReference.User us;//用户的所有信息
         private User item;//每一个id所属，item可以控制该id下的所有窗口
         private Userdata[] userdatas;
+        public List<Image> Ready;
 
         //画板相关
         private DrawingAttributes inkDA;
@@ -60,7 +61,19 @@ namespace Client
             clear.IsEnabled = false;
             undo.IsEnabled = false;
             random.IsEnabled = false;
-            
+            Ready = new List<Image>();
+            Ready.Add(ready1);
+            Ready.Add(ready2);
+            Ready.Add(ready3);
+            Ready.Add(ready4);
+            Ready.Add(ready5);
+            Ready.Add(ready6);
+            Ready.Add(ready7);
+            Ready.Add(ready8);
+            for(int i = 0; i < 8; i++)
+            {
+                Ready[i].Visibility = Visibility.Collapsed;
+            }
 
         }
 
@@ -311,6 +324,15 @@ namespace Client
             this.ConversationBox.Text += "[" + userName + "]说：" + message + '\n';
             scrollviewer.ScrollToBottom();
         }
+
+
+        //准备状态图片
+        public void showIsReady(int readyid,bool func)
+        {
+            Ready[readyid].Visibility = func ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+
 
         //还有一点小bug，点击只会出现自己的信息卡
         public void ShowInfo(Userdata[] mydata)

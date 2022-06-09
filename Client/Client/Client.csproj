@@ -274,6 +274,7 @@
     <Content Include="bgm.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="image\tick.png" />
     <Resource Include="image\exe_logo.png" />
     <Resource Include="image\BigHall.png" />
     <Resource Include="image\lingpai.png" />
