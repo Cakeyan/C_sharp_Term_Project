@@ -254,6 +254,12 @@ namespace Client.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="MyService/IService/ShowNewQues")]
         void ShowNewQues(string roommeg, string userName1, string answer, string tip);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="MyService/IService/ShowIsReady")]
+        void ShowIsReady(int readyid, bool func);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="MyService/IService/ShowGrade")]
+        void ShowGrade(int userid, int Grade, string Name);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]

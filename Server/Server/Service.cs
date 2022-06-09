@@ -171,7 +171,13 @@ namespace Server
 
                         }
                         item.Score += CC.Rooms[user.inRoom].users.Count - CC.Rooms[user.inRoom].correctNum - 1;
+                        //item.Score += 1;
                         CC.Rooms[user.inRoom].users[0].Score += 1;
+                        foreach(var user1 in CC.Rooms[user.inRoom].users)
+                        {
+                            user1.callback.ShowGrade(item.locid, (int)item.Score, item.Name);
+                            user1.callback.ShowGrade(CC.Rooms[user.inRoom].users[0].locid, (int)CC.Rooms[user.inRoom].users[0].Score, CC.Rooms[user.inRoom].users[0].Name);
+                        }
                         item.isCorrect = true;
                         CC.Rooms[user.inRoom].correctNum += 1;
                     }
@@ -256,6 +262,14 @@ namespace Server
             }
             logoutUser = null; //将其设置为null后，WCF会自动关闭该客户端
             refreshRoomInfo();
+
+            for(int i=0;i<CC.Rooms[id].users.Count;++i)
+            {
+                for(int j=0;j<CC.Rooms[id].users.Count;++j)
+                {
+                    CC.Rooms[id].users[j].callback.ShowIsReady(i, CC.Rooms[id].users[i].ready);
+                }
+            }
         }
 
 
@@ -344,6 +358,7 @@ namespace Server
                 CC.Rooms[roomId].timer.Elapsed += timer_Tick;
                 CC.Rooms[roomId].timer.roomId = roomId;
             }
+            user.locid = CC.Rooms[roomId].users.Count+1;
             //该用户添加到房间
             CC.Rooms[roomId].users.Add(user);
 
@@ -365,6 +380,10 @@ namespace Server
                 }
                 
             }
+            for(int i=0;i< CC.Rooms[roomId].users.Count; ++i)
+            {
+                user.callback.ShowIsReady(i, CC.Rooms[roomId].users[i].ready);
+            }
             refreshRoomInfo();
         }
         public void StartGame(string userName, int roomId)
@@ -372,6 +391,27 @@ namespace Server
             //当前用户已准备
             MyUser user = CC.GetUser(userName);
             user.ready = true;
+            int pos = -1;
+            for (int i = 0; i < CC.Rooms[roomId].users.Count; ++i)
+            {
+                if (CC.Rooms[roomId].users[i].Name == userName)
+                {
+                    pos = i;
+                    break;
+                }
+            }
+            foreach (var user1 in CC.Rooms[roomId].users)
+            {
+                try
+                {
+                    user1.callback.ShowIsReady(pos, true);
+                }
+                catch
+                {
+
+                }
+                
+            }
             CC.Rooms[roomId].correctNum = 0;
 
             if (CC.Rooms[roomId].users.Count < CC.Rooms[roomId].leastBeginNum) return;
@@ -399,6 +439,17 @@ namespace Server
             CC.Rooms[roomId].timer.Enabled = true;
             CC.Rooms[roomId].currentTurn = 1;
             refreshRoomInfo();
+
+
+            
+
+            for (int i = 0; i < CC.Rooms[roomId].users.Count; ++i)
+            {
+                for (int j = 0; j < CC.Rooms[roomId].users.Count; ++j)
+                {
+                    CC.Rooms[roomId].users[j].callback.ShowGrade(CC.Rooms[roomId].users[i].locid, 0, CC.Rooms[roomId].users[i].Name);
+                }
+            }
         }
 
 
@@ -430,6 +481,14 @@ namespace Server
                 }
             }
 
+            for (int i = 0; i < CC.Rooms[roomId].users.Count; ++i)
+            {
+                for (int j = 0; j < CC.Rooms[roomId].users.Count; ++j)
+                {
+                    CC.Rooms[roomId].users[j].callback.ShowIsReady(i, CC.Rooms[roomId].users[i].ready);
+                    
+                }
+            }
         }
 
         private void RollUserAndRestart(int roomId)
@@ -471,6 +530,19 @@ namespace Server
         {
             MyUser user = CC.GetUser(userName);
             user.ready = false;
+            int pos = -1;
+            for(int i = 0; i < CC.Rooms[roomId].users.Count; ++i)
+            {
+                if (CC.Rooms[roomId].users[i].Name == userName)
+                {
+                    pos = i;
+                    break;
+                }
+            }
+            foreach(var user1 in CC.Rooms[roomId].users)
+            {
+                user1.callback.ShowIsReady(pos, false);
+            }
         }
 
         public void changeQuestion(int roomid,string Account)

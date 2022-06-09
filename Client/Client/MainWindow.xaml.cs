@@ -36,6 +36,7 @@ namespace Client
         private User item;//每一个id所属，item可以控制该id下的所有窗口
         private Userdata[] userdatas;
         public List<Image> Ready;
+        public List<TextBlock> scores;
 
         //画板相关
         private DrawingAttributes inkDA;
@@ -75,6 +76,15 @@ namespace Client
                 Ready[i].Visibility = Visibility.Collapsed;
             }
 
+            scores = new List<TextBlock>();
+            scores.Add(U1);
+            scores.Add(U2);
+            scores.Add(U3);
+            scores.Add(U4);
+            scores.Add(U5);
+            scores.Add(U6);
+            scores.Add(U7);
+            scores.Add(U8);
         }
 
 
@@ -327,8 +337,9 @@ namespace Client
 
 
         //准备状态图片
-        public void showIsReady(int readyid,bool func)
+        public void ShowIsReady(int readyid,bool func)
         {
+            Console.WriteLine(readyid);
             Ready[readyid].Visibility = func ? Visibility.Visible : Visibility.Collapsed;
         }
 
@@ -369,7 +380,7 @@ namespace Client
             if (usarr[0].Avart == null)
                 usarr[0].Avart = "boy.png";
             this.photo1.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + usarr[0].Avart));
-            this.U1.Text += usarr[0].Name + '\n' + usarr[0].Grade;
+            this.U1.Text += usarr[0].Name + "\n 0";
 
             if (cnt == 1)
             {
@@ -387,7 +398,7 @@ namespace Client
             if (usarr[1].Avart == null)
                 usarr[1].Avart = "boy.png";
             this.photo2.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + usarr[1].Avart));
-            this.U2.Text += usarr[1].Name + '\n' + usarr[1].Grade;
+            this.U2.Text += usarr[1].Name + "\n 0";
 
             if (cnt == 2)
             {
@@ -405,7 +416,7 @@ namespace Client
             if (usarr[2].Avart == null)
                 usarr[2].Avart = "boy.png";
             this.photo3.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + usarr[2].Avart));
-            this.U3.Text += usarr[2].Name + '\n' + usarr[2].Grade;
+            this.U3.Text += usarr[2].Name + "\n 0";
 
             if (cnt == 3)
             {
@@ -423,7 +434,7 @@ namespace Client
             if (usarr[3].Avart == null)
                 usarr[3].Avart = "boy.png";
             this.photo4.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + usarr[3].Avart));
-            this.U4.Text += usarr[3].Name + '\n' + usarr[3].Grade;
+            this.U4.Text += usarr[3].Name + "\n 0";
 
             if (cnt == 4)
             {
@@ -441,7 +452,7 @@ namespace Client
             if (usarr[4].Avart == null)
                 usarr[4].Avart = "boy.png";
             this.photo5.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + usarr[4].Avart));
-            this.U5.Text += usarr[4].Name + '\n' + usarr[4].Grade;
+            this.U5.Text += usarr[4].Name + "\n 0";
 
             if (cnt == 5)
             {
@@ -459,7 +470,7 @@ namespace Client
             if (usarr[5].Avart == null)
                 usarr[5].Avart = "boy.png";
             this.photo6.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + usarr[5].Avart));
-            this.U6.Text += usarr[5].Name + '\n' + usarr[5].Grade;
+            this.U6.Text += usarr[5].Name + "\n 0";
 
             if (cnt == 6)
             {
@@ -477,7 +488,7 @@ namespace Client
             if (usarr[6].Avart == null)
                 usarr[6].Avart = "boy.png";
             this.photo7.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + usarr[6].Avart));
-            this.U7.Text += usarr[6].Name + '\n' + usarr[6].Grade;
+            this.U7.Text += usarr[6].Name + "\n 0";
 
             if (cnt == 7)
             {
@@ -495,7 +506,7 @@ namespace Client
             if (usarr[7].Avart == null)
                 usarr[7].Avart = "boy.png";
             this.photo8.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + usarr[7].Avart));
-            this.U8.Text += usarr[7].Name + '\n' + usarr[7].Grade;
+            this.U8.Text += usarr[7].Name + "\n 0";
 
             user1Btn1.Visibility = Visibility.Visible;
             user1Btn2.Visibility = Visibility.Visible;
@@ -590,6 +601,10 @@ namespace Client
 
         }
 
+        public void ShowGrade(int userId,int score,string name)
+        {
+            scores[userId-1].Text = name + "\n" + score.ToString();
+        }
         public void ShowNewTurn(string roommeg, string userName1, string answer, string tip)
         {
             //更新用户列表和积分

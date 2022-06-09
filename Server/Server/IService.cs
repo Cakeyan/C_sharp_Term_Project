@@ -117,6 +117,12 @@ namespace Server
 
         [OperationContract(IsOneWay = true)]
         void ShowNewQues(string roommeg, string userName1, string answer, string tip);
+
+        [OperationContract(IsOneWay = true)]
+        void ShowIsReady(int readyid, bool func);
+
+        [OperationContract(IsOneWay = true)]
+        void ShowGrade(int userid, int Grade,string Name);
         #endregion
     }
     [DataContract]

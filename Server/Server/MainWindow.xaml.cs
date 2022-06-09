@@ -58,8 +58,8 @@ namespace Server
         {
             MyDbEntities myDbEntities = new MyDbEntities();
 
-            string filePath = @"D:\QQ\QQchatFile\1946146453\FileRecv\[中文] 啥都有（245个词）.txt";
-            insertQues(filePath);
+            //string filePath = @"D:\QQ\QQchatFile\1946146453\FileRecv\[中文] 啥都有（245个词）.txt";
+            //insertQues(filePath);
             
 
             ChangeState(btnStart, false, btnStop, true);

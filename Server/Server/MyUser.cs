@@ -15,6 +15,7 @@ namespace Server
         public readonly IServiceCallback callback;
         public readonly ICheckinServerCallback Checkincallback;
         public int id { get; set; }//聊天接口房间号
+        public int locid { get; set; }
         public MyUser(string username, IServiceCallback callback)
         {
             this.Name = username;
