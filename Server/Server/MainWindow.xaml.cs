@@ -65,10 +65,12 @@ namespace Server
             ChangeState(btnStart, false, btnStop, true);
             host1 = new ServiceHost(typeof(Service));
             host1.Open();
+            textBlock1.Text += "####################################\n";
             textBlock1.Text += "本机服务已启动，监听的Uri为：\n";
             foreach (var v in host1.Description.Endpoints)
             {
                 textBlock1.Text += v.ListenUri.ToString() + "\n";
+                scrollviewer.ScrollToBottom();
             }
 
             host2 = new ServiceHost(typeof(LoginService));
@@ -77,6 +79,7 @@ namespace Server
             foreach (var v in host2.Description.Endpoints)
             {
                 textBlock1.Text += v.ListenUri.ToString() + "\n";
+                scrollviewer.ScrollToBottom();
             }
 
             host3 = new ServiceHost(typeof(CheckinServer));
@@ -85,6 +88,8 @@ namespace Server
             foreach (var v in host3.Description.Endpoints)
             {
                 textBlock1.Text += v.ListenUri.ToString() + "\n";
+                textBlock1.Text += "####################################\n";
+                scrollviewer.ScrollToBottom();
             }
 
 
@@ -95,7 +100,9 @@ namespace Server
         {
             host1.Close();
             host2.Close();
+            host3.Close();
             textBlock1.Text += "本机服务已关闭\n";
+            scrollviewer.ScrollToBottom();
             ChangeState(btnStart, true, btnStop, false);
         }
 

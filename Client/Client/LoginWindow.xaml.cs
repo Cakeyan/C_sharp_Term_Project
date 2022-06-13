@@ -96,5 +96,10 @@ namespace Client
             }
             
         }
+
+        private void sign_in_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

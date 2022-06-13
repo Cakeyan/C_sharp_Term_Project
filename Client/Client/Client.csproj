@@ -215,20 +215,16 @@
     <Resource Include="image\delete.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="image\girl.png" />
-    <Resource Include="image\boy.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="image\1.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="image\2.PNG" />
+    <Resource Include="image\2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="image\3.PNG" />
+    <Resource Include="image\3.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="image\4.PNG" />
+    <Resource Include="image\4.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\LoginReference\item.disco" />
@@ -264,6 +260,11 @@
     <Content Include="bgm.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="image\5.png" />
+    <Resource Include="image\6.png" />
+    <Resource Include="image\7.png" />
+    <Resource Include="image\8.png" />
+    <Resource Include="image\9.png" />
     <Resource Include="image\tick.png" />
     <Resource Include="image\exe_logo.png" />
     <Resource Include="image\BigHall.png" />

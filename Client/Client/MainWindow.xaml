@@ -32,7 +32,6 @@
                         </Setter.Value>
                     </Setter>
                 </Style>
-
             </Grid.Resources>
             <Frame x:Name="bg" NavigationUIVisibility="Hidden" Grid.ColumnSpan="2" >
                 <Frame.Background>
@@ -127,7 +126,9 @@
                             <Image x:Name="ready8" Height="20" Source="image\tick.png" Width="26" Margin="-26,28,0,0"/>
                         </StackPanel>
                     </Button>
+
                 </ListBox>
+
             </Grid>
             <Grid Height="720" VerticalAlignment="Top" Width="1070" Grid.Column="1">
                 <Grid.RowDefinitions>
@@ -144,7 +145,7 @@
                         <ColumnDefinition Width="61"/>
                         <ColumnDefinition Width="61"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="时间" Foreground="#FF000000" TextWrapping="Wrap" Margin="0,4,0,0"  FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Name="restTimeTextBox"/>
+                    <TextBlock Text="" Foreground="#FF000000" TextWrapping="Wrap" Margin="0,4,0,0"  FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Name="restTimeTextBox"/>
                     <Label x:Name="TipLabel"  Foreground="#FF000000"  Margin="0,0,0,0"  FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1"/>
                     <Button x:Name="random" VerticalAlignment="Bottom" Height="56" Margin="0,0,2.8,6" BorderBrush="White" Grid.Column="2" Style="{StaticResource hover}" HorizontalAlignment="Right" Width="56" Click="changeQues">
                         <Button.Background>
@@ -156,7 +157,7 @@
                             <ImageBrush AlignmentX="Center" ImageSource="image\voice.png" Opacity="1" AlignmentY="Top"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="question" HorizontalAlignment="Center" VerticalAlignment="Center" Width="56" Height="56" Margin="0,0,0,0" BorderBrush="White" Grid.Column="4" Style="{StaticResource hover}">
+                    <Button x:Name="question" HorizontalAlignment="Center" VerticalAlignment="Center" Width="56" Height="56" Margin="0,0,0,0" BorderBrush="White" Click="question_Click" Grid.Column="4" Style="{StaticResource hover}">
                         <Button.Background>
                             <ImageBrush AlignmentX="Center" ImageSource="image\question.png" Opacity="1" AlignmentY="Top"/>
                         </Button.Background>
@@ -169,15 +170,16 @@
                 </Grid>
                 <Grid Height="592" HorizontalAlignment="Left" Width="1070" Grid.Row="1">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="814"/>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="784"/>
                         <ColumnDefinition Width="256"/>
                     </Grid.ColumnDefinitions>
-                    <InkCanvas x:Name="inkcanvas"  Margin="8,8,8,8" MouseDown="ink_MouseDown" MouseMove="ink_MouseMove" MouseUp="ink_MouseUp" Grid.Column="0">
+                    <InkCanvas x:Name="inkcanvas"  Margin="8,8,8,8" MouseDown="ink_MouseDown" MouseMove="ink_MouseMove" MouseUp="ink_MouseUp" Grid.Column="0" Grid.ColumnSpan="2">
                         <InkCanvas.Background>
                             <SolidColorBrush Color="#FFFFFF" Opacity="1"/>
                         </InkCanvas.Background>
                     </InkCanvas>
-                    <Grid Height="592" HorizontalAlignment="Left" Width="244" Grid.Column="1">
+                    <Grid Height="592" HorizontalAlignment="Left" Width="244" Grid.Column="2">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="144"/>
                             <RowDefinition Height="448"/>
@@ -218,7 +220,7 @@
                             </Button>
                             <Image x:Name="SampleImage" Source="image\colorpicker.png" HorizontalAlignment="Left" Margin="2,6,0,0" VerticalAlignment="Top" Width="116" Height="87"  Stretch="Fill"  Grid.Column="2" MouseDown="image_MouseDown"/>
 
-                            <Slider x:Name="slider" Grid.Column="2" Minimum="5" Maximum="20" Margin="8,100,8,0" VerticalAlignment="Top" ValueChanged="slider_ValueChanged"/>
+                            <Slider x:Name="slider" Grid.Column="2" Minimum="1" Maximum="20" Margin="8,100,8,0" VerticalAlignment="Top" ValueChanged="slider_ValueChanged"/>
                         </Grid>
                         <ScrollViewer x:Name="scrollviewer" Margin="16,16,8,30" Grid.Row="1">
                             <TextBlock Name="ConversationBox"  TextWrapping="Wrap" Text=""  Focusable="True"/>

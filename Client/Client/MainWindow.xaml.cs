@@ -103,12 +103,12 @@ namespace Client
             this.textBoxUserName.Content = "当前用户："+us.Name;
 
             //初始化墨迹和画板
-            currentColor = Colors.Red;
+            currentColor = Colors.Black;
             inkDA = new DrawingAttributes()
             {
                 Color = currentColor,
-                Height = 6,
-                Width = 6,
+                Height = 5,
+                Width = 5,
                 FitToCurve = false
             };
             inkcanvas.DefaultDrawingAttributes = inkDA;
@@ -124,15 +124,21 @@ namespace Client
         {
             if (e.Key == Key.Enter)
             {
-                client.Talk(us.Name, this.SendBox.Text);
-                this.SendBox.Text = "";
+                if(SendBox.Text!="")
+                {
+                    client.Talk(us.Name, this.SendBox.Text);
+                    this.SendBox.Text = "";
+                }
             }
         }
 
         private void send_Click(object sender, RoutedEventArgs e)
         {
-            client.Talk(us.Name, this.SendBox.Text);
-            this.SendBox.Text = "";
+            if (SendBox.Text != "")
+            {
+                client.Talk(us.Name, this.SendBox.Text);
+                this.SendBox.Text = "";
+            }
         }
         private void exitBnt_Click(object sender, RoutedEventArgs e)
         {
@@ -158,7 +164,8 @@ namespace Client
         private void ink_MouseUp(object sender, MouseButtonEventArgs e)
         {
             ink_runtime_flag = false;
-
+            temp.X = 0;
+            temp.Y = 0;
             StrokeCollection sc = inkcanvas.Strokes;
             string inkData = (new StrokeCollectionConverter()).ConvertToString(sc);
             ink_stack.Push(inkData);
@@ -297,11 +304,17 @@ namespace Client
                 ink_runtime(pos);
         }
 
+        private StylusPoint temp = new StylusPoint(0,0);
+            
         private void ink_runtime(Point pos)
         {
             StylusPoint stylusPoint = new StylusPoint(pos.X, pos.Y);
             StylusPointCollection stylusPoints = new StylusPointCollection();
+            if (temp.X == 0 && temp.Y == 0) temp = new StylusPoint(pos.X, pos.Y);
+            stylusPoints.Add(temp);
             stylusPoints.Add(stylusPoint);
+            temp.X = pos.X;
+            temp.Y = pos.Y;
             Stroke stroke = new Stroke(stylusPoints, inkDA);
 
             StrokeCollection sc = inkcanvas.Strokes;
@@ -345,7 +358,7 @@ namespace Client
 
 
 
-        //还有一点小bug，点击只会出现自己的信息卡
+        //信息
         public void ShowInfo(Userdata[] mydata)
         {
             userdatas = mydata;
@@ -378,7 +391,7 @@ namespace Client
 
             //得到了已登录的所有用户的信息
             if (usarr[0].Avart == null)
-                usarr[0].Avart = "boy.png";
+                usarr[0].Avart = "1.png";
             this.photo1.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + usarr[0].Avart));
             this.U1.Text += usarr[0].Name + "\n 0";
 
@@ -396,7 +409,7 @@ namespace Client
             }
 
             if (usarr[1].Avart == null)
-                usarr[1].Avart = "boy.png";
+                usarr[1].Avart = "1.png";
             this.photo2.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + usarr[1].Avart));
             this.U2.Text += usarr[1].Name + "\n 0";
 
@@ -414,7 +427,7 @@ namespace Client
             }
 
             if (usarr[2].Avart == null)
-                usarr[2].Avart = "boy.png";
+                usarr[2].Avart = "1.png";
             this.photo3.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + usarr[2].Avart));
             this.U3.Text += usarr[2].Name + "\n 0";
 
@@ -432,7 +445,7 @@ namespace Client
             }
 
             if (usarr[3].Avart == null)
-                usarr[3].Avart = "boy.png";
+                usarr[3].Avart = "1.png";
             this.photo4.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + usarr[3].Avart));
             this.U4.Text += usarr[3].Name + "\n 0";
 
@@ -450,7 +463,7 @@ namespace Client
             }
 
             if (usarr[4].Avart == null)
-                usarr[4].Avart = "boy.png";
+                usarr[4].Avart = "1.png";
             this.photo5.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + usarr[4].Avart));
             this.U5.Text += usarr[4].Name + "\n 0";
 
@@ -468,7 +481,7 @@ namespace Client
             }
 
             if (usarr[5].Avart == null)
-                usarr[5].Avart = "boy.png";
+                usarr[5].Avart = "1.png";
             this.photo6.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + usarr[5].Avart));
             this.U6.Text += usarr[5].Name + "\n 0";
 
@@ -486,7 +499,7 @@ namespace Client
             }
 
             if (usarr[6].Avart == null)
-                usarr[6].Avart = "boy.png";
+                usarr[6].Avart = "1.png";
             this.photo7.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + usarr[6].Avart));
             this.U7.Text += usarr[6].Name + "\n 0";
 
@@ -504,7 +517,7 @@ namespace Client
             }
 
             if (usarr[7].Avart == null)
-                usarr[7].Avart = "boy.png";
+                usarr[7].Avart = "1.png";
             this.photo8.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + usarr[7].Avart));
             this.U8.Text += usarr[7].Name + "\n 0";
 
@@ -593,7 +606,7 @@ namespace Client
                 ConversationBox.Text += "系统提示：请开始抢答\n";
             }
             scrollviewer.ScrollToBottom();
-            restTimeTextBox.Text = "60";
+            restTimeTextBox.Text = "120";
         }
 
         public void ShowWin(string userName, string userName0)
@@ -630,7 +643,7 @@ namespace Client
             ink_stack.Clear();
             readybtn.IsEnabled = true;
             readybtn.Content = "准备";
-            restTimeTextBox.Text = "时间";
+            restTimeTextBox.Text = "";
             clear.IsEnabled = false;
             undo.IsEnabled = false;
             random.IsEnabled = false;
@@ -685,6 +698,11 @@ namespace Client
         private void changeQues(object sender, RoutedEventArgs e)
         {
             client.changeQuestion(roomId, us.Acount);
+        }
+
+        private void question_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("不会玩吗？您只需要画出或者猜出相应词语就可以了。祝您玩的愉快！","彩蛋");
         }
     }
 }

@@ -88,11 +88,7 @@
                 <Label Grid.Row="4" Grid.Column="0" Content="性别：" ></Label>
                 <Label Grid.Row="5" Grid.Column="0" Content="密码："></Label>
                 <TextBox Name="Account" Grid.Column="1" Grid.Row="0"/>
-                <TextBox Name="AccountName" Grid.Column="1" Grid.Row="3"/>
-                <StackPanel Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="50" Margin="30,0,90,0" Grid.Row="4" VerticalAlignment="Center" Width="240" Orientation="Horizontal">
-                    <RadioButton Name="RadioM" Content="男" Width="120" Height="30" FontSize="24"  VerticalContentAlignment="Center" Foreground="#FF8586BD"/>
-                    <RadioButton Content="女" Width="120" Height="30" FontSize="24" VerticalContentAlignment="Center" Foreground="#FFE2BBF7"/>
-                </StackPanel>
+                
                 <TextBox Name="Code" Grid.Column="1" Grid.Row="1"  Width="90"/>
                 <Image Name="img" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Height="30" Width="90" Margin="100,0,50,0" Stretch="Fill" MouseDown="img_MouseDown"/>
                 <Button Content="发送令牌" Margin="80,0,60,0" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"  Height="50" Foreground="#FF000000" FontSize="20" BorderThickness="0" Click="Button_Click_SendCode" Name="sendCode">
@@ -101,6 +97,11 @@
                     </Button.Background>
                 </Button>
                 <TextBox Grid.Column="1" Grid.Row="2" Name="code"/>
+                <TextBox Name="AccountName" Grid.Column="1" Grid.Row="3"/>
+                <StackPanel Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="50" Margin="30,0,90,0" Grid.Row="4" VerticalAlignment="Center" Width="240" Orientation="Horizontal">
+                    <RadioButton Name="RadioM" Content="♂" Width="120" Height="30" FontSize="24"  VerticalContentAlignment="Center" Foreground="#FF5457E3"/>
+                    <RadioButton Content="♀" Width="120" Height="30" FontSize="24" VerticalContentAlignment="Center" Foreground="#FFD913A2"/>
+                </StackPanel>
                 <PasswordBox Name="PassWord" Grid.Column="1" Grid.Row="5" KeyUp="Reg_KeyUp"/>
                 <Button Content="注册" Margin="60,0" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="4" VerticalAlignment="Center"  Height="50" Foreground="#FF000000" FontSize="24" BorderThickness="0" Click="Button_Click_Register">
                     <Button.Background>

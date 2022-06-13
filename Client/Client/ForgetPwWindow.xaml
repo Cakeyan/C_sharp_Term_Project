@@ -87,8 +87,6 @@
                 <Label Grid.Row="3" Grid.Column="0" Content="令牌：" ></Label>
                 <Label Grid.Row="4" Grid.Column="0" Content="新密码：" ></Label>
                 <TextBox Name="Account" Grid.Column="1" Grid.Row="1"/>
-                <TextBox Grid.Column="1" Grid.Row="3"/>
-                <PasswordBox Name="PassWord" Grid.Column="1" Grid.Row="4" KeyUp="Forget_KeyUp"/>
                 <TextBox Name="Code" Grid.Column="1" Grid.Row="2"  Width="90"/>
                 <Image Name="img" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Height="30" Width="90" Margin="100,0,50,0" Stretch="Fill" MouseDown="img_MouseDown"/>
                 <Button Content="发送令牌" Margin="80,0,60,0" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"  Height="50" Foreground="#FF000000" FontSize="20" BorderThickness="0" Click="Button_Click_SendCode">
@@ -97,6 +95,7 @@
                     </Button.Background>
                 </Button>
                 <TextBox Grid.Column="1" Grid.Row="3" Name="mailCode"/>
+                <PasswordBox Name="PassWord" Grid.Column="1" Grid.Row="4" KeyUp="Forget_KeyUp"/>
                 <Button Content="重置密码" Margin="60,0" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="4" VerticalAlignment="Center"  Height="50" Foreground="#FF000000" FontSize="24" BorderThickness="0" Click="Button_Click_ResetPassword">
                     <Button.Background>
                         <ImageBrush AlignmentX="Center" ImageSource="image\submitbutton.png" Opacity="1" AlignmentY="Center"/>

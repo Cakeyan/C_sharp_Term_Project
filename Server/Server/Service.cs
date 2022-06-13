@@ -541,7 +541,12 @@ namespace Server
             }
             foreach(var user1 in CC.Rooms[roomId].users)
             {
-                user1.callback.ShowIsReady(pos, false);
+                try
+                {
+                    user1.callback.ShowIsReady(pos, false);
+
+                }
+                catch { Console.WriteLine("有玩家退出无法返回信息！"); }
             }
         }
 

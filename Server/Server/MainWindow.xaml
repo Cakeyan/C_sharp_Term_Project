@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Server"
         mc:Ignorable="d"
-        Title="服务端" Height="240" Width="360" Closing="Window_Closing" Icon="image\exe_logo.png">
+        Title="服务端" Height="240" Width="360" Closing="Window_Closing" Icon=".\image\exe_logo.png">
     <Grid>
-        <Frame x:Name="frame1" Margin="5,3,0.333,-0.333" BorderThickness="2" BorderBrush="#FFA6C9FD" NavigationUIVisibility="Hidden" >
+        <Frame x:Name="frame1" Margin="5,3,0.333,-0.333" BorderThickness="2" NavigationUIVisibility="Hidden" >
             <Frame.Background>
                 <ImageBrush AlignmentX="Right"  Opacity="0" AlignmentY="Bottom"/>
             </Frame.Background>
@@ -16,23 +16,41 @@
             <DockPanel.Background>
                 <SolidColorBrush Color="#FFFAF4F4" Opacity="0.2"/>
             </DockPanel.Background>
-            <Border DockPanel.Dock="Top" Style="{StaticResource BorderStyle}">
-                <TextBlock Text="你画我猜服务端" Style="{StaticResource TitleStyle}"/>
+            <Border DockPanel.Dock="Top" Style="{StaticResource BorderStyle}" Background="#33ABCEF1">
+                <TextBlock Text="你画我猜服务器" Style="{StaticResource TitleStyle}"/>
             </Border>
             <StackPanel DockPanel.Dock="Top" Background="White" >
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
-                    <Button Name="btnStart" Width="70" Content="启动" Click="btnStart_Click"/>
-                    <Button Name="btnStop" Margin="20 0 0 0" Width="70" Content="停止" Click="btnStop_Click"/>
+                    <Button Name="btnStart" Width="70" Content="启动" Click="btnStart_Click" Background="{x:Null}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderThickness="1" BorderBrush="#FF707070" CornerRadius="5" Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Button Name="btnStop" Margin="20 0 0 0" Width="70" Content="停止" Click="btnStop_Click" BorderBrush="{x:Null}" Background="{x:Null}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderThickness="1" BorderBrush="#FF707070" CornerRadius="5" Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
                 </StackPanel>
                 <Separator/>
             </StackPanel>
-            <GroupBox Header="运行信息">
-                <ScrollViewer>
-                    <StackPanel TextBlock.LineHeight="20">
+            <GroupBox Header="运行信息" BorderBrush="#FFACC4D2" Foreground="#FFCF1C1C">
+                <ScrollViewer x:Name="scrollviewer">
+                    <StackPanel TextBlock.LineHeight="15">
                         <StackPanel.Background>
                             <SolidColorBrush Color="White" Opacity="0.2"/>
                         </StackPanel.Background>
-                        <TextBlock x:Name="textBlock1" Margin="5" TextWrapping="Wrap"/>
+                        <TextBlock x:Name="textBlock1" Margin="5" TextWrapping="Wrap" Foreground="Black"/>
                     </StackPanel>
                 </ScrollViewer>
             </GroupBox>

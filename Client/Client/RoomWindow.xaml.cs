@@ -93,15 +93,22 @@ namespace Client
         {
             if(e.Key==Key.Enter)
             {
-                Checkinclient.Talk(us.Name, this.SendBox.Text);
-                this.SendBox.Text = "";
+                if(SendBox.Text != "")
+                {
+                    Checkinclient.Talk(us.Name, this.SendBox.Text);
+                    this.SendBox.Text = "";
+                }
+
             }
         }
 
         private void SendBnt_Click(object sender, RoutedEventArgs e)
         {
-            Checkinclient.Talk(us.Name, this.SendBox.Text);
-            this.SendBox.Text = "";
+            if (SendBox.Text != "")
+            {
+                Checkinclient.Talk(us.Name, this.SendBox.Text);
+                this.SendBox.Text = "";
+            }
         }
 
         //退出游戏

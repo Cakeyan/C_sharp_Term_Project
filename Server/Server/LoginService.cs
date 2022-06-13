@@ -12,6 +12,7 @@ namespace Server
     // 注意: 使用“重构”菜单上的“重命名”命令，可以同时更改代码和配置文件中的类名“LoginService”。
     public class LoginService : ILoginService
     {
+        MainWindow mw = new MainWindow();
         #region 远程登录服务函数实现
         //远程登录
         public bool Login(string id, string pw)
@@ -72,17 +73,22 @@ namespace Server
             {
                 return "该用户已经存在";
             }
-
-
+           
             var q = from t in myDbEntities.Table
                     orderby t.ableTime descending
                     where t.email == id
                     select t;
             if (q == null) return "该账号验证码不存在";
             Table table = q.FirstOrDefault();
-            if (table.ableTime < DateTime.Now) return "验证码已过期";
-            if (table.code != code) return "验证码错误";
 
+            if (table == null)
+                Console.WriteLine("注册出错！");
+            else
+            {
+                if (table.ableTime < DateTime.Now) return "验证码已过期";
+                if (table.code != code) return "验证码错误";
+            }
+            
             try
             {
                 myDbEntities.User.Add(us);
@@ -176,8 +182,14 @@ namespace Server
                     select t;
             if (tmp == null) return "该账号不存在";
             Table table = tmp.FirstOrDefault();
-            if (table.ableTime < DateTime.Now) return "验证码已过期";
-            if (table.code != code) return "验证码错误";
+            if(table == null)
+                    Console.WriteLine("找回错误！");
+            else
+            {
+                if (table.ableTime < DateTime.Now) return "验证码已过期";
+                if (table.code != code) return "验证码错误";
+            }
+
 
 
             //选中这一条数据

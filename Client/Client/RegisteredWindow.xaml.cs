@@ -85,16 +85,20 @@ namespace Client
 
         private void Button_Click_Register(object sender, RoutedEventArgs e)
         {
-            string flag = client.Registered(Account.Text, PassWord.Password, "签名文本删掉", AccountName.Text, code.Text);
-            if (flag == "OK")
+            if(AccountName.Text != null && code.Text != null && Account.Text != null  && PassWord.Password != null)
             {
-                if (MessageBox.Show("注册成功", "提示", MessageBoxButton.OK) == MessageBoxResult.OK)
+                string flag = client.Registered(Account.Text, PassWord.Password, "签名文本删掉", AccountName.Text, code.Text);
+                if (flag == "OK")
                 {
-                    Close();
+                    if (MessageBox.Show("注册成功", "提示", MessageBoxButton.OK) == MessageBoxResult.OK)
+                    {
+                        Close();
+                    }
                 }
+                else
+                    MessageBox.Show(flag);
             }
-            else
-                MessageBox.Show(flag);
+
         }
 
         private void Button_Click_Back(object sender, RoutedEventArgs e)
