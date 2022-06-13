@@ -1,6 +1,4 @@
-﻿// zyx 1248
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -237,18 +235,36 @@ namespace Client
         private void image_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Mouse.Capture(this);
-
+            Cursor = Cursors.Pen;
             this.MouseMove += MainWindow_MouseMove;
             this.MouseUp += MainWindow_MouseUp;
+
         }
 
         private void MainWindow_MouseMove(object sender, MouseEventArgs e)
         {
+            Cursor = Cursors.Pen;
             var pos = e.GetPosition(SampleImage);
             var img = SampleImage.Source as BitmapSource;
 
             if (pos.X > 0 && pos.Y > 0 && pos.X < img.PixelWidth && pos.Y < img.PixelHeight)
+            {
                 SampleImageClick(img, pos);
+            }
+            else
+            {
+                Cursor = Cursors.Arrow;
+            }    
+        }
+
+        private void image_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Cursor = Cursors.Pen;
+        }
+
+        private void image_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Cursor = Cursors.Arrow;
         }
 
         protected void SampleImageClick(BitmapSource img, Point pos)
@@ -629,6 +645,7 @@ namespace Client
             //    if (us.Name == s[i]) ScoreLabel.Content = s[i + 1];
             //}
             //重新开始
+            ink_stack.Clear();
             ShowStart(userName1, answer, tip);
         }
 
@@ -703,6 +720,20 @@ namespace Client
         private void question_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("不会玩吗？您只需要画出或者猜出相应词语就可以了。祝您玩的愉快！","彩蛋");
+        }
+
+        private void voice_click(object sender, RoutedEventArgs e)
+        {
+            if (RoomWindow.music_play)
+            {
+                RoomWindow.music_play = false;
+                RoomWindow.player.Stop();
+            }
+            else
+            {
+                RoomWindow.music_play = true;
+                RoomWindow.player.Play();
+            }
         }
     }
 }

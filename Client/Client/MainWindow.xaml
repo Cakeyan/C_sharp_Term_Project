@@ -152,7 +152,7 @@
                             <ImageBrush AlignmentX="Center" ImageSource="image\random.png" Opacity="1" AlignmentY="Top"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="voice" HorizontalAlignment="Center" VerticalAlignment="Center" Width="56" Height="56" Margin="0,0,0,0" BorderBrush="White" Grid.Column="3" Style="{StaticResource hover}">
+                    <Button x:Name="voice" HorizontalAlignment="Center" VerticalAlignment="Center" Width="56" Height="56" Margin="0,0,0,0" BorderBrush="White" Grid.Column="3" Style="{StaticResource hover}" Click="voice_click">
                         <Button.Background>
                             <ImageBrush AlignmentX="Center" ImageSource="image\voice.png" Opacity="1" AlignmentY="Top"/>
                         </Button.Background>
@@ -218,7 +218,7 @@
                                     </ControlTemplate>
                                 </Button.Template>
                             </Button>
-                            <Image x:Name="SampleImage" Source="image\colorpicker.png" HorizontalAlignment="Left" Margin="2,6,0,0" VerticalAlignment="Top" Width="116" Height="87"  Stretch="Fill"  Grid.Column="2" MouseDown="image_MouseDown"/>
+                            <Image x:Name="SampleImage" Source="image\colorpicker.png" HorizontalAlignment="Left" Margin="2,6,0,0" VerticalAlignment="Top" Width="116" Height="87"  Stretch="Fill"  Grid.Column="2" MouseDown="image_MouseDown" MouseEnter="image_MouseEnter" MouseLeave="image_MouseLeave"/>
 
                             <Slider x:Name="slider" Grid.Column="2" Minimum="1" Maximum="20" Margin="8,100,8,0" VerticalAlignment="Top" ValueChanged="slider_ValueChanged"/>
                         </Grid>
