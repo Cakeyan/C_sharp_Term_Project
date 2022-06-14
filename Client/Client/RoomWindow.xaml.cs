@@ -28,7 +28,7 @@ namespace Client
         private CheckinServerClient Checkinclient;
         private User item;//每一个id所属，item可以控制该id下的所有窗口
         public LoginReference.User us;//用户的所有信息
-        MediaPlayer player = new MediaPlayer();
+        public static MediaPlayer player = new MediaPlayer();
         //bool[] arr1 = { true, false, true, false};
         //string[] arr2 = { "3", "2", "4", "1"};
 
@@ -159,14 +159,20 @@ namespace Client
 
         #endregion
 
-        public int musiccount = 0;
+        public static bool music_play = true;
+
         private void music_Click(object sender, RoutedEventArgs e)
         {
-            musiccount++;
-            if (musiccount % 2 == 1)
+            if (music_play)
+            {
+                music_play = false;
                 player.Stop();
+            }
             else
+            {
+                music_play = true;
                 player.Play();
+            }    
         }
 
         private void Window_Closing(object sender, EventArgs e)
