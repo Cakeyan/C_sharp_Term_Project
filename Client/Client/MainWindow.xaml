@@ -147,7 +147,7 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="" Foreground="#FF000000" TextWrapping="Wrap" Margin="0,4,0,0"  FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Name="restTimeTextBox"/>
                     <Label x:Name="TipLabel"  Foreground="#FF000000"  Margin="0,0,0,0"  FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1"/>
-                    <Button x:Name="random" VerticalAlignment="Bottom" Height="56" Margin="0,0,2.8,6" BorderBrush="White" Grid.Column="2" Style="{StaticResource hover}" HorizontalAlignment="Right" Width="56" Click="changeQues">
+                    <Button x:Name="random" VerticalAlignment="Bottom" Height="56" Margin="0,0,2.8,6" BorderBrush="White" Grid.Column="2" Style="{StaticResource hover}" HorizontalAlignment="Right" Width="56" Click="changeQues" Cursor="Hand">
                         <Button.Background>
                             <ImageBrush AlignmentX="Center" ImageSource="image\random.png" Opacity="1" AlignmentY="Top"/>
                         </Button.Background>
