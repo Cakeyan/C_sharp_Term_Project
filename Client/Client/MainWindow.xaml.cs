@@ -98,7 +98,7 @@ namespace Client
             loginclient = new LoginServiceClient();
             //显示登录
             client.Login(roomId,us.Name);
-            this.textBoxUserName.Content = "当前用户："+us.Name;
+            this.textBoxUserName.Content = "用户："+us.Name;
 
             //初始化墨迹和画板
             currentColor = Colors.Black;
@@ -409,7 +409,7 @@ namespace Client
             if (usarr[0].Avart == null)
                 usarr[0].Avart = "1.png";
             this.photo1.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + usarr[0].Avart));
-            this.U1.Text += usarr[0].Name + "\n 0";
+            this.U1.Text += usarr[0].Name + "\n0";
 
             if (cnt == 1)
             {
@@ -427,7 +427,7 @@ namespace Client
             if (usarr[1].Avart == null)
                 usarr[1].Avart = "1.png";
             this.photo2.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + usarr[1].Avart));
-            this.U2.Text += usarr[1].Name + "\n 0";
+            this.U2.Text += usarr[1].Name + "\n0";
 
             if (cnt == 2)
             {
@@ -445,7 +445,7 @@ namespace Client
             if (usarr[2].Avart == null)
                 usarr[2].Avart = "1.png";
             this.photo3.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + usarr[2].Avart));
-            this.U3.Text += usarr[2].Name + "\n 0";
+            this.U3.Text += usarr[2].Name + "\n0";
 
             if (cnt == 3)
             {
@@ -463,7 +463,7 @@ namespace Client
             if (usarr[3].Avart == null)
                 usarr[3].Avart = "1.png";
             this.photo4.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + usarr[3].Avart));
-            this.U4.Text += usarr[3].Name + "\n 0";
+            this.U4.Text += usarr[3].Name + "\n0";
 
             if (cnt == 4)
             {
@@ -481,7 +481,7 @@ namespace Client
             if (usarr[4].Avart == null)
                 usarr[4].Avart = "1.png";
             this.photo5.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + usarr[4].Avart));
-            this.U5.Text += usarr[4].Name + "\n 0";
+            this.U5.Text += usarr[4].Name + "\n0";
 
             if (cnt == 5)
             {
@@ -499,7 +499,7 @@ namespace Client
             if (usarr[5].Avart == null)
                 usarr[5].Avart = "1.png";
             this.photo6.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + usarr[5].Avart));
-            this.U6.Text += usarr[5].Name + "\n 0";
+            this.U6.Text += usarr[5].Name + "\n0";
 
             if (cnt == 6)
             {
@@ -517,7 +517,7 @@ namespace Client
             if (usarr[6].Avart == null)
                 usarr[6].Avart = "1.png";
             this.photo7.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + usarr[6].Avart));
-            this.U7.Text += usarr[6].Name + "\n 0";
+            this.U7.Text += usarr[6].Name + "\n0";
 
             if (cnt == 7)
             {
@@ -535,7 +535,7 @@ namespace Client
             if (usarr[7].Avart == null)
                 usarr[7].Avart = "1.png";
             this.photo8.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + usarr[7].Avart));
-            this.U8.Text += usarr[7].Name + "\n 0";
+            this.U8.Text += usarr[7].Name + "\n0";
 
             user1Btn1.Visibility = Visibility.Visible;
             user1Btn2.Visibility = Visibility.Visible;
@@ -603,7 +603,7 @@ namespace Client
                 SendBox.IsEnabled = false;
                 sendbtn.Opacity = 0.5;
                 SendBox.Opacity = 0.5;
-                TipLabel.Content = "题目：" + answer;
+                TipLabel.Content = answer;
                 ConversationBox.Text += "系统提示：请开始绘画\n";
                 TipCheck = answer;
             }
