@@ -485,7 +485,15 @@ namespace Server
             {
                 for (int j = 0; j < CC.Rooms[roomId].users.Count; ++j)
                 {
-                    CC.Rooms[roomId].users[j].callback.ShowIsReady(i, CC.Rooms[roomId].users[i].ready);
+                    try 
+                    {
+                        CC.Rooms[roomId].users[j].callback.ShowIsReady(i, CC.Rooms[roomId].users[i].ready);
+                    }
+                    catch
+                    {
+
+                    }
+                    
                     
                 }
             }
