@@ -152,7 +152,13 @@ namespace Server
 
             if (user.isCorrect && message.Contains(ans))
             {
-                user.callback.ShowTalk("系统消息", "警告不得在猜中后再发送与答案相关内容");
+                try
+                {
+                    user.callback.ShowTalk("系统消息", "警告不得在猜中后再发送与答案相关内容");
+                }catch
+                {
+
+                }
                 return;
             }
 
@@ -175,8 +181,15 @@ namespace Server
                         CC.Rooms[user.inRoom].users[0].Score += 1;
                         foreach(var user1 in CC.Rooms[user.inRoom].users)
                         {
-                            user1.callback.ShowGrade(item.locid, (int)item.Score, item.Name);
-                            user1.callback.ShowGrade(CC.Rooms[user.inRoom].users[0].locid, (int)CC.Rooms[user.inRoom].users[0].Score, CC.Rooms[user.inRoom].users[0].Name);
+                            try
+                            {
+                                user1.callback.ShowGrade(item.locid, (int)item.Score, item.Name);
+                                user1.callback.ShowGrade(CC.Rooms[user.inRoom].users[0].locid, (int)CC.Rooms[user.inRoom].users[0].Score, CC.Rooms[user.inRoom].users[0].Name);
+                            }
+                            catch
+                            {
+
+                            }
                         }
                         item.isCorrect = true;
                         CC.Rooms[user.inRoom].correctNum += 1;
@@ -267,7 +280,14 @@ namespace Server
             {
                 for(int j=0;j<CC.Rooms[id].users.Count;++j)
                 {
-                    CC.Rooms[id].users[j].callback.ShowIsReady(i, CC.Rooms[id].users[i].ready);
+                    try
+                    {
+                        CC.Rooms[id].users[j].callback.ShowIsReady(i, CC.Rooms[id].users[i].ready);
+                    }
+                    catch
+                    {
+
+                    }
                 }
             }
         }
@@ -382,7 +402,14 @@ namespace Server
             }
             for(int i=0;i< CC.Rooms[roomId].users.Count; ++i)
             {
-                user.callback.ShowIsReady(i, CC.Rooms[roomId].users[i].ready);
+                try
+                {
+                    user.callback.ShowIsReady(i, CC.Rooms[roomId].users[i].ready);
+                }
+                catch
+                {
+
+                }
             }
             refreshRoomInfo();
         }
@@ -447,7 +474,14 @@ namespace Server
             {
                 for (int j = 0; j < CC.Rooms[roomId].users.Count; ++j)
                 {
-                    CC.Rooms[roomId].users[j].callback.ShowGrade(CC.Rooms[roomId].users[i].locid, 0, CC.Rooms[roomId].users[i].Name);
+                    try
+                    {
+                        CC.Rooms[roomId].users[j].callback.ShowGrade(CC.Rooms[roomId].users[i].locid, 0, CC.Rooms[roomId].users[i].Name);
+                    }
+                    catch
+                    {
+
+                    }
                 }
             }
         }
