@@ -1,18 +1,32 @@
-﻿using System;
+﻿using Client.ServiceReference;
+using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
+using System.ServiceModel;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 using Client.LoginReference;
 
 namespace Client
 {
-    //找回密码逻辑
+    /// <summary>
+    /// ForgetPasswordWindow.xaml 的交互逻辑
+    /// </summary>
     public partial class ForgetPwWindow : Window
     {
+        
+        //验证码
         private string Verification;
         private LoginServiceClient client;
-
         public ForgetPwWindow()
         {
             client = new LoginServiceClient();
@@ -20,25 +34,25 @@ namespace Client
             Verification = GetImage();
         }
 
-        //生成验证码图片
+        //以字符串返回验证码
         public string GetImage()
         {
             string code = "";
             Bitmap bitmap = VerifyCodeHelper.CreateVerifyCode(out code);
             ImageSource imageSource = ImageFormatConvertHelper.ChangeBitmapToImageSource(bitmap);
             img.Source = imageSource;
+            //为了实现不区分大小写
             code = code.ToLower();
             return code;
         }
 
-        //关闭找回窗口
+        //Closing事件
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             LoginWindow LW = new LoginWindow();
             LW.Show();
         }
 
-        //回车提交
         private void Forget_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
@@ -47,11 +61,16 @@ namespace Client
             }
         }
 
-        //发送令牌
+
+        //点击按钮事件
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
         private void Button_Click_SendCode(object sender, RoutedEventArgs e)
         {
 
-            //判断验证码
+            //判断是否为机器，验证码的真伪
             if (Code.Text.ToLower() != Verification)
             {
                 MessageBox.Show("验证码输入错误！请重新输入", "提示", MessageBoxButton.OKCancel, MessageBoxImage.Asterisk);
@@ -59,7 +78,7 @@ namespace Client
                 Code.Text = "";
                 return;
             }
-            //发送令牌邮件
+
             try
             {
                 bool flag = client.sendEmail(Account.Text);
@@ -74,9 +93,9 @@ namespace Client
             }
         }
 
-        //修改密码
         private void Button_Click_ResetPassword(object sender, RoutedEventArgs e)
         {
+            //开始向服务端申请，尝试修改密码
             try
             {
                 string flag = client.ForgetPassword(Account.Text, PassWord.Password,mailCode.Text);
@@ -96,13 +115,11 @@ namespace Client
             }
         }
 
-        //点击返回按钮
         private void Button_Click_Back(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
-        //点击图片切换验证码
         private void img_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Verification = GetImage();
