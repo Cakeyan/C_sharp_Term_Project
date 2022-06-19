@@ -33,6 +33,7 @@ namespace Server
             InitializeComponent();
         }
 
+        // 通过本地文件往数据库插入词库
         private void insertQues(string filePath)
         {
             string[] lines = File.ReadAllLines(filePath, Encoding.UTF8);
@@ -58,7 +59,7 @@ namespace Server
         {
             MyDbEntities myDbEntities = new MyDbEntities();
 
-            //string filePath = @"D:\QQ\QQchatFile\1946146453\FileRecv\[中文] 啥都有（245个词）.txt";
+            //string filePath = @"D:\QQ\QQchatFile\1946146453\词库.txt";
             //insertQues(filePath);
             
 
