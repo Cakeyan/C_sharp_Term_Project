@@ -1,18 +1,30 @@
-﻿using System;
+﻿using Client.ServiceReference;
+using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 using Client.LoginReference;
 
 namespace Client
 {
-    //注册界面逻辑
+    /// <summary>
+    /// RegisteredWindow.xaml 的交互逻辑
+    /// </summary>
     public partial class RegisteredWindow : Window
     {
+        //验证码
         private string Verification;
         private LoginServiceClient client;
-
         public RegisteredWindow()
         {
             InitializeComponent();
@@ -21,21 +33,19 @@ namespace Client
             client = new LoginServiceClient();
         }
 
-        //生成验证码图片
         public string GetImage()
         {
             string code = "";
             Bitmap bitmap = VerifyCodeHelper.CreateVerifyCode(out code);
             ImageSource imageSource = ImageFormatConvertHelper.ChangeBitmapToImageSource(bitmap);
             img.Source = imageSource;
+            //为了实现不区分大小写
             code = code.ToLower();
             return code;
         }
 
-        //发送令牌
         private void Button_Click_SendCode(object sender, RoutedEventArgs e)
         {
-            //判断验证码
             if (Code.Text.ToLower() != Verification)
             {
                 MessageBox.Show("验证码输入错误！请重新输入", "提示", MessageBoxButton.OKCancel);
@@ -43,7 +53,6 @@ namespace Client
                 Code.Text = "";
                 return;
             }
-            //发送令牌邮件
             try
             {
                 sendCode.IsEnabled = false;
@@ -67,19 +76,18 @@ namespace Client
             
         }
 
-        //关闭注册窗口
+        //关闭窗口事件
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             LoginWindow LW = new LoginWindow();
             LW.Show();
         }
 
-        //点击注册按钮
         private void Button_Click_Register(object sender, RoutedEventArgs e)
         {
             if(AccountName.Text != null && code.Text != null && Account.Text != null  && PassWord.Password != null)
             {
-                string flag = client.Registered(Account.Text, PassWord.Password, "Sign", AccountName.Text, code.Text);
+                string flag = client.Registered(Account.Text, PassWord.Password, "签名文本删掉", AccountName.Text, code.Text);
                 if (flag == "OK")
                 {
                     if (MessageBox.Show("注册成功", "提示", MessageBoxButton.OK) == MessageBoxResult.OK)
@@ -93,13 +101,11 @@ namespace Client
 
         }
 
-        //点击返回按钮
         private void Button_Click_Back(object sender, RoutedEventArgs e)
         {
             Close();
         }
 
-        //回车注册
         private void Reg_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
@@ -108,7 +114,6 @@ namespace Client
             }
         }
 
-        //点击图片切换验证码
         private void img_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Verification = GetImage();
