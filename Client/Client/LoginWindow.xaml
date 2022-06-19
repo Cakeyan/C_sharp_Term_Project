@@ -86,7 +86,7 @@
                 <Label Content="密码：" Grid.Row="3" Grid.Column="0"/>
                 <TextBox  Name="account" Grid.Row="2" Grid.Column="1"/>
                 <PasswordBox Name="passward" Grid.Row="3" Grid.Column="1" KeyUp="Login_KeyUp"/>
-                <Button  Name="sign_in" Content="登录"  Margin="60,0" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="4" VerticalAlignment="Center"  Height="50" Foreground="#FF000000" FontSize="24" BorderThickness="0" Click="sign_in_Click">
+                <Button  Name="sign_in" Content="登录"  Margin="60,0" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="4" VerticalAlignment="Center"  Height="50" Foreground="#FF000000" FontSize="24" BorderThickness="0">
                     <Button.Background>
                         <ImageBrush AlignmentX="Center" ImageSource="image\submitbutton.png" Opacity="1" AlignmentY="Center"/>
                     </Button.Background>
