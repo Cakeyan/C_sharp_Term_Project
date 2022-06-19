@@ -37,12 +37,12 @@ namespace Server
                 }
             }
         }
-
-
         #endregion
 
-        #region 聊天室的服务端函数实现
 
+
+
+        #region 聊天室的服务端函数实现
         public Service()
         {
             if (CC.Users == null)
@@ -258,6 +258,8 @@ namespace Server
             }
         }
         #endregion
+
+
 
         #region 游戏的服务端接口实现
 
