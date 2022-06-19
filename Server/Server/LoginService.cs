@@ -14,7 +14,6 @@ namespace Server
     {
         MainWindow mw = new MainWindow();
         #region 远程登录服务函数实现
-
         //远程登录
         public bool Login(string id, string pw)
         {
@@ -57,13 +56,10 @@ namespace Server
             }
             return false;
         }
-
         //远程注册
         public string Registered(string id, string pw, string sn, string name,string code)
         {
-            //用户信息
             User us = new User();
-            //数据库实例
             MyDbEntities myDbEntities = new MyDbEntities();
             us.Acount = id;
             us.Password = pw;
@@ -77,7 +73,7 @@ namespace Server
             {
                 return "该用户已经存在";
             }
-           //检测用户id是否存在
+           
             var q = from t in myDbEntities.Table
                     orderby t.ableTime descending
                     where t.email == id
@@ -106,7 +102,6 @@ namespace Server
             }
         }
 
-        //随机生成令牌用于绑定邮箱
         private string getCode()
         {
             string letters = "ABCDEFGHIJKLMNPQRSTUVWXYZ0123456789";
@@ -121,13 +116,12 @@ namespace Server
             return code;
         }
 
-        //向指定邮箱发送令牌
         public bool sendEmail(string email)
         {
             string smtpService = "smtp.qq.com";
             string sendEmail = "1930675022@qq.com";
             string sendpwd = "vnyncxvfxfmpbjca";
-            //令牌发送方的邮件地址
+
 
             SmtpClient smtpclient = new SmtpClient();
             smtpclient.Host = smtpService;
@@ -144,7 +138,7 @@ namespace Server
 
             mailMessage.Body = string.Format("尊敬的用户：\n  您好！您的验证码为{0}。感谢您对我们游戏的大力支持", code);
             mailMessage.BodyEncoding = System.Text.Encoding.UTF8;
-            //发送邮件内容
+
             smtpclient.DeliveryMethod = SmtpDeliveryMethod.Network;
 
             smtpclient.EnableSsl = true;
@@ -172,6 +166,7 @@ namespace Server
 
             return true;
         }
+    
 
         //修改密码
         public string ForgetPassword(string id, string pw, string code)
@@ -219,7 +214,6 @@ namespace Server
             return "修改失败";
         }
 
-        //获取指定用户信息
         public User Userinfo(string id)
         {
             User us=null;
@@ -233,13 +227,11 @@ namespace Server
             return us;
         }
 
-        //获取用户总数
         public int GetUserNum()
         {
             if (CC.Users != null) return CC.Users.Count;
             else return 0;
         }
-
         #endregion
     }
 }

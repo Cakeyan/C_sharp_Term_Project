@@ -18,7 +18,6 @@ namespace Server
             }
         }
 
-        // 刷新房间信息
         private void refreshRoomInfo()
         {
             List<int> roomPlayerNum = new List<int>();
@@ -49,7 +48,6 @@ namespace Server
             }
         }
 
-        // 登录进大厅
         public void Login(string userName)
         {
             OperationContext context = OperationContext.Current;
@@ -69,8 +67,7 @@ namespace Server
             }
             refreshRoomInfo();
         }
-        
-        //检查是否能进入房间
+
         public string Checkin(string userName, int roomnumber)
         {
             if (CC.Rooms.ContainsKey(roomnumber)&&(CC.Rooms[roomnumber].users.Count >= CC.Rooms[roomnumber].maxUserNum)) return "人数已满";
@@ -89,7 +86,6 @@ namespace Server
             return "OK";
         }
 
-        // 在大厅向所有用户发送消息
         public void Talk(string userName, string message)
         {
             foreach (var item in CheckinCC.Users)
@@ -106,7 +102,6 @@ namespace Server
             }
         }
 
-        // 退出大厅
         public void Logout(string userName)
         {
             CheckinUser logoutUser = CheckinCC.GetUser(userName);
@@ -132,7 +127,7 @@ namespace Server
 
                 }
             }
-            logoutUser = null; 
+            logoutUser = null; //将其设置为null后，WCF会自动关闭该客户端
 
         }
     }

@@ -12,17 +12,26 @@ using System.Windows.Threading;
 
 namespace Server
 {
+    // 实现函数的时候，用三个/ 来定义一下函数说明，说明函数的大概功能、（参数，返回值，可选可不选）
+    // 整体框架已建好，注意分割线，画板函数实现在#region 画板... 这里面，聊天室在# region 聊天室这里
+
     public class Service : IService
     {
-       
-        // 测试用例
+        /// <summary>
+        /// 测试用例
+        /// </summary>
         public bool test()
         {
             return true;
         }
 
+
+        /*-----------------------------------------------------  分割线   ---------------------------------------------------------------*/
+
         #region 画板的服务端函数实现
-        // 发送数字墨迹
+        /// <summary>
+        /// 发送数字墨迹
+        /// </summary>
         public void SendInk(int room, string ink)
         {
             foreach (var v in CC.Rooms[room].users)
@@ -36,13 +45,38 @@ namespace Server
                     Console.WriteLine(ex.Message);
                 }
             }
+
+            //foreach (var v in CC.Users)
+            //{
+            //    v.callback.ShowInk(ink);
+            //}
         }
+
+        //public void SendMem(int room, MemoryStream memoryStream)
+        //{
+        //    foreach (var v in CC.Rooms[room].users)
+        //    {
+        //        try
+        //        {
+        //            v.callback.ShowMem(memoryStream.GetBuffer());
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            Console.WriteLine(ex.Message);
+        //        }
+        //    }
+        //}
+
         #endregion
 
 
 
+        /*-----------------------------------------------------  分割线   ---------------------------------------------------------------*/
+
+
 
         #region 聊天室的服务端函数实现
+
         public Service()
         {
             if (CC.Users == null)
@@ -50,7 +84,7 @@ namespace Server
                 CC.Users = new List<MyUser>();
             }
         }
-        // 进入到房间中
+
         public void Login(int id,string userName)
         {
             // throw new NotImplementedException();
@@ -110,7 +144,7 @@ namespace Server
                 }
             }
         }
-        // 聊天室的消息广播以及对回答问题的答案的判断
+
         public void Talk(string userName, string message)
         {
             MyUser user = CC.GetUser(userName);
@@ -195,7 +229,7 @@ namespace Server
             
         }
 
-        // 用户退出
+        /// <summary>用户退出</summary>
         public void Logout(int id,string userName)
         {
             MyUser logoutUser = CC.GetUser(userName);
@@ -257,13 +291,13 @@ namespace Server
                 }
             }
         }
+
+
+
+
         #endregion
 
-
-
         #region 游戏的服务端接口实现
-
-        // 刷新房间信息
         private void refreshRoomInfo()
         {
             List<int> roomPlayerNum = new List<int>();
@@ -293,12 +327,13 @@ namespace Server
                 }
             }
         }
-        
-        // 游戏倒计时
         private void timer_Tick(object sender, EventArgs e)
         {
             MyTimer timer = sender as MyTimer;
 
+            //CC.Rooms[timer.roomId].timer.Stop();
+            //RollUserAndRestart(timer.roomId);
+            //return;
             timer.restTime -= 1;
 
             foreach (MyUser user in CC.Rooms[timer.roomId].users)
@@ -378,8 +413,6 @@ namespace Server
             }
             refreshRoomInfo();
         }
-        
-        // 开始游戏时的初始化操作
         public void StartGame(string userName, int roomId)
         {
             //当前用户已准备
@@ -453,12 +486,9 @@ namespace Server
             }
         }
 
-        // 结束游戏时刷新房间信息和用户状态
+
         private void EndGame(int roomId)
         {
-            MyUser newuser = CC.Rooms[roomId].users.First();
-            CC.Rooms[roomId].users.RemoveAt(0);
-            CC.Rooms[roomId].users.Add(newuser);
             CC.Rooms[roomId].isGameStart = false;
             CC.Rooms[roomId].timer.Enabled = false;
             refreshRoomInfo();
@@ -503,7 +533,6 @@ namespace Server
             }
         }
 
-        // 新一局游戏刷新操作
         private void RollUserAndRestart(int roomId)
         {
             if (CC.Rooms[roomId].currentTurn >= CC.Rooms[roomId].users.Count)
@@ -539,7 +568,6 @@ namespace Server
             CC.Rooms[roomId].timer.Enabled = true;
         }
 
-        // 用户取消准备时，向其他用户更新该用户的准备状态
         public void CancelReadyGame(string userName, int roomId)
         {
             MyUser user = CC.GetUser(userName);
@@ -564,7 +592,6 @@ namespace Server
             }
         }
 
-        // 用户换词操作
         public void changeQuestion(int roomid,string Account)
         {
             CC.Rooms[roomid].question.update();

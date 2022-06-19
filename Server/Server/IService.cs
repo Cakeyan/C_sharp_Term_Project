@@ -9,6 +9,8 @@ using System.Windows.Threading;
 
 namespace Server
 {
+    // 服务端等整体框架已建好，服务接口和回调接口框架已建好，数据协定等用到时自建
+    // 操作协定
     [ServiceContract(Namespace = "MyService", CallbackContract = typeof(IServiceCallback))]
 
     //服务接口
@@ -68,6 +70,9 @@ namespace Server
         //回调显示墨迹 
         [OperationContract(IsOneWay = true)]
         void ShowInk(string ink);
+
+        //[OperationContract(IsOneWay = true)]
+        //void ShowMem(byte[] bytesStroke);
         #endregion
 
         #region 聊天室的回调接口
