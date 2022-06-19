@@ -29,7 +29,7 @@ namespace Client
     {
         private ServiceClient client;
         private LoginServiceClient loginclient;
-        public int roomId;//暂用
+        public int roomId;
         public LoginReference.User us;//用户的所有信息
         private User item;//每一个id所属，item可以控制该id下的所有窗口
         private Userdata[] userdatas;
@@ -46,7 +46,6 @@ namespace Client
         //用于回退步骤
         private static Stack<string> ink_stack = new Stack<string>();
 
-
         //传参方式的变化
         public MainWindow(LoginReference.User ustmp)
         {
@@ -54,7 +53,6 @@ namespace Client
             us = ustmp;
             item = CC.GetUser(us.Acount);
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
-
 
             inkcanvas.IsEnabled = false;
             clear.IsEnabled = false;
@@ -85,9 +83,6 @@ namespace Client
             scores.Add(U8);
         }
 
-
-
-
         /*----------------------------------------------------- 分割线  ----------------------------------------------------------------*/
         #region 客户端内的方法
         //画板相关+聊天室登录信息显示
@@ -98,7 +93,7 @@ namespace Client
             loginclient = new LoginServiceClient();
             //显示登录
             client.Login(roomId,us.Name);
-            this.textBoxUserName.Content = "用户："+us.Name;
+            this.textBoxUserName.Content = "用户：" + us.Name;
 
             //初始化墨迹和画板
             currentColor = Colors.Black;
@@ -112,10 +107,9 @@ namespace Client
             inkcanvas.DefaultDrawingAttributes = inkDA;
             inkcanvas.EditingMode = InkCanvasEditingMode.Ink;
 
+            //为画板注册一个鼠标点击事件
             inkcanvas.AddHandler(InkCanvas.MouseDownEvent, new MouseButtonEventHandler(ink_MouseDown), true);
         }
-
-
 
         //用于绑定enter建
         private void SendBox_KeyUp(object sender, KeyEventArgs e)
@@ -130,6 +124,7 @@ namespace Client
             }
         }
 
+        //用于发送信息
         private void send_Click(object sender, RoutedEventArgs e)
         {
             if (SendBox.Text != "")
@@ -138,6 +133,8 @@ namespace Client
                 this.SendBox.Text = "";
             }
         }
+
+        //用于退出游戏
         private void exitBnt_Click(object sender, RoutedEventArgs e)
         {
             client.Logout(roomId,us.Name);
@@ -145,6 +142,7 @@ namespace Client
             item.RoomWindow.Show();
         }
 
+        //为窗口关闭绑定用户退出事件，防止非法退出
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             client.Logout(roomId,us.Name);
@@ -170,6 +168,10 @@ namespace Client
 
             client.SendInk(roomId, inkData);
         }
+
+        /// <summary>
+        /// 画板：墨迹展示
+        /// </summary>
         public void ShowInk(string inkData)
         {
             //删除原有的Strokes
@@ -183,6 +185,7 @@ namespace Client
             //新Strokes添加到InkCanvas中
             inkcanvas.Strokes = sc;
         }
+
         /// <summary>
         /// 画板：初始化画笔和画板
         /// </summary>
@@ -191,6 +194,7 @@ namespace Client
             inkDA.Color = currentColor;
             inkcanvas.DefaultDrawingAttributes = inkDA;
         }
+
         /// <summary>
         /// 画板：画板界面按钮
         /// </summary>
@@ -232,6 +236,9 @@ namespace Client
             }
         }
 
+        /// <summary>
+        /// 调色板点击事件
+        /// </summary>
         private void image_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Mouse.Capture(this);
@@ -259,11 +266,13 @@ namespace Client
 
         private void image_MouseEnter(object sender, MouseEventArgs e)
         {
+            //鼠标进入调色板时更改鼠标样式为画笔
             Cursor = Cursors.Pen;
         }
 
         private void image_MouseLeave(object sender, MouseEventArgs e)
         {
+            //鼠标进入调色板时恢复原有鼠标样式
             Cursor = Cursors.Arrow;
         }
 
@@ -275,7 +284,7 @@ namespace Client
 
             img.CopyPixels(pixels, stride, 0);
 
-            // Get pixel
+            // 获取像素点
             var x = (int)pos.X;
             var y = (int)pos.Y;
 
@@ -286,6 +295,7 @@ namespace Client
             byte blue = pixels[index + 2];
             byte alpha = pixels[index + 3];
 
+            //由RGBA值改变画笔颜色
             inkcanvas.EditingMode = InkCanvasEditingMode.Ink;
             currentColor = Color.FromArgb(alpha, blue, green, red);
             InitColor();
@@ -301,12 +311,18 @@ namespace Client
             this.MouseUp -= MainWindow_MouseUp;
         }
 
+        /// <summary>
+        /// 通过滑动条更改画笔粗细
+        /// </summary>
         private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             inkcanvas.DefaultDrawingAttributes.Width = slider.Value;
             inkcanvas.DefaultDrawingAttributes.Height = slider.Value;
         }
 
+        /// <summary>
+        /// 完成实时笔迹传输相关功能
+        /// </summary>
         private void ink_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (inkcanvas.EditingMode == InkCanvasEditingMode.Ink)
@@ -319,9 +335,10 @@ namespace Client
             if (ink_runtime_flag)
                 ink_runtime(pos);
         }
-
+        
+        //存储上一个传输的点，用以和本次传输的点连成线
         private StylusPoint temp = new StylusPoint(0,0);
-            
+
         private void ink_runtime(Point pos)
         {
             StylusPoint stylusPoint = new StylusPoint(pos.X, pos.Y);
@@ -340,45 +357,78 @@ namespace Client
             client.SendInk(roomId, inkData);
         }
 
+        /// <summary>
+        /// 控制BGM的开关
+        /// </summary>
+        private void voice_click(object sender, RoutedEventArgs e)
+        {
+            if (RoomWindow.music_play)
+            {
+                RoomWindow.music_play = false;
+                RoomWindow.player.Stop();
+            }
+            else
+            {
+                RoomWindow.music_play = true;
+                RoomWindow.player.Play();
+            }
+        }
+
+        /// <summary>
+        /// 为问号按钮绑定一个彩蛋
+        /// </summary>
+        private void question_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("不会玩吗？您只需要画出或者猜出相应词语就可以了。祝您玩的愉快！", "彩蛋");
+        }
+
         #endregion
 
         /*----------------------------------------------------- 分割线  ----------------------------------------------------------------*/
         #region 聊天室的回调函数实现
 
+        /// <summary>
+        /// 其他用户进入房间
+        /// </summary>
         public void ShowLogin(string loginUserName)
         {
             this.ConversationBox.Text += "[" + loginUserName + "]" + "进入房间" + '\n';
             scrollviewer.ScrollToBottom();
         }
 
-        /// <summary>其他用户退出</summary>
+        /// <summary>
+        /// 其他用户退出房间
+        /// </summary>
         public void ShowLogout(string userName)
         {
             this.ConversationBox.Text += "[" + userName + "]" + "退出房间" + '\n';
             scrollviewer.ScrollToBottom();
         }
 
+        /// <summary>
+        /// 展示用户的发言
+        /// </summary>
         public void ShowTalk(string userName, string message)
         {
             this.ConversationBox.Text += "[" + userName + "]说：" + message + '\n';
             scrollviewer.ScrollToBottom();
         }
 
-
-        //准备状态图片
+        /// <summary>
+        /// 展示用户是否已经准备
+        /// </summary>
         public void ShowIsReady(int readyid,bool func)
         {
             Console.WriteLine(readyid);
             Ready[readyid].Visibility = func ? Visibility.Visible : Visibility.Collapsed;
         }
 
-
-
-        //信息
+        /// <summary>
+        /// 展示用户信息
+        /// </summary>
         public void ShowInfo(Userdata[] mydata)
         {
             userdatas = mydata;
-            //this.U1.Text += " 昵称：" + us.Name + '\n' + " 等级：" + us.Grade + '\n' + '\n';
             Userdata[] usarr = new Userdata[CC.maxUserNum];
             int cnt = 0;
             foreach (var item in mydata)
@@ -546,39 +596,29 @@ namespace Client
             user1Btn7.Visibility = Visibility.Visible;
             user1Btn8.Visibility = Visibility.Visible;
 
-
         }
-
-
 
         #endregion
 
         #region 游戏的回调函数实现
+
+        /// <summary>
+        /// 用户进入房间
+        /// </summary>
         public void EnterRoom(string userName,int rooomId)
         {
             client.EnterRoom(userName, roomId);
         }
+
         public void ShowRoom()
         {
-            //这个地方是为了显示用户列表的，不能清空
-            //UserBox.Items.Clear();
-            //显示各个选手得分
-            //string[] s = roommeg.Split(',');
-            //for (int i = 0; i+1 < s.Length; i += 2)
-            //{
-            //   // UserBox.Items.Add(s[i] + "---" + s[i + 1] + "分");
-            //    if (us.Name == s[i]) ScoreLabel.Content = s[i + 1];
-            //}
-
-
-            //初始画板都不可使用
-            //ScoreLabel.Content = 0;
-            //inkcanvas.IsEnabled = false;
-            //clear.IsEnabled = false;
         }
+
+        /// <summary>
+        /// 当前用户准备
+        /// </summary>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //readybtn.IsEnabled = false;
             if (readybtn.Content.ToString() == "取消准备")
             {
                 client.CancelReadyGame(us.Name, roomId);
@@ -589,6 +629,10 @@ namespace Client
             readybtn.Content = "取消准备";
             client.StartGame(us.Name, roomId);
         }
+
+        /// <summary>
+        /// 游戏开始
+        /// </summary>
         public void ShowStart(string userName1, string answer, string tip)
         {
             inkcanvas.Strokes.Clear();
@@ -627,34 +671,36 @@ namespace Client
 
         public void ShowWin(string userName, string userName0)
         {
-
         }
 
+        /// <summary>
+        /// 展示用户分数
+        /// </summary>
         public void ShowGrade(int userId,int score,string name)
         {
             scores[userId-1].Text = name + "\n" + score.ToString();
         }
+
+        /// <summary>
+        /// 重新开始游戏
+        /// </summary>
         public void ShowNewTurn(string roommeg, string userName1, string answer, string tip)
         {
-            //更新用户列表和积分
-            //UserBox.Items.Clear();
-            //string[] s = roommeg.Split(',');
-            //for (int i = 0; i + 1 < s.Length; i += 2)
-            //{
-            //    UserBox.Items.Add(s[i] + "---" + s[i + 1] + "分");
-            //    if (us.Name == s[i]) ScoreLabel.Content = s[i + 1];
-            //}
-            //重新开始
             ink_stack.Clear();
             ShowStart(userName1, answer, tip);
         }
 
+        /// <summary>
+        /// 展示游戏倒计时
+        /// </summary>
         public void ShowTime(int restTime)
         {
             restTimeTextBox.Text = restTime.ToString();
         }
 
-
+        /// <summary>
+        /// 结束游戏
+        /// </summary>
         public void EndGame(string[] userNames, int[] scores)
         {
             ink_stack.Clear();
@@ -672,7 +718,7 @@ namespace Client
             SendBox.Opacity = 1;
             TipLabel.Content = "";
             TipCheck = "";
-            //TODO
+
             string rank = "积分榜：\n";
             for(int i=0;i<userNames.Length;++i)
             {
@@ -681,17 +727,31 @@ namespace Client
             ConversationBox.Text += rank;
         }
 
+        /// <summary>
+        /// 开始游戏后调整准备按钮
+        /// </summary>
         public void stopCancelReady()
         {
             readybtn.IsEnabled = false;
             readybtn.Content = "游戏中";
         }
 
+        /// <summary>
+        /// 更换新的题目
+        /// </summary>
+        private void changeQues(object sender, RoutedEventArgs e)
+        {
+            client.changeQuestion(roomId, us.Acount);
+        }
+
+        /// <summary>
+        /// 更换新的题目后在聊天框内提示
+        /// </summary>
         public void ShowNewQues(string roommeg, string userName1, string answer, string tip)
         {
             if (us.Name == userName1)
             {
-                TipLabel.Content = "题目：" + answer;
+                TipLabel.Content = answer;
                 TipCheck = answer;
                 ConversationBox.Text += "系统提示：你已更换题目\n";
             }
@@ -704,36 +764,11 @@ namespace Client
             scrollviewer.ScrollToBottom();
         }
 
-
         public void refreshRoomInfo(int[] roomPlayerNum, bool[] isStart)
         {
 
         }
 
         #endregion
-
-        private void changeQues(object sender, RoutedEventArgs e)
-        {
-            client.changeQuestion(roomId, us.Acount);
-        }
-
-        private void question_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("不会玩吗？您只需要画出或者猜出相应词语就可以了。祝您玩的愉快！","彩蛋");
-        }
-
-        private void voice_click(object sender, RoutedEventArgs e)
-        {
-            if (RoomWindow.music_play)
-            {
-                RoomWindow.music_play = false;
-                RoomWindow.player.Stop();
-            }
-            else
-            {
-                RoomWindow.music_play = true;
-                RoomWindow.player.Play();
-            }
-        }
     }
 }

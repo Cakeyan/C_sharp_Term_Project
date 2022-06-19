@@ -489,9 +489,6 @@ namespace Server
 
         private void EndGame(int roomId)
         {
-            MyUser newuser = CC.Rooms[roomId].users.First();
-            CC.Rooms[roomId].users.RemoveAt(0);
-            CC.Rooms[roomId].users.Add(newuser);
             CC.Rooms[roomId].isGameStart = false;
             CC.Rooms[roomId].timer.Enabled = false;
             refreshRoomInfo();
