@@ -14,7 +14,8 @@ namespace Server
     {
         MainWindow mw = new MainWindow();
         #region 远程登录服务函数实现
-        
+
+        //远程登录
         public bool Login(string id, string pw)
         {
             //用户信息
@@ -56,8 +57,8 @@ namespace Server
             }
             return false;
         }
-        //远程登录
 
+        //远程注册
         public string Registered(string id, string pw, string sn, string name,string code)
         {
             //用户信息
@@ -104,8 +105,8 @@ namespace Server
                 return "数据库错误";
             }
         }
-        //远程注册
 
+        //随机生成令牌用于绑定邮箱
         private string getCode()
         {
             string letters = "ABCDEFGHIJKLMNPQRSTUVWXYZ0123456789";
@@ -119,8 +120,8 @@ namespace Server
             string code = sb.ToString();
             return code;
         }
-        //随机生成令牌用于绑定邮箱
 
+        //向指定邮箱发送令牌
         public bool sendEmail(string email)
         {
             string smtpService = "smtp.qq.com";
@@ -171,8 +172,8 @@ namespace Server
 
             return true;
         }
-        //向指定邮箱发送令牌
 
+        //修改密码
         public string ForgetPassword(string id, string pw, string code)
         {
             //用户信息
@@ -217,8 +218,8 @@ namespace Server
             }
             return "修改失败";
         }
-        //修改密码
 
+        //获取指定用户信息
         public User Userinfo(string id)
         {
             User us=null;
@@ -231,14 +232,13 @@ namespace Server
             us = q.FirstOrDefault();
             return us;
         }
-        //获取指定用户信息
 
+        //获取用户总数
         public int GetUserNum()
         {
             if (CC.Users != null) return CC.Users.Count;
             else return 0;
         }
-        //获取用户总数
 
         #endregion
     }
