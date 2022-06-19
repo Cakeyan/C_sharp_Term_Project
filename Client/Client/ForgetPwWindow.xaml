@@ -19,7 +19,6 @@
             <Grid  Grid.Column="1" Height="560" Margin="0,130,0,0">
                 <Grid.Resources>
                     <Style TargetType="Button">
-                        <EventSetter Event="Click" Handler="Button_Click"></EventSetter>
                         <Setter Property="OverridesDefaultStyle" Value="True" />
                         <Setter Property="Cursor" Value="Hand" />
                         <Setter Property="Template">

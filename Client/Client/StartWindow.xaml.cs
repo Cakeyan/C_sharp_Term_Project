@@ -1,37 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace Client
 {
-    /// <summary>
-    /// StartWindow.xaml 的交互逻辑
-    /// </summary>
+    //启动界面逻辑
     public partial class StartWindow : Window
     {
         public StartWindow()
         {
             InitializeComponent();
         }
-        //启动四个客户端
+
+        //多开测试
         private void btn1_Click(object sender, RoutedEventArgs e)
         {
-            StartNewWindow(0,400);
+            StartNewWindow(0, 400);
             StartNewWindow(0, 0);
-            StartNewWindow(800,0);
+            StartNewWindow(800, 0);
             StartNewWindow(800, 400);
         }
 
+        //正常启动
+        private void btn2_Click(object sender, RoutedEventArgs e)
+        {
+            StartNewWindow(400, 400);
+        }
+        
+        //启动客户端
         private void StartNewWindow(int left, int top)
         {
             LoginWindow w = new LoginWindow();
@@ -42,12 +36,7 @@ namespace Client
             w.Show();
         }
 
-        //启动一个客户端
-        private void btn2_Click(object sender, RoutedEventArgs e)
-        {
-            StartNewWindow(400,400);
-        }
-
+        //关闭程序
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             App.Current.Shutdown();

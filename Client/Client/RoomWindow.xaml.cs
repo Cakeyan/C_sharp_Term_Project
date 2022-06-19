@@ -1,38 +1,26 @@
 ﻿using Client.CheckinReference;
 using Client.LoginReference;
-using Client.ServiceReference;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+
 
 namespace Client
 {
-    /// <summary>
-    /// RoomWindow.xaml 的交互逻辑
-    /// </summary>
+    //大厅界面逻辑
     public partial class RoomWindow : Window, ICheckinServerCallback
     {
-        //private ServiceClient client;//服务端调用
         private LoginServiceClient loginclient;
         private CheckinServerClient Checkinclient;
         private User item;//每一个id所属，item可以控制该id下的所有窗口
         public LoginReference.User us;//用户的所有信息
+        public static bool music_play = true;
         public static MediaPlayer player = new MediaPlayer();
-        //bool[] arr1 = { true, false, true, false};
-        //string[] arr2 = { "3", "2", "4", "1"};
 
-
+        //进入大厅初始化
         public RoomWindow(LoginReference.User ustmp)
         {
             InitializeComponent();
@@ -40,17 +28,13 @@ namespace Client
             item = CC.GetUser(us.Acount);
             Checkinclient = new CheckinServerClient(new InstanceContext(this));
             loginclient = new LoginServiceClient();
-            if (us.Avart == null)
-                us.Avart = "boy.png";
-            //this.photo.Source = new BitmapImage(new Uri("pack://application:,,,/image/" + us.Avart));
             Checkinclient.Login(us.Name);
-            //音效
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             player.Open(new Uri("bgm.mp3", UriKind.Relative));
             player.Play();
-            //refreshRoomInfo(arr2, arr1);
         }
 
+        //刷新房间信息
         public void refreshRoomInfo(int[] roomPlayerNum, bool[] isStart)
         {
             room1player.Text = roomPlayerNum[0].ToString() + "/8";
@@ -66,16 +50,19 @@ namespace Client
         //进入房间
         private void room_Click(object sender, RoutedEventArgs e)
         {
-            //确定点击了几号房间
+            //获取点击房间号
             Button bt = e.Source as Button;
             int idx = (int)((bt.Name)[4]) - 48;
+
+            //判断是否可以进入房间
             string isCanEnter = Checkinclient.Checkin(us.Name, idx);
             if (isCanEnter!="OK")
             {
                 MessageBox.Show(isCanEnter);
                 return;
             }
-            //设置大厅隐藏，打开游戏
+
+            //隐藏大厅进入对应房间
             item.RoomWindow.Hide();
             MainWindow mw = new MainWindow(us);
             mw.roomId = idx;
@@ -85,10 +72,10 @@ namespace Client
 
             //回调进入房间
             item.MainWindow.EnterRoom(us.Name, idx);
-            //client.EnterRoom(us.Name, idx);
+
         }
 
-        //用于绑定enter键
+        //回车发送聊天信息
         private void SendBox_KeyUp(object sender, KeyEventArgs e)
         {
             if(e.Key==Key.Enter)
@@ -102,6 +89,7 @@ namespace Client
             }
         }
 
+        //点击发送聊天信息
         private void SendBnt_Click(object sender, RoutedEventArgs e)
         {
             if (SendBox.Text != "")
@@ -111,56 +99,7 @@ namespace Client
             }
         }
 
-        //退出游戏
-        private void exitBnt_Click(object sender, RoutedEventArgs e)
-        {
-            Checkinclient.Logout(us.Name);
-            this.Close();
-        }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            Checkinclient.Logout(us.Name);
-        }
-
-        //显示玩家信息
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-
-        #region 聊天室的回调函数实现
-
-        public void ShowLogin(string loginUserName)
-        {
-            this.PlayerInfo.Text += "[" + loginUserName + "]" + "进入大厅" + '\n';
-            scrollviewer.ScrollToBottom();
-        }
-
-        /// <summary>其他用户退出</summary>
-        public void ShowLogout(string userName)
-        {
-            this.PlayerInfo.Text += "[" + userName + "]" + "退出大厅" + '\n';
-            scrollviewer.ScrollToBottom();
-        }
-
-        public void ShowCheckin(string userName, int roomnumber)
-        {
-            this.PlayerInfo.Text += "[" + userName + "]" + "进入了"+roomnumber+"号房间" + '\n';
-            scrollviewer.ScrollToBottom();
-        }
-
-        public void ShowTalk(string userName, string message)
-        {
-            this.PlayerInfo.Text += "[" + userName + "]说：" + message + '\n';
-            scrollviewer.ScrollToBottom();
-        }
-
-        #endregion
-
-        public static bool music_play = true;
-
+        //背景音乐控制
         private void music_Click(object sender, RoutedEventArgs e)
         {
             if (music_play)
@@ -172,12 +111,54 @@ namespace Client
             {
                 music_play = true;
                 player.Play();
-            }    
+            }
         }
 
-        private void Window_Closing(object sender, EventArgs e)
+        //点击游戏内叉号退出游戏
+        private void exitBnt_Click(object sender, RoutedEventArgs e)
         {
-
+            Checkinclient.Logout(us.Name);
+            this.Close();
         }
+
+        //点击右上角关闭按钮退出游戏
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Checkinclient.Logout(us.Name);
+        }
+
+
+        #region 聊天室的回调函数实现
+        //进入游戏
+        public void ShowLogin(string loginUserName)
+        {
+            this.PlayerInfo.Text += "[" + loginUserName + "]" + "进入大厅" + '\n';
+            scrollviewer.ScrollToBottom();
+        }
+
+        //退出游戏
+        public void ShowLogout(string userName)
+        {
+            this.PlayerInfo.Text += "[" + userName + "]" + "退出大厅" + '\n';
+            scrollviewer.ScrollToBottom();
+        }
+
+        //进入房间
+        public void ShowCheckin(string userName, int roomnumber)
+        {
+            this.PlayerInfo.Text += "[" + userName + "]" + "进入了"+roomnumber+"号房间" + '\n';
+            scrollviewer.ScrollToBottom();
+        }
+
+        //聊天内容
+        public void ShowTalk(string userName, string message)
+        {
+            this.PlayerInfo.Text += "[" + userName + "]说：" + message + '\n';
+            scrollviewer.ScrollToBottom();
+        }
+
+        #endregion
+
+
     }
 }
