@@ -24,7 +24,7 @@ This project is based on Visual Studio 2019 and 2022 and can run successfully on
 
 #### [Final Version]Real-Time-Painting Algorithm(L/R: Painter’s View/Player’s View)
 
-<img src="README_en.assets/RT-3-L.GIF" alt="RT-3-L" style="zoom:80%;" /><img src="README_en.assets/RT-3-R-16558171757741.GIF" alt="RT-3-R" style="zoom:80%;" />
+<img src="README_en.assets/RT-3-L.GIF" alt="RT-3-L" style="zoom:80%;" /><img src="README_en.assets/RT-3-R.GIF" alt="RT-3-R" style="zoom:80%;" />
 
 ### Register
 
