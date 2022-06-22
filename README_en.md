@@ -6,7 +6,9 @@ This is our Term Project of **Software Construction**(C sharp) in **Wuhan Univer
 
 ## TL; DR - Quick Start
 
-This project is based on Visual Studio 2019 and 2022 and can run successfully on these two versions. You can modify the IPv4 address and port, which is `localhost:802` now, in the `App.config` file in `Server` and `Client` directory. To connect to the specified server, clients need to modify the IP address and port the same as the IPv4 address of server, and make sure the server is running. Enjoy it!
+This project is based on Visual Studio 2019 and 2022 and can run successfully on these two versions. You can modify the IPv4 address and port, which is `localhost:802` now, in the `App.config` file in `Server` and `Client` directory. To connect to the specified server, clients need to modify the IP address and port the same as the IPv4 address of server, and make sure the server is running.
+
+To avoid the abuse of our own email after open source, here we delete our mailbox authorization. You can change it into your own email and password in the `sendEmail()` function in `Service\LoginService.cs`. If you wanna test without registration, you can use the built-in test account. The name is **1000-1008** and the password is **123**. Enjoy it!
 
 ## Results
 

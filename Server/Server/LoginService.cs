@@ -119,8 +119,8 @@ namespace Server
         public bool sendEmail(string email)
         {
             string smtpService = "smtp.qq.com";
-            string sendEmail = "1930675022@qq.com";
-            string sendpwd = "vnyncxvfxfmpbjca";
+            string sendEmail = "此处填入自己的邮箱";
+            string sendpwd = "此处填入自己的授权码";
 
 
             SmtpClient smtpclient = new SmtpClient();
